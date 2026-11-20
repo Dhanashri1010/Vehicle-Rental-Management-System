@@ -1,0 +1,152 @@
+[
+  {
+    "id": "notif-01",
+    "userId": "usr-c01",
+    "title": "Active Ride in Progress",
+    "message": "Your ride with Honda Activa 6G is ongoing. Return is scheduled for tomorrow 9:00 AM.",
+    "time": "1 hour ago",
+    "type": "primary",
+    "icon": "bi-bicycle",
+    "read": false
+  },
+  {
+    "id": "notif-02",
+    "userId": "usr-c01",
+    "title": "Safety Deposit Safe",
+    "message": "Your ₹500 safety deposit is secured and will be returned to your UPI immediately upon return.",
+    "time": "2 hours ago",
+    "type": "success",
+    "icon": "bi-shield-check",
+    "read": false
+  },
+  {
+    "id": "notif-03",
+    "userId": "usr-o01",
+    "title": "New Booking Active",
+    "message": "Rahul Patil has checked in with your Honda Activa 6G. Happy renting!",
+    "time": "1 hour ago",
+    "type": "info",
+    "icon": "bi-check2-circle",
+    "read": false
+  },
+  {
+    "id": "notif-04",
+    "userId": "usr-o05",
+    "title": "New Booking Request",
+    "message": "Pooja Kulkarni has requested your Ather 450X Gen 3 for Nov 24-26. Please accept or reject.",
+    "time": "30 mins ago",
+    "type": "warning",
+    "icon": "bi-bell-fill",
+    "read": false
+  },
+  {
+    "id": "notif-05",
+    "userId": "usr-c02",
+    "title": "Request Sent to Owner",
+    "message": "Your booking request for Ather 450X was sent to Sachin Pawar. You will receive an update soon.",
+    "time": "30 mins ago",
+    "type": "info",
+    "icon": "bi-send",
+    "read": false
+  },
+  {
+    "id": "notif-06",
+    "userId": "usr-c05",
+    "title": "Owner Accepted Your Booking",
+    "message": "Mahesh Patil has accepted your booking for Ola S1 Pro. Keep your driving licence ready.",
+    "time": "2 hours ago",
+    "type": "success",
+    "icon": "bi-check-circle-fill",
+    "read": false
+  },
+  {
+    "id": "notif-07",
+    "userId": "usr-o01",
+    "title": "Monthly Earnings Summary",
+    "message": "You have earned ₹42,500 so far this month from 14 completed rentals across Pune.",
+    "time": "Yesterday",
+    "type": "success",
+    "icon": "bi-wallet2",
+    "read": true
+  },
+  {
+    "id": "notif-08",
+    "userId": "usr-c03",
+    "title": "Upcoming Booking Reminder",
+    "message": "Your ride with Royal Enfield Classic 350 starts on Nov 23 at 8:00 AM. Location: Deccan Gymkhana.",
+    "time": "Yesterday",
+    "type": "info",
+    "icon": "bi-calendar-event",
+    "read": true
+  },
+  {
+    "id": "notif-09",
+    "userId": "usr-admin-01",
+    "title": "Platform Health Good",
+    "message": "22 active bikes listed, 20 bookings recorded, 0 pending customer disputes.",
+    "time": "1 day ago",
+    "type": "primary",
+    "icon": "bi-graph-up-arrow",
+    "read": true
+  },
+  {
+    "id": "notif-10",
+    "userId": "usr-admin-01",
+    "title": "New Owner Verification",
+    "message": "Owner Rajesh Gaikwad uploaded verified Aadhaar. Listing approved.",
+    "time": "2 days ago",
+    "type": "success",
+    "icon": "bi-person-check",
+    "read": true
+  },
+  {
+    "id": "notif-11",
+    "userId": "usr-c08",
+    "title": "Booking Confirmed",
+    "message": "Revolt RV400 booking confirmed for Nov 28. Free doorstep delivery to Magarpatta City.",
+    "time": "3 hours ago",
+    "type": "success",
+    "icon": "bi-patch-check",
+    "read": false
+  },
+  {
+    "id": "notif-12",
+    "userId": "usr-o09",
+    "title": "Booking Confirmed on Your Bike",
+    "message": "Pranali Gaikwad's booking on your Revolt RV400 is confirmed. Scheduled payout: ₹673.",
+    "time": "3 hours ago",
+    "type": "info",
+    "icon": "bi-cash",
+    "read": false
+  },
+  {
+    "id": "notif-13",
+    "userId": "usr-c16",
+    "title": "Refund Processed",
+    "message": "₹1,200 safety deposit for Bajaj Avenger booking BK-75090 has been refunded to your Google Pay.",
+    "time": "1 day ago",
+    "type": "success",
+    "icon": "bi-arrow-counterclockwise",
+    "read": true
+  },
+  {
+    "id": "notif-14",
+    "userId": "usr-c01",
+    "title": "Past Ride Feedback",
+    "message": "Thank you for rating Suzuki Access 125 5 stars! Suresh Deshmukh appreciated your review.",
+    "time": "2 weeks ago",
+    "type": "info",
+    "icon": "bi-star-fill",
+    "read": true
+  },
+  {
+    "id": "notif-15",
+    "userId": "usr-o02",
+    "title": "Verified Owner Status Active",
+    "message": "Congratulations! Your profile has maintained a 4.8+ rating and Verified Badge in Pune.",
+    "time": "3 days ago",
+    "type": "success",
+    "icon": "bi-award-fill",
+    "read": true
+  }
+]

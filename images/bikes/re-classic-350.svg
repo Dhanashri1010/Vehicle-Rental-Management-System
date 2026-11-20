@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" width="100%" height="100%">
+    <defs>
+      <linearGradient id="bkBg_RoyalEnfieldClassic350" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f8fafc"/>
+        <stop offset="100%" stop-color="#edf2f7"/>
+      </linearGradient>
+    </defs>
+    <rect width="520" height="340" rx="20" fill="url(#bkBg_RoyalEnfieldClassic350)"/>
+    
+    <!-- Ground Shadow -->
+    <ellipse cx="260" cy="290" rx="205" ry="14" fill="#cbd5e1"/>
+    
+    <!-- Rear Wheel -->
+    <circle cx="115" cy="225" r="62" fill="#1e293b"/>
+    <circle cx="115" cy="225" r="40" fill="#94a3b8"/>
+    <circle cx="115" cy="225" r="18" fill="#475569"/>
+    <!-- Spokes -->
+    <line x1="65" y1="225" x2="165" y2="225" stroke="#cbd5e1" stroke-width="2"/>
+    <line x1="115" y1="175" x2="115" y2="275" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Front Wheel -->
+    <circle cx="405" cy="225" r="62" fill="#1e293b"/>
+    <circle cx="405" cy="225" r="40" fill="#94a3b8"/>
+    <circle cx="405" cy="225" r="18" fill="#475569"/>
+    <line x1="355" y1="225" x2="455" y2="225" stroke="#cbd5e1" stroke-width="2"/>
+    <line x1="405" y1="175" x2="405" y2="275" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Motorcycle Chassis -->
+    <polygon points="115,225 240,225 290,145 190,145" fill="#334155" opacity="0.85"/>
+    
+    <!-- Engine Block -->
+    <rect x="210" y="180" width="65" height="55" rx="10" fill="#475569"/>
+    <line x1="210" y1="192" x2="275" y2="192" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="210" y1="208" x2="275" y2="208" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="210" y1="224" x2="275" y2="224" stroke="#94a3b8" stroke-width="3"/>
+    
+    <!-- Exhaust Silencer -->
+    <path d="M 240 230 L 150 240 L 85 235" stroke="#64748b" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <rect x="85" y="228" width="75" height="14" rx="5" fill="#94a3b8"/>
+    
+    <!-- Fuel Tank -->
+    <path d="M 230 135 C 250 105, 325 100, 345 145 L 240 155 Z" fill="#78350f"/>
+    <circle cx="290" cy="125" r="6" fill="#f8fafc"/>
+    
+    <!-- Rider Seat -->
+    <path d="M 145 140 C 180 128, 230 128, 250 145 L 240 160 L 145 150 Z" fill="#1e293b"/>
+    
+    <!-- Front Fork & Handlebar -->
+    <line x1="405" y1="225" x2="355" y2="70" stroke="#64748b" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="355" cy="70" r="9" fill="#1e293b"/>
+    <line x1="330" y1="65" x2="375" y2="65" stroke="#1e293b" stroke-width="9" stroke-linecap="round"/>
+    
+    <!-- Headlamp -->
+    <circle cx="380" cy="88" r="18" fill="#fef08a" stroke="#eab308" stroke-width="3"/>
+    <polygon points="385,78 435,60 435,115 385,100" fill="#fef08a" opacity="0.3"/>
+    
+    <!-- Mudguards -->
+    <path d="M 85 180 Q 115 150 155 180" stroke="#78350f" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M 375 180 Q 405 150 440 180" stroke="#78350f" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+    <!-- Name Label -->
+    <rect x="25" y="24" width="250" height="42" rx="12" fill="#ffffff" opacity="0.95" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.06))"/>
+    <text x="38" y="50" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">Royal Enfield Classic 350</text>
+    
+    
+      <rect x="365" y="24" width="130" height="36" rx="10" fill="#0f8b8d"/>
+      <text x="430" y="47" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">👑 Highway Thump</text>
+    
+  </svg>

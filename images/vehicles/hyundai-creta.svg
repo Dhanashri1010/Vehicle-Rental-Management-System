@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="100%">
+    <defs>
+      <linearGradient id="carBg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f8fafc"/>
+        <stop offset="100%" stop-color="#f1f5f9"/>
+      </linearGradient>
+    </defs>
+    <rect width="500" height="320" rx="16" fill="url(#carBg)"/>
+    
+    <!-- Shadow -->
+    <ellipse cx="250" cy="275" rx="210" ry="14" fill="#cbd5e1"/>
+    
+    <!-- Car Body Profile -->
+    <path d="M 60 215 L 70 170 Q 110 160 140 160 L 180 100 Q 280 90 340 100 L 410 160 L 440 175 L 445 220 L 410 220 Q 370 220 370 200 Q 370 220 330 220 L 170 220 Q 170 200 130 200 Q 130 220 90 220 Z" fill="#334155"/>
+    
+    <!-- Windows -->
+    <path d="M 190 110 L 250 110 L 250 155 L 155 155 Z" fill="#bae6fd" opacity="0.9"/>
+    <path d="M 260 110 L 330 110 L 390 155 L 260 155 Z" fill="#bae6fd" opacity="0.9"/>
+    
+    <!-- Headlight & Taillight -->
+    <polygon points="435,175 448,185 440,195 425,185" fill="#fef08a" stroke="#eab308" stroke-width="1.5"/>
+    <polygon points="65,175 55,185 60,195 72,185" fill="#ef4444"/>
+    
+    <!-- Door handles -->
+    <rect x="220" y="165" width="20" height="4" rx="2" fill="#1e293b"/>
+    <rect x="290" y="165" width="20" height="4" rx="2" fill="#1e293b"/>
+    
+    <!-- Rear Wheel -->
+    <circle cx="130" cy="225" r="44" fill="#0f172a"/>
+    <circle cx="130" cy="225" r="26" fill="#94a3b8"/>
+    <circle cx="130" cy="225" r="10" fill="#0f172a"/>
+    
+    <!-- Front Wheel -->
+    <circle cx="370" cy="225" r="44" fill="#0f172a"/>
+    <circle cx="370" cy="225" r="26" fill="#94a3b8"/>
+    <circle cx="370" cy="225" r="10" fill="#0f172a"/>
+
+    <!-- Name Label -->
+    <rect x="20" y="20" width="230" height="38" rx="10" fill="#ffffff" opacity="0.95"/>
+    <text x="32" y="44" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">Hyundai Creta SX</text>
+    
+    
+      <rect x="350" y="20" width="130" height="34" rx="8" fill="#0f8b8d"/>
+      <text x="415" y="42" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Panoramic Sunroof</text>
+    
+  </svg>

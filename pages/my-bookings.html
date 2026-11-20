@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - PedalPal Pune</title>
+  <link rel="icon" type="image/svg+xml" href="../images/icons/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-2 flex-wrap gap-2">
+      <a href="../index.html" class="brand-wrapper">
+        <div class="brand-icon"><i class="bi bi-bicycle"></i></div>
+        <div>
+          <span class="brand-name">PedalPal</span>
+          <div class="brand-tagline d-none d-sm-block">Customer Portal</div>
+        </div>
+      </a>
+      <nav class="d-none d-lg-flex align-items-center gap-1 desktop-nav-links">
+        <a href="../index.html" class="nav-menu-link">Home</a>
+        <a href="bikes.html" class="nav-menu-link">Explore Bikes</a>
+        <a href="customer-dashboard.html" class="nav-menu-link">Dashboard</a>
+        <a href="my-bookings.html" class="nav-menu-link active">My Bookings</a>
+        <a href="wishlist.html" class="nav-menu-link">Wishlist</a>
+      </nav>
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <div class="dropdown">
+          <button class="nav-user-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle fs-5 text-teal"></i>
+            <span id="navUserNameText">Rahul</span>
+            <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2">
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="customer-dashboard.html">Dashboard</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="profile.html">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-2 text-secondary fw-bold" href="#" id="navLogoutBtn">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+          <h2 class="fw-bold mb-1">My Rental Bookings</h2>
+          <p class="text-muted mb-0">Track your ongoing, upcoming, and past rides across Pune.</p>
+        </div>
+        <a href="bikes.html" class="btn btn-pedal-accent">
+          <i class="bi bi-plus-circle"></i> Rent Another Bike
+        </a>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <button type="button" class="btn btn-sm btn-pedal-primary booking-filter-btn active" data-status="all">All Bookings</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Ongoing">Ongoing Rides</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Confirmed">Confirmed</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Requested">Pending Requests</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Completed">Completed</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Cancelled">Cancelled</button>
+      </div>
+
+      <!-- Bookings Container -->
+      <div id="myBookingsList">
+        <!-- Rendered by PedalPalCustomer.initMyBookings() -->
+      </div>
+    </div>
+  </main>
+
+  <!-- BILL / RECEIPT MODAL -->
+  <div class="modal fade" id="bookingBillModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow-lg p-3">
+        <div class="modal-header border-0 pb-0">
+          <div>
+            <h5 class="modal-title fw-bold">Rental Receipt &amp; Summary</h5>
+            <small class="text-muted">Booking Reference: <strong class="text-dark" id="billModalRef">BK-90124</strong></small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body py-3">
+          <div class="p-3 bg-light rounded-4 mb-3 border">
+            <h6 class="fw-bold mb-1" id="billModalBike">Honda Activa 6G</h6>
+            <div class="small text-muted mb-1" id="billModalDates">Dates</div>
+            <div class="small text-muted" id="billModalPickup">Pickup Location</div>
+            <div class="small text-secondary mt-1">Owner: <strong id="billModalOwner">Suresh Deshmukh</strong></div>
+          </div>
+
+          <div class="d-flex justify-content-between mb-1 small">
+            <span class="text-muted">Rental Charges:</span>
+            <span class="fw-bold" id="billModalRent">₹299</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1 small">
+            <span class="text-muted">Doorstep Delivery:</span>
+            <span class="fw-bold text-success" id="billModalDelivery">FREE</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1 small">
+            <span class="text-muted">GST &amp; Taxes:</span>
+            <span class="fw-bold" id="billModalTaxes">₹35</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2 small">
+            <span class="text-muted">Safety Deposit (100% Refundable):</span>
+            <span class="fw-bold text-teal" id="billModalDeposit">₹500</span>
+          </div>
+          <hr class="my-2">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold text-dark fs-5">Total Paid:</span>
+            <span class="fw-bold text-teal fs-4" id="billModalTotal">₹834</span>
+          </div>
+
+          <div class="p-2 border rounded-3 bg-light text-center small text-muted mb-2">
+            Payment Mode: <strong class="text-dark" id="billModalPayment">UPI (Google Pay)</strong>
+          </div>
+          <div class="text-center" id="billModalStatus"></div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-pedal-primary w-100" data-bs-dismiss="modal">Close Receipt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      © 2026 PedalPal. Academic College Project. All demonstration data fictional.
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/customer.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      PedalPalAuth.requireAuth(['customer', 'admin']);
+      PedalPalCustomer.initMyBookings();
+    });
+  </script>
+</body>
+</html>

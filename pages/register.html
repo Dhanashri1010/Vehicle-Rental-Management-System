@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Free Account | PedalPal Pune</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+  <!-- TOP BRAND STRIP -->
+  <header class="bg-white border-bottom py-3">
+    <div class="container-fluid px-lg-5 d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+        <span class="brand-badge"><i class="bi bi-bicycle"></i></span>
+        <span class="brand-text">PEDAL<span class="text-teal">PAL</span></span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <a href="login.html" class="btn btn-sm btn-outline-teal"><i class="bi bi-box-arrow-in-right"></i> Already have an account? Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- REGISTER CONTAINER -->
+  <main class="flex-grow-1 d-flex align-items-center py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-7">
+          <div class="pedal-card p-4 p-md-5">
+            <div class="text-center mb-4">
+              <span class="badge bg-teal-subtle text-teal fw-bold mb-2 px-3 py-1">JOIN PEDALPAL PUNE</span>
+              <h3 class="fw-bold mb-1">Create Your Account</h3>
+              <p class="text-muted small">Rent clean two-wheelers or list your bike and start earning today.</p>
+            </div>
+
+            <!-- ALERT MESSAGE CONTAINER -->
+            <div id="registerAlertBox" class="alert alert-danger d-none" role="alert"></div>
+
+            <form id="registerForm">
+              <!-- ROLE CHOICE -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold">I want to:</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <input type="radio" class="btn-check" name="userRole" id="roleCustomer" value="customer" checked>
+                    <label class="btn btn-outline-teal w-100 py-3 text-center" for="roleCustomer">
+                      <i class="bi bi-person-walking d-block fs-4 mb-1"></i>
+                      <strong>Rent Bikes</strong>
+                      <small class="d-block text-muted">Customer Account</small>
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <input type="radio" class="btn-check" name="userRole" id="roleOwner" value="owner">
+                    <label class="btn btn-outline-teal w-100 py-3 text-center" for="roleOwner">
+                      <i class="bi bi-shop d-block fs-4 mb-1"></i>
+                      <strong>List My Two-Wheeler</strong>
+                      <small class="d-block text-muted">Bike Owner Account</small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">Full Legal Name</label>
+                  <input type="text" class="form-control" id="regFullName" placeholder="e.g. Ramesh Kulkarni" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">Mobile Number</label>
+                  <div class="input-group">
+                    <span class="input-group-text">+91</span>
+                    <input type="tel" class="form-control" id="regPhone" placeholder="98XXXXXXXX" maxlength="10" required>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" id="regEmail" placeholder="ramesh@example.com" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">Pune Locality</label>
+                  <select class="form-select" id="regArea" required>
+                    <option value="Kothrud" selected>Kothrud</option>
+                    <option value="Baner">Baner</option>
+                    <option value="Hinjewadi">Hinjewadi</option>
+                    <option value="Viman Nagar">Viman Nagar</option>
+                    <option value="Wakad">Wakad</option>
+                    <option value="Deccan">Deccan Gymkhana</option>
+                    <option value="Aundh">Aundh</option>
+                    <option value="Hadapsar">Hadapsar</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">Driving Licence Number</label>
+                  <input type="text" class="form-control text-uppercase" id="regLicence" placeholder="MH12 20210091823">
+                  <small class="text-muted">Required before taking delivery.</small>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">Choose Password</label>
+                  <input type="password" class="form-control" id="regPassword" placeholder="Minimum 6 characters" required>
+                </div>
+              </div>
+
+              <div class="my-4 form-check">
+                <input type="checkbox" class="form-check-input" id="termsCheck" required checked>
+                <label class="form-check-label small text-muted" for="termsCheck">
+                  I agree to the <a href="#" class="text-teal">Terms of Rental Service</a>, <a href="#" class="text-teal">Security Policy</a>, and confirm I possess a valid driving licence for two-wheelers in India.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-pedal-primary w-100 py-2 fs-6">
+                <i class="bi bi-check-circle me-1"></i> Complete Free Registration
+              </button>
+            </form>
+
+            <p class="text-center text-muted small mt-4 mb-0">
+              Already registered on PedalPal? 
+              <a href="login.html" class="fw-bold text-teal text-decoration-none">Sign In Here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-top py-3 text-center text-muted small">
+    <div class="container">
+      &copy; 2026 PedalPal Technologies India Pvt. Ltd. Pune, Maharashtra. Built for Project Review 1.
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#registerForm').on('submit', function (e) {
+        e.preventDefault();
+        const role = $('input[name="userRole"]:checked').val();
+        const fullName = $('#regFullName').val().trim();
+        const phone = $('#regPhone').val().trim();
+        const email = $('#regEmail').val().trim();
+        const area = $('#regArea').val();
+        const licence = $('#regLicence').val().trim();
+        const password = $('#regPassword').val();
+        const alertBox = $('#registerAlertBox');
+
+        // Validation
+        if (phone.length !== 10 || !/^\d+$/.test(phone)) {
+          alertBox.text('Please enter a valid 10-digit Indian mobile number.').removeClass('d-none');
+          return;
+        }
+
+        const res = Auth.register({
+          fullName,
+          phone,
+          email,
+          role,
+          area,
+          city: 'Pune',
+          licenceNumber: licence,
+          password
+        });
+
+        if (res.success) {
+          alertBox.addClass('d-none');
+          PedalPalNotifications.showToast('Account created successfully! Welcome to PedalPal Pune.', 'success');
+          setTimeout(() => {
+            if (role === 'owner') {
+              window.location.href = 'owner-dashboard.html';
+            } else {
+              window.location.href = 'customer-dashboard.html';
+            }
+          }, 1000);
+        } else {
+          alertBox.text(res.message).removeClass('d-none');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

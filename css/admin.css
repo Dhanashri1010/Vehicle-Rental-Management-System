@@ -1,0 +1,71 @@
+/* =====================================================================
+   PedalPal Admin Portal Stylesheet (css/admin.css)
+   ===================================================================== */
+
+.admin-sidebar {
+  width: 260px;
+  background: #0f172a;
+  color: #f8fafc;
+  border-right: 1px solid #1e293b;
+  padding: 24px 16px;
+  flex-shrink: 0;
+}
+
+.admin-sidebar .sidebar-item {
+  color: #94a3b8;
+}
+
+.admin-sidebar .sidebar-item:hover,
+.admin-sidebar .sidebar-item.active {
+  background-color: #1e293b;
+  color: #38bdf8;
+}
+
+.admin-header-badge {
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.5px;
+}
+
+/* Simple CSS Bar Chart for Admin Reports */
+.chart-bar-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 180px;
+  padding: 10px 0;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.chart-bar-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.chart-bar-fill {
+  width: 100%;
+  max-width: 44px;
+  background-color: var(--primary-teal);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.6s ease;
+  position: relative;
+}
+
+.chart-bar-fill:hover {
+  background-color: var(--accent-amber);
+}
+
+.chart-bar-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate-medium);
+}

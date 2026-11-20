@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Bikes &amp; Scooters - PedalPal Pune</title>
+  <meta name="description" content="Browse verified motorcycles, scooters, electric bikes and electric scooters for rent across Pune.">
+  <link rel="icon" type="image/svg+xml" href="../images/icons/favicon.svg">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-2 flex-wrap gap-2">
+      <a href="../index.html" class="brand-wrapper">
+        <div class="brand-icon"><i class="bi bi-bicycle"></i></div>
+        <div>
+          <span class="brand-name">PedalPal</span>
+          <div class="brand-tagline d-none d-sm-block">Your Ride. Your Way.</div>
+        </div>
+      </a>
+
+      <nav class="d-none d-lg-flex align-items-center gap-1 desktop-nav-links">
+        <a href="../index.html" class="nav-menu-link">Home</a>
+        <a href="bikes.html" class="nav-menu-link active">Explore Bikes</a>
+        <a href="compare.html" class="nav-menu-link">Compare</a>
+        <a href="wishlist.html" class="nav-menu-link">Wishlist</a>
+        <a href="my-bookings.html" class="nav-menu-link">My Bookings</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <div class="lang-toggle-bar">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+          <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
+
+        <button type="button" class="btn btn-light rounded-circle position-relative border" id="navNotifBellBtn" style="width: 42px; height: 42px;">
+          <i class="bi bi-bell-fill text-teal"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger nav-notif-badge d-none">2</span>
+        </button>
+
+        <div class="dropdown">
+          <button class="nav-user-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle fs-5 text-teal"></i>
+            <span id="navUserNameText">Rahul</span>
+            <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2">
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="customer-dashboard.html"><i class="bi bi-speedometer2 text-teal me-2"></i> Customer Dashboard</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="my-bookings.html"><i class="bi bi-card-checklist text-primary me-2"></i> My Bookings</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="profile.html"><i class="bi bi-person-gear text-secondary me-2"></i> Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="customer">👤 Customer Mode</a></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="owner">🛵 Owner Mode</a></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="admin">🛡️ Admin Mode</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-2 text-secondary fw-bold" href="#" id="navLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="py-4 bg-white border-bottom">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <h2 class="fw-bold mb-1">Explore Bikes &amp; Scooters</h2>
+        <p class="text-muted mb-0" id="bikeResultsCount">Available two-wheelers in Pune</p>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <label for="sortSelector" class="fw-bold small text-muted text-nowrap">Sort By:</label>
+        <select id="sortSelector" class="form-select form-select-sm rounded-pill fw-bold" style="width: 180px;">
+          <option value="default">Featured</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="trips">Most Popular</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- SIDEBAR FILTERS -->
+        <aside class="col-12 col-lg-3">
+          <div class="pedal-card p-4 sticky-top" style="top: 85px; z-index: 10;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0"><i class="bi bi-funnel-fill text-teal me-1"></i> Filters</h5>
+              <button type="button" class="btn btn-sm btn-link text-decoration-none text-muted p-0" id="btnFilterReset">Reset All</button>
+            </div>
+
+            <!-- Search by name/brand -->
+            <div class="mb-3">
+              <label for="filterSearchInput" class="form-label small fw-bold text-muted">Search Vehicle</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" id="filterSearchInput" class="form-control border-start-0" placeholder="e.g. Activa, Classic 350...">
+              </div>
+            </div>
+
+            <!-- Pune Location Area -->
+            <div class="mb-3">
+              <label for="filterLocation" class="form-label small fw-bold text-muted">Pune Location</label>
+              <select id="filterLocation" class="form-select form-select-sm rounded-3">
+                <option value="all">All Pune Areas</option>
+                <option value="Kothrud">Kothrud</option>
+                <option value="Baner">Baner</option>
+                <option value="Hinjewadi">Hinjewadi</option>
+                <option value="Wakad">Wakad</option>
+                <option value="Viman Nagar">Viman Nagar</option>
+                <option value="Hadapsar">Hadapsar</option>
+                <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+                <option value="Aundh">Aundh</option>
+                <option value="Shivajinagar">Shivajinagar</option>
+                <option value="Kharadi">Kharadi</option>
+                <option value="Pimple Saudagar">Pimple Saudagar</option>
+                <option value="FC Road">FC Road</option>
+              </select>
+            </div>
+
+            <!-- Vehicle Category -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted d-block">Category</label>
+              <div class="form-check mb-1">
+                <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catAll" value="all" checked>
+                <label class="form-check-label small fw-bold" for="catAll">All Categories</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catScooters" value="Scooters">
+                <label class="form-check-label small" for="catScooters">Scooters</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catMotorcycles" value="Motorcycles">
+                <label class="form-check-label small" for="catMotorcycles">Motorcycles</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catElectricScooters" value="Electric Scooters">
+                <label class="form-check-label small" for="catElectricScooters">Electric Scooters</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catElectricBikes" value="Electric Bikes">
+                <label class="form-check-label small" for="catElectricBikes">Electric Bikes</label>
+              </div>
+            </div>
+
+            <!-- Fuel Type -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted d-block">Fuel Type</label>
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-sm btn-pedal-primary flex-fill filter-fuel-btn active" data-fuel="all">All</button>
+                <button type="button" class="btn btn-sm btn-pedal-secondary flex-fill filter-fuel-btn" data-fuel="Petrol">Petrol</button>
+                <button type="button" class="btn btn-sm btn-pedal-secondary flex-fill filter-fuel-btn" data-fuel="Electric">⚡ EV</button>
+              </div>
+            </div>
+
+            <!-- Max Daily Price Slider -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label for="priceRangeSlider" class="form-label small fw-bold text-muted mb-0">Max Daily Rent</label>
+                <span class="fw-bold text-teal" id="priceRangeValue">₹1,500/day</span>
+              </div>
+              <input type="range" class="form-range" id="priceRangeSlider" min="200" max="1500" step="50" value="1500">
+              <div class="d-flex justify-content-between text-muted" style="font-size: 0.75rem;">
+                <span>₹200</span>
+                <span>₹1,500</span>
+              </div>
+            </div>
+
+            <!-- Transmission -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted d-block">Transmission</label>
+              <select id="filterTransmission" class="form-select form-select-sm rounded-3">
+                <option value="all">Any Transmission</option>
+                <option value="Automatic">Automatic (Scooters &amp; EVs)</option>
+                <option value="Manual">Manual (Geared Motorcycles)</option>
+              </select>
+            </div>
+
+            <!-- Availability -->
+            <div>
+              <label class="form-label small fw-bold text-muted d-block">Availability</label>
+              <select id="filterAvailability" class="form-select form-select-sm rounded-3">
+                <option value="all">All Listings</option>
+                <option value="available">Available Now</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+
+        <!-- BIKE LISTING GRID -->
+        <section class="col-12 col-lg-9">
+          <div class="row" id="bikesCatalogGrid">
+            <!-- Populated by PedalPalBikes.renderGrid() -->
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="brand-icon" style="width: 32px; height: 32px; font-size: 1rem;"><i class="bi bi-bicycle"></i></div>
+            <span class="fs-4 fw-bold text-white">PedalPal</span>
+          </div>
+          <p class="text-light mb-0">Your Ride. Your Way. Transparent two-wheeler rentals in Pune.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5 class="footer-heading">Navigation</h5>
+          <a href="../index.html" class="footer-link">Home</a>
+          <a href="compare.html" class="footer-link">Compare Bikes</a>
+          <a href="wishlist.html" class="footer-link">Wishlist</a>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="footer-heading">Portals</h5>
+          <a href="owner-dashboard.html" class="footer-link"><i class="bi bi-shop text-success me-1"></i> Owner Portal</a>
+          <a href="admin-dashboard.html" class="footer-link"><i class="bi bi-shield-lock text-danger me-1"></i> Admin Portal</a>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        © 2026 PedalPal. Academic College Project. All demonstration data fictional.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Modal -->
+  <div class="modal fade" id="notificationsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold"><i class="bi bi-bell-fill text-teal me-2"></i> Notifications</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body"><div id="notificationsListContainer"></div></div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-pedal-outline w-100" id="btnMarkAllNotifsRead"><i class="bi bi-check2-all"></i> Mark all read</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mobile-app-bar">
+    <a href="../index.html" class="mobile-bar-item"><i class="bi bi-house-door-fill"></i><span>Home</span></a>
+    <a href="bikes.html" class="mobile-bar-item active"><i class="bi bi-search"></i><span>Explore</span></a>
+    <a href="my-bookings.html" class="mobile-bar-item"><i class="bi bi-card-checklist"></i><span>My Trips</span></a>
+    <a href="customer-dashboard.html" class="mobile-bar-item"><i class="bi bi-person-circle"></i><span>Profile</span></a>
+  </nav>
+
+  <!-- jQuery & Bootstrap Bundle -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/bikes.js"></script>
+  <script src="../js/comparison.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Read initial URL params
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialCat = urlParams.get('category');
+      const initialLoc = urlParams.get('location');
+
+      if (initialCat) {
+        $(`input[name="filterCategory"][value="${initialCat}"]`).prop('checked', true);
+      }
+      if (initialLoc && initialLoc !== 'all') {
+        $('#filterLocation').val(initialLoc);
+      }
+
+      function getFilterState() {
+        const cat = $('input[name="filterCategory"]:checked').val() || 'all';
+        const fuel = $('.filter-fuel-btn.active').data('fuel') || 'all';
+        const loc = $('#filterLocation').val();
+        const maxP = $('#priceRangeSlider').val();
+        const trans = $('#filterTransmission').val();
+        const avail = $('#filterAvailability').val();
+        const search = $('#filterSearchInput').val().trim();
+
+        return {
+          category: cat,
+          fuel: fuel,
+          location: loc,
+          maxPrice: maxP,
+          transmission: trans,
+          availability: avail,
+          search: search,
+          onlyApproved: true
+        };
+      }
+
+      function refreshCatalog() {
+        const filters = getFilterState();
+        const sort = $('#sortSelector').val();
+        PedalPalBikes.renderGrid('#bikesCatalogGrid', filters, sort);
+      }
+
+      // Filter events
+      $('#filterSearchInput, #filterLocation, #filterTransmission, #filterAvailability, #sortSelector').on('change input', refreshCatalog);
+      $('input[name="filterCategory"]').on('change', refreshCatalog);
+
+      $('#priceRangeSlider').on('input', function () {
+        $('#priceRangeValue').text(`₹${$(this).val()}/day`);
+        refreshCatalog();
+      });
+
+      $('.filter-fuel-btn').on('click', function () {
+        $('.filter-fuel-btn').removeClass('active btn-pedal-primary').addClass('btn-pedal-secondary');
+        $(this).addClass('active btn-pedal-primary').removeClass('btn-pedal-secondary');
+        refreshCatalog();
+      });
+
+      $('#btnFilterReset').on('click', function () {
+        $('#filterSearchInput').val('');
+        $('#filterLocation').val('all');
+        $('input[name="filterCategory"][value="all"]').prop('checked', true);
+        $('.filter-fuel-btn[data-fuel="all"]').click();
+        $('#priceRangeSlider').val(1500);
+        $('#priceRangeValue').text('₹1,500/day');
+        $('#filterTransmission').val('all');
+        $('#filterAvailability').val('all');
+        $('#sortSelector').val('default');
+        refreshCatalog();
+      });
+
+      // Initial Catalog Render
+      refreshCatalog();
+    });
+  </script>
+</body>
+</html>

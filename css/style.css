@@ -1,0 +1,335 @@
+/* =====================================================================
+   PedalPal Master Stylesheet (css/style.css)
+   Commercial Two-Wheeler Rental Platform Design System
+   Color Palette: Deep Navy #0f172a | Teal #0f8b8d | Accent Amber #ffb703
+   ===================================================================== */
+
+:root {
+  --primary-teal: #0f8b8d;
+  --primary-teal-dark: #0a6364;
+  --primary-teal-light: #e0f4f4;
+  --accent-amber: #ffb703;
+  --accent-amber-hover: #f59e0b;
+  --dark-navy: #0f172a;
+  --slate-dark: #1e293b;
+  --slate-medium: #475569;
+  --slate-light: #94a3b8;
+  --border-color: #e2e8f0;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-alt: #f1f5f9;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #0284c7;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 50px;
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.09);
+  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--slate-dark);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessible outline */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent-amber) !important;
+  outline-offset: 2px !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-navy);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.3rem; }
+h2 { font-size: 1.85rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; }
+p { font-size: 1.05rem; color: var(--slate-medium); margin-bottom: 1rem; }
+
+/* Link styling */
+a {
+  color: var(--primary-teal);
+  text-decoration: none;
+  transition: var(--transition);
+}
+a:hover {
+  color: var(--primary-teal-dark);
+}
+
+/* =====================================================================
+   NAVBAR (Commercial, Clean, Responsive)
+   ===================================================================== */
+.site-header {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--primary-teal-light);
+  color: var(--primary-teal);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: 1.5px solid var(--primary-teal);
+}
+
+.brand-name {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: var(--primary-teal);
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--slate-medium);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.nav-menu-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--slate-dark);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-menu-link:hover,
+.nav-menu-link.active {
+  color: var(--primary-teal);
+  background-color: var(--primary-teal-light);
+}
+
+/* Language selector */
+.lang-toggle-bar {
+  display: inline-flex;
+  background-color: var(--bg-alt);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: var(--slate-medium);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.lang-btn.active {
+  background-color: var(--primary-teal);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* User Account Pill */
+.nav-user-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  color: var(--dark-navy);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-user-pill:hover {
+  background-color: var(--primary-teal-light);
+  border-color: var(--primary-teal);
+}
+
+.nav-role-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+}
+
+.role-customer { background-color: #dbeafe; color: #1e40af; }
+.role-owner { background-color: #d1fae5; color: #065f46; }
+.role-admin { background-color: #fee2e2; color: #991b1b; }
+
+/* =====================================================================
+   BUTTONS (Consistent, Accessible, Icon + Text)
+   ===================================================================== */
+.btn-pedal-primary {
+  background-color: var(--primary-teal);
+  color: #ffffff;
+  border: 1.5px solid var(--primary-teal);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(15, 139, 141, 0.25);
+}
+
+.btn-pedal-primary:hover,
+.btn-pedal-primary:focus {
+  background-color: var(--primary-teal-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(15, 139, 141, 0.35);
+}
+
+.btn-pedal-accent {
+  background-color: var(--accent-amber);
+  color: var(--dark-navy);
+  border: 1.5px solid #d97706;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  padding: 12px 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(255, 183, 3, 0.35);
+}
+
+.btn-pedal-accent:hover,
+.btn-pedal-accent:focus {
+  background-color: var(--accent-amber-hover);
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+.btn-pedal-outline {
+  background-color: transparent;
+  color: var(--primary-teal);
+  border: 1.5px solid var(--primary-teal);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.btn-pedal-outline:hover {
+  background-color: var(--primary-teal-light);
+  color: var(--primary-teal-dark);
+}
+
+.btn-pedal-secondary {
+  background-color: var(--bg-alt);
+  color: var(--slate-dark);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.btn-pedal-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* =====================================================================
+   GLOBAL FOOTER
+   ===================================================================== */
+.site-footer {
+  background-color: var(--dark-navy);
+  color: #f1f5f9;
+  padding: 60px 0 30px;
+  margin-top: 80px;
+}
+
+.footer-heading {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  letter-spacing: 0.3px;
+}
+
+.footer-link {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 10px;
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--accent-amber);
+  transform: translateX(3px);
+}
+
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 25px;
+  margin-top: 40px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}

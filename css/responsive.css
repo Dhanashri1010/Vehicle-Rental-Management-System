@@ -1,0 +1,103 @@
+/* =====================================================================
+   PedalPal Responsive Stylesheet (css/responsive.css)
+   Mobile navigation, responsive table cards, offcanvas menus
+   ===================================================================== */
+
+/* Mobile Bottom Navigation Bar */
+.mobile-app-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  z-index: 1045;
+  padding: 6px 0;
+}
+
+.mobile-bar-item {
+  flex: 1;
+  text-align: center;
+  color: var(--slate-medium);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.mobile-bar-item i {
+  font-size: 1.35rem;
+}
+
+.mobile-bar-item.active,
+.mobile-bar-item:hover {
+  color: var(--primary-teal);
+}
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 991px) {
+  .desktop-nav-links {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 72px; /* Prevent bottom bar clipping */
+  }
+
+  .mobile-app-bar {
+    display: flex;
+  }
+
+  .hero-search-container {
+    padding: 18px;
+  }
+
+  .portal-sidebar {
+    width: 100% !important;
+    position: static !important;
+    height: auto !important;
+    margin-bottom: 24px;
+  }
+
+  .portal-main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Responsive Table to Card transformation */
+  .table-responsive-cards thead {
+    display: none;
+  }
+  .table-responsive-cards tr {
+    display: block;
+    margin-bottom: 16px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+  }
+  .table-responsive-cards td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+  }
+  .table-responsive-cards td:last-child {
+    border-bottom: none;
+  }
+  .table-responsive-cards td::before {
+    content: attr(data-label);
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--slate-medium);
+  }
+}

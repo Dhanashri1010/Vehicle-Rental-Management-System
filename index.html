@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PedalPal - Two-Wheeler Rental Platform | Pune</title>
+  <meta name="description" content="PedalPal is Pune's premier two-wheeler rental platform. Rent verified motorcycles and scooters with doorstep delivery, sanitized helmets, and 100% refundable safety deposit.">
+  <meta name="keywords" content="bike rental pune, scooter rental pune, activa rent kothrud, electric scooter hinjewadi, classic 350 rent pune">
+  <link rel="icon" type="image/svg+xml" href="images/icons/favicon.svg">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- PedalPal Design System -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       SITE HEADER & NAVIGATION BAR
+       ===================================================================== -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-2 flex-wrap gap-2">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-wrapper" aria-label="PedalPal Home">
+        <div class="brand-icon">
+          <i class="bi bi-bicycle"></i>
+        </div>
+        <div>
+          <span class="brand-name" data-i18n="app_name">PedalPal</span>
+          <div class="brand-tagline d-none d-sm-block" data-i18n="tagline">Your Ride. Your Way.</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="d-none d-lg-flex align-items-center gap-1 desktop-nav-links">
+        <a href="index.html" class="nav-menu-link active" data-i18n="nav_home">Home</a>
+        <a href="pages/bikes.html" class="nav-menu-link" data-i18n="nav_bikes">Explore Bikes</a>
+        <a href="pages/compare.html" class="nav-menu-link" data-i18n="nav_compare">Compare</a>
+        <a href="pages/wishlist.html" class="nav-menu-link" data-i18n="nav_wishlist">Wishlist</a>
+        <a href="#howItWorksSection" class="nav-menu-link" data-i18n="nav_how_it_works">How It Works</a>
+        <a href="#faqSection" class="nav-menu-link">FAQs</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <!-- Language Switcher Bar -->
+        <div class="lang-toggle-bar" role="group" aria-label="Select Language">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+          <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
+
+        <!-- Speech Synthesis Voice Reader -->
+        <button type="button" class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 fw-bold d-none d-sm-inline-flex align-items-center gap-1" id="btnListenAloud" title="Listen to page read aloud">
+          <i class="bi bi-volume-up-fill"></i>
+          <span data-i18n="listen">Listen</span>
+        </button>
+
+        <!-- Notification Bell -->
+        <button type="button" class="btn btn-light rounded-circle position-relative border" id="navNotifBellBtn" title="Notifications" aria-label="Notifications" style="width: 42px; height: 42px;">
+          <i class="bi bi-bell-fill text-teal"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger nav-notif-badge d-none">
+            2
+          </span>
+        </button>
+
+        <!-- User Profile / Portal Dropdown -->
+        <div class="dropdown">
+          <button class="nav-user-pill dropdown-toggle" type="button" id="userMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle fs-5 text-teal"></i>
+            <span id="navUserNameText">Rahul</span>
+            <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2" aria-labelledby="userMenuDropdown" style="min-width: 260px;">
+            <li class="px-3 py-2 border-bottom mb-1">
+              <small class="text-muted text-uppercase fw-bold d-block">Quick Portal Navigation</small>
+            </li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="pages/customer-dashboard.html" id="navDashboardLink"><i class="bi bi-speedometer2 text-teal me-2"></i> Customer Dashboard</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="pages/my-bookings.html"><i class="bi bi-card-checklist text-primary me-2"></i> My Bookings</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="pages/profile.html"><i class="bi bi-person-gear text-secondary me-2"></i> Profile &amp; Licence</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold text-success" href="pages/owner-dashboard.html"><i class="bi bi-shop text-success me-2"></i> Switch to Owner Portal</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold text-danger" href="pages/admin-dashboard.html"><i class="bi bi-shield-lock text-danger me-2"></i> Switch to Admin Portal</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="px-3 py-1">
+              <small class="text-muted text-uppercase fw-bold d-block">Demo Role Switcher</small>
+            </li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="customer">👤 Login as Customer (Rahul Patil)</a></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="owner">🛵 Login as Owner (Suresh Deshmukh)</a></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="admin">🛡️ Login as Admin Manager</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-2 text-danger fw-bold" href="#" id="btnResetAllDemoData"><i class="bi bi-arrow-counterclockwise me-2"></i> Reset Demo Database</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 text-secondary fw-bold" href="#" id="navLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         1. HERO SECTION & INTEGRATED SEARCH
+         ===================================================================== -->
+    <section class="py-5" style="background: linear-gradient(180deg, #f8fafc 0%, #edf4f5 100%); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="row align-items-center g-4 mb-5">
+          <div class="col-12 col-lg-7">
+            <span class="badge bg-teal-subtle text-teal fw-bold px-3 py-2 rounded-pill mb-3 fs-6">
+              <i class="bi bi-shield-check me-1"></i> Verified Pune Two-Wheeler Rental
+            </span>
+            <h1 class="display-5 fw-bold text-dark mb-3" data-i18n="hero_title">
+              Find Your Perfect Ride in Pune
+            </h1>
+            <p class="lead text-secondary mb-4" data-i18n="hero_subtitle">
+              Rent verified bikes and scooters with doorstep delivery, free sanitized helmets, and 100% refundable safety deposit.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="pages/bikes.html" class="btn btn-pedal-accent btn-lg">
+                <i class="bi bi-search"></i>
+                <span data-i18n="nav_bikes">Explore Bikes</span>
+              </a>
+              <a href="pages/compare.html" class="btn btn-pedal-outline btn-lg">
+                <i class="bi bi-arrow-left-right"></i>
+                <span data-i18n="nav_compare">Compare Models</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 text-center">
+            <img src="images/banners/hero-motorcycle.svg" alt="PedalPal Pune Bike Rental" class="img-fluid rounded-4 shadow-sm" style="max-height: 380px; width: 100%; object-fit: contain;">
+          </div>
+        </div>
+
+        <!-- SEARCH HERO BOX -->
+        <div class="hero-search-container">
+          <form id="homeSearchForm" action="pages/bikes.html" method="GET">
+            <div class="row g-3">
+              <!-- Location in Pune -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="search-field-unit">
+                  <label for="homeSearchLocation" class="search-field-label" data-i18n="search_where_label">
+                    <i class="bi bi-geo-alt-fill text-danger"></i> Location in Pune
+                  </label>
+                  <select id="homeSearchLocation" name="location" class="search-field-input form-select">
+                    <option value="all">All Pune Areas</option>
+                    <option value="Kothrud">Kothrud</option>
+                    <option value="Baner">Baner</option>
+                    <option value="Hinjewadi">Hinjewadi</option>
+                    <option value="Wakad">Wakad</option>
+                    <option value="Viman Nagar">Viman Nagar</option>
+                    <option value="Hadapsar">Hadapsar</option>
+                    <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+                    <option value="Aundh">Aundh</option>
+                    <option value="Shivajinagar">Shivajinagar</option>
+                    <option value="Kharadi">Kharadi</option>
+                    <option value="Pimple Saudagar">Pimple Saudagar</option>
+                    <option value="FC Road">FC Road</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Pickup Date & Time -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="search-field-unit">
+                  <label for="homeSearchPickupDate" class="search-field-label" data-i18n="search_pickup_label">
+                    <i class="bi bi-calendar-check text-primary"></i> Pickup Date
+                  </label>
+                  <input type="date" id="homeSearchPickupDate" name="pickupDate" class="search-field-input">
+                </div>
+              </div>
+
+              <!-- Return Date & Time -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="search-field-unit">
+                  <label for="homeSearchReturnDate" class="search-field-label" data-i18n="search_return_label">
+                    <i class="bi bi-calendar-x text-warning"></i> Return Date
+                  </label>
+                  <input type="date" id="homeSearchReturnDate" name="returnDate" class="search-field-input">
+                </div>
+              </div>
+
+              <!-- Vehicle Category -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="search-field-unit">
+                  <label for="homeSearchCategory" class="search-field-label" data-i18n="search_category_label">
+                    <i class="bi bi-bicycle text-success"></i> Vehicle Category
+                  </label>
+                  <select id="homeSearchCategory" name="category" class="search-field-input form-select">
+                    <option value="all" data-i18n="search_category_all">All Two-Wheelers</option>
+                    <option value="Scooters" data-i18n="search_category_scooters">Scooters (Activa, Jupiter)</option>
+                    <option value="Motorcycles" data-i18n="search_category_motorcycles">Motorcycles (Classic 350, Pulsar)</option>
+                    <option value="Electric Scooters" data-i18n="search_category_electric_scooters">Electric Scooters (Ather, Ola)</option>
+                    <option value="Electric Bikes" data-i18n="search_category_electric_bikes">Electric Bikes (Revolt, Tork)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Single Main Action Button -->
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-pedal-accent btn-lg px-5 py-3 fs-5 shadow">
+                <i class="bi bi-search"></i>
+                <span data-i18n="search_btn">Search Available Bikes</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         2. VEHICLE CATEGORIES (Two-Wheelers Only)
+         ===================================================================== -->
+    <section class="py-5 bg-white border-bottom">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold mb-2">Explore By Category</h2>
+          <p class="text-muted">Pick the ride that matches your Pune journey</p>
+        </div>
+        <div class="row g-4 text-center">
+          <div class="col-6 col-md-3">
+            <a href="pages/bikes.html?category=Scooters" class="pedal-card p-4 d-block text-decoration-none">
+              <div class="fs-1 mb-2">🛵</div>
+              <h5 class="fw-bold text-dark mb-1">Scooters</h5>
+              <small class="text-muted">Activa, Jupiter, Access</small>
+            </a>
+          </div>
+          <div class="col-6 col-md-3">
+            <a href="pages/bikes.html?category=Motorcycles" class="pedal-card p-4 d-block text-decoration-none">
+              <div class="fs-1 mb-2">🏍️</div>
+              <h5 class="fw-bold text-dark mb-1">Motorcycles</h5>
+              <small class="text-muted">Classic 350, Pulsar, FZ-S</small>
+            </a>
+          </div>
+          <div class="col-6 col-md-3">
+            <a href="pages/bikes.html?category=Electric+Scooters" class="pedal-card p-4 d-block text-decoration-none">
+              <div class="fs-1 mb-2">⚡</div>
+              <h5 class="fw-bold text-dark mb-1">Electric Scooters</h5>
+              <small class="text-muted">Ather 450X, Ola S1, iQube</small>
+            </a>
+          </div>
+          <div class="col-6 col-md-3">
+            <a href="pages/bikes.html?category=Electric+Bikes" class="pedal-card p-4 d-block text-decoration-none">
+              <div class="fs-1 mb-2">🔋</div>
+              <h5 class="fw-bold text-dark mb-1">Electric Bikes</h5>
+              <small class="text-muted">Revolt RV400, Tork Kratos</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. POPULAR BIKES SHOWCASE
+         ===================================================================== -->
+    <section class="py-5" id="popularBikesSection">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+          <div>
+            <h2 class="fw-bold mb-1" data-i18n="section_popular_title">Popular Bikes Ready for Rent</h2>
+            <p class="text-muted mb-0" data-i18n="section_popular_subtitle">Top-rated two-wheelers serviced and verified by local Pune owners</p>
+          </div>
+          <a href="pages/bikes.html" class="btn btn-pedal-outline">
+            <span>View All 22 Bikes</span> <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Filter tabs for quick showcase filtering -->
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <button type="button" class="btn btn-sm btn-pedal-primary home-filter-tab active" data-category="all">All Two-Wheelers</button>
+          <button type="button" class="btn btn-sm btn-pedal-secondary home-filter-tab" data-category="Scooters">Scooters</button>
+          <button type="button" class="btn btn-sm btn-pedal-secondary home-filter-tab" data-category="Motorcycles">Motorcycles</button>
+          <button type="button" class="btn btn-sm btn-pedal-secondary home-filter-tab" data-category="Electric Scooters">Electric Scooters</button>
+          <button type="button" class="btn btn-sm btn-pedal-secondary home-filter-tab" data-category="Electric Bikes">Electric Bikes</button>
+        </div>
+
+        <div class="row" id="homeBikesGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. HOW IT WORKS IN 3 EASY STEPS
+         ===================================================================== -->
+    <section class="py-5 bg-white border-top border-bottom" id="howItWorksSection">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-2" data-i18n="steps_title">How PedalPal Works in 3 Easy Steps</h2>
+          <p class="text-muted fs-5 mb-0">No complicated legal jargon. Smooth and straightforward like WhatsApp.</p>
+        </div>
+        <div class="row g-4 text-center">
+          <div class="col-12 col-md-4">
+            <div class="pedal-card p-4 h-100">
+              <div class="empty-state-icon mb-3">🛵</div>
+              <h4 class="fw-bold mb-2" data-i18n="step_1_title">1. Choose Your Ride</h4>
+              <p class="text-muted mb-0" data-i18n="step_1_desc">Browse verified bikes and scooters near you with upfront prices and no hidden fees.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="pedal-card p-4 h-100">
+              <div class="empty-state-icon mb-3">💳</div>
+              <h4 class="fw-bold mb-2" data-i18n="step_2_title">2. Simple Booking &amp; Pay</h4>
+              <p class="text-muted mb-0" data-i18n="step_2_desc">Select dates, enter details, and complete your reservation with instant confirmation.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="pedal-card p-4 h-100">
+              <div class="empty-state-icon mb-3">🔑</div>
+              <h4 class="fw-bold mb-2" data-i18n="step_3_title">3. Delivery &amp; Ride</h4>
+              <p class="text-muted mb-0" data-i18n="step_3_desc">Get the vehicle delivered to your doorstep with a clean sanitized helmet and hit the road.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. WHY CHOOSE PEDALPAL (SAFETY PROMISES)
+         ===================================================================== -->
+    <section class="py-5" id="whyUsSection">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-2" data-i18n="why_title">Why Pune Rides with PedalPal</h2>
+          <p class="text-muted fs-5 mb-0">Transparent terms and genuine local community safety.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="pedal-card p-4 h-100 text-center">
+              <div class="empty-state-icon"><i class="bi bi-person-check-fill"></i></div>
+              <h5 class="fw-bold mb-2" data-i18n="why_1_title">Verified Local Owners</h5>
+              <p class="text-muted fs-6 mb-0" data-i18n="why_1_desc">Every bike owner is identity-checked with Aadhaar and police verification.</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="pedal-card p-4 h-100 text-center">
+              <div class="empty-state-icon"><i class="bi bi-shield-shaded"></i></div>
+              <h5 class="fw-bold mb-2" data-i18n="why_2_title">Free Sanitized Helmet</h5>
+              <p class="text-muted fs-6 mb-0" data-i18n="why_2_desc">Rider safety is paramount. Every two-wheeler comes with a clean, sanitized helmet.</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="pedal-card p-4 h-100 text-center">
+              <div class="empty-state-icon"><i class="bi bi-cash-coin"></i></div>
+              <h5 class="fw-bold mb-2" data-i18n="why_3_title">100% Refundable Deposit</h5>
+              <p class="text-muted fs-6 mb-0" data-i18n="why_3_desc">Your safety deposit is sent straight back to your UPI or bank right after your ride.</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="pedal-card p-4 h-100 text-center">
+              <div class="empty-state-icon"><i class="bi bi-telephone-fill"></i></div>
+              <h5 class="fw-bold mb-2" data-i18n="why_4_title">24/7 Pune Roadside Support</h5>
+              <p class="text-muted fs-6 mb-0" data-i18n="why_4_desc">One-tap emergency SOS and mechanical assistance anywhere in Pune.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. CUSTOMER REVIEWS
+         ===================================================================== -->
+    <section class="py-5 bg-white border-top border-bottom">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-2">What Pune Riders Say</h2>
+          <p class="text-muted fs-5 mb-0">Genuine feedback from students, tech professionals, and travelers</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <div class="pedal-card p-4 h-100">
+              <div class="text-warning mb-2 fs-5">★★★★★</div>
+              <p class="fw-bold text-dark mb-3">"The Activa was delivered right on time to my hostel gate at Kothrud. Suresh ji was very polite and provided a clean helmet. Safety deposit came back 10 mins after return!"</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="images/avatars/user-rahul.svg" alt="Rahul Patil" width="45" height="45" class="rounded-circle">
+                <div>
+                  <h6 class="fw-bold mb-0">Rahul Patil</h6>
+                  <small class="text-muted">Student, Kothrud, Pune</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="pedal-card p-4 h-100">
+              <div class="text-warning mb-2 fs-5">★★★★★</div>
+              <p class="fw-bold text-dark mb-3">"Took an Ather 450X for 2 days for my commute between Baner and Hinjewadi Phase 1. Zero petrol spent, quick pickup and Google Maps on the screen was awesome."</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="images/avatars/avatar-c2.svg" alt="Pooja Kulkarni" width="45" height="45" class="rounded-circle">
+                <div>
+                  <h6 class="fw-bold mb-0">Pooja Kulkarni</h6>
+                  <small class="text-muted">Software Engineer, Baner, Pune</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="pedal-card p-4 h-100">
+              <div class="text-warning mb-2 fs-5">★★★★★</div>
+              <p class="fw-bold text-dark mb-3">"Rented a Royal Enfield Classic 350 for a weekend trip to Lavasa. The bike thump was solid, engine was crisp, and the owner was very cooperative."</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="images/avatars/avatar-c3.svg" alt="Aditya Joshi" width="45" height="45" class="rounded-circle">
+                <div>
+                  <h6 class="fw-bold mb-0">Aditya Joshi</h6>
+                  <small class="text-muted">Marketing Professional, Deccan, Pune</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7. FAQS
+         ===================================================================== -->
+    <section class="py-5" id="faqSection">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-2">Frequently Asked Questions</h2>
+          <p class="text-muted fs-5 mb-0">Straight answers in simple words</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-8">
+            <div class="accordion accordion-flush" id="faqAccordion">
+              <div class="accordion-item pedal-card mb-3 border">
+                <h2 class="accordion-header">
+                  <button class="accordion-button fw-bold fs-5 rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    What documents do I need to rent a bike?
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary fs-6">
+                    You only need two things: your original valid Driving Licence (for two-wheelers) and an Aadhaar card for ID proof. No complicated physical paperwork.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item pedal-card mb-3 border">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold fs-5 rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    When is my safety deposit refunded?
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary fs-6">
+                    As soon as you return the bike and keys, the 100% refundable safety deposit is processed back to your UPI or bank account within 15 minutes.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item pedal-card mb-3 border">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold fs-5 rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Can the owner deliver the vehicle to my doorstep?
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary fs-6">
+                    Yes! Most owners in Pune provide free doorstep delivery within their locality, or you can pick it up directly from the owner hub.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item pedal-card mb-3 border">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold fs-5 rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    What happens if the bike has a breakdown or flat tyre?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary fs-6">
+                    Stay calm! Just call our 24/7 Pune support helpline (1800-200-PEDAL) or tap Emergency SOS. We arrange a mobile mechanic or replacement vehicle immediately.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       GLOBAL FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon" style="width: 36px; height: 36px; font-size: 1.2rem;">
+              <i class="bi bi-bicycle"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">PedalPal</span>
+          </div>
+          <p class="text-light mb-3">Your Ride. Your Way. Transparent two-wheeler rentals across Pune.</p>
+          <div class="text-muted small">
+            <i class="bi bi-geo-alt-fill text-danger me-1"></i> Pune Central, Maharashtra, India
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5 class="footer-heading">Quick Links</h5>
+          <a href="pages/bikes.html" class="footer-link">Explore Bikes</a>
+          <a href="pages/compare.html" class="footer-link">Compare Bikes</a>
+          <a href="pages/wishlist.html" class="footer-link">Saved Wishlist</a>
+          <a href="pages/customer-dashboard.html" class="footer-link">Customer Dashboard</a>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="footer-heading">Partner Portals</h5>
+          <a href="pages/owner-dashboard.html" class="footer-link"><i class="bi bi-shop text-success me-1"></i> Bike Owner Hub</a>
+          <a href="pages/admin-dashboard.html" class="footer-link"><i class="bi bi-shield-lock text-danger me-1"></i> Administrator Portal</a>
+          <div class="p-3 bg-dark rounded-3 border border-secondary mt-3">
+            <small class="text-light d-block mb-2">Own a bike in Pune? Earn ₹15,000/mo.</small>
+            <a href="pages/add-bike.html" class="btn btn-sm btn-pedal-accent w-100">List Your Bike</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <span data-i18n="footer_rights">© 2026 PedalPal. Academic College Project. All demonstration data fictional.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notifications Modal -->
+  <div class="modal fade" id="notificationsModal" tabindex="-1" aria-labelledby="notificationsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-bell-fill text-teal fs-4"></i>
+            <h5 class="modal-title fw-bold" id="notificationsModalLabel">Notifications</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="notificationsListContainer"></div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-pedal-outline w-100" id="btnMarkAllNotifsRead">
+            <i class="bi bi-check2-all"></i> Mark all as read
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom App Bar -->
+  <nav class="mobile-app-bar" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-bar-item active">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Home</span>
+    </a>
+    <a href="pages/bikes.html" class="mobile-bar-item">
+      <i class="bi bi-search"></i>
+      <span>Explore</span>
+    </a>
+    <a href="pages/my-bookings.html" class="mobile-bar-item">
+      <i class="bi bi-card-checklist"></i>
+      <span>My Trips</span>
+    </a>
+    <a href="pages/customer-dashboard.html" class="mobile-bar-item">
+      <i class="bi bi-person-circle"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- jQuery & Bootstrap Bundle -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- PedalPal JavaScript Modules -->
+  <script src="js/storage.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/bikes.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Home Page Initializer
+    $(document).ready(function () {
+      // Set default dates in search (tomorrow & day after)
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dayAfter = new Date();
+      dayAfter.setDate(dayAfter.getDate() + 2);
+      $('#homeSearchPickupDate').val(tomorrow.toISOString().split('T')[0]).attr('min', new Date().toISOString().split('T')[0]);
+      $('#homeSearchReturnDate').val(dayAfter.toISOString().split('T')[0]).attr('min', tomorrow.toISOString().split('T')[0]);
+
+      // Render 6 popular bikes on home page
+      PedalPalBikes.renderGrid('#homeBikesGrid', { onlyApproved: true });
+
+      // Category filter buttons
+      $('.home-filter-tab').on('click', function () {
+        $('.home-filter-tab').removeClass('active btn-pedal-primary').addClass('btn-pedal-secondary');
+        $(this).addClass('active btn-pedal-primary').removeClass('btn-pedal-secondary');
+        const cat = $(this).data('category');
+        const filters = cat === 'all' ? { onlyApproved: true } : { category: cat, onlyApproved: true };
+        PedalPalBikes.renderGrid('#homeBikesGrid', filters);
+      });
+    });
+  </script>
+</body>
+</html>

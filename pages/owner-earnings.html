@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earnings & Bank Payouts | PedalPal Owner Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/owner.css">
+</head>
+<body class="bg-light">
+
+  <!-- TOP NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top py-2 border-bottom">
+    <div class="container-fluid px-lg-4">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+        <span class="brand-badge bg-primary text-white"><i class="bi bi-shield-check"></i></span>
+        <span class="brand-text">PEDAL<span class="text-primary">PAL</span> <span class="badge bg-primary-subtle text-primary fs-6 fw-normal ms-1">Owner Hub</span></span>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-bikes.html"><i class="bi bi-bicycle me-1"></i> My Bikes</a></li>
+          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> Add New Bike</a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-bookings.html"><i class="bi bi-inbox me-1"></i> Rental Requests</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i> Earnings & Payouts</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a href="owner-dashboard.html" class="btn btn-sm btn-outline-secondary">&larr; Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-white border-bottom py-4">
+    <div class="container-fluid px-lg-4">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>
+          <h2 class="fw-bold mb-1">Earnings & Bank Payouts</h2>
+          <p class="text-muted mb-0">Track your gross revenue, platform commission (10%), and direct bank settlements.</p>
+        </div>
+        <button class="btn btn-success" onclick="PedalPalNotifications.showToast('Instant payout request submitted! Transferred via IMPS in 15 mins.', 'success')">
+          <i class="bi bi-lightning-charge me-1"></i> Request Instant Payout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN BODY -->
+  <main class="container-fluid px-lg-4 py-4">
+    <!-- METRICS -->
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="pedal-card p-4 bg-white border">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted small fw-semibold">Earned This Month</span>
+            <i class="bi bi-calendar2-check text-primary fs-4"></i>
+          </div>
+          <h2 class="fw-bold text-primary mb-1" id="earnMonthVal">₹42,500</h2>
+          <small class="text-success"><i class="bi bi-arrow-up-right me-1"></i>+18.4% compared to last month</small>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="pedal-card p-4 bg-white border border-warning">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted small fw-semibold">Available for Payout</span>
+            <i class="bi bi-clock-history text-warning fs-4"></i>
+          </div>
+          <h2 class="fw-bold text-dark mb-1" id="earnPayoutVal">₹3,450</h2>
+          <small class="text-muted">Settles automatically every Monday</small>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="pedal-card p-4 bg-white border">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted small fw-semibold">Total Completed Rides</span>
+            <i class="bi bi-check2-all text-teal fs-4"></i>
+          </div>
+          <h2 class="fw-bold text-teal mb-1" id="earnTotalRides">18</h2>
+          <small class="text-muted">Across all listed two-wheelers in Pune</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINKED BANK ACCOUNT & GST -->
+    <div class="row mb-4">
+      <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+        <div class="pedal-card p-4 bg-white border h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0"><i class="bi bi-bank me-2 text-primary"></i>Settlement Bank Account</h5>
+            <span class="badge bg-success-subtle text-success border"><i class="bi bi-check-circle me-1"></i>Active</span>
+          </div>
+          <div class="p-3 bg-light rounded-3 mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <strong>HDFC Bank Ltd.</strong>
+              <span class="text-muted small">Savings A/C</span>
+            </div>
+            <div class="small text-muted mb-1">Account Number: <strong>•••• •••• •••• 9102</strong></div>
+            <div class="small text-muted">IFSC Code: <strong>HDFC0001042 (Kothrud Branch, Pune)</strong></div>
+          </div>
+          <small class="text-muted">To update your settlement account, submit an updated cancelled cheque to <a href="mailto:support@pedalpal.in" class="text-teal">support@pedalpal.in</a>.</small>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="pedal-card p-4 bg-white border h-100">
+          <h5 class="fw-bold mb-3"><i class="bi bi-receipt me-2 text-teal"></i>Payout Fee Structure</h5>
+          <table class="table table-sm small mb-0">
+            <tbody>
+              <tr>
+                <td class="text-muted">Customer Total Rent</td>
+                <td class="text-end fw-bold">100%</td>
+              </tr>
+              <tr>
+                <td class="text-muted">Owner Share</td>
+                <td class="text-end fw-bold text-success">90%</td>
+              </tr>
+              <tr>
+                <td class="text-muted">PedalPal Platform Fee & 24x7 Roadside Cover</td>
+                <td class="text-end fw-bold text-secondary">10%</td>
+              </tr>
+              <tr>
+                <td class="text-muted">TDS Deduction (Sec 194-O)</td>
+                <td class="text-end fw-bold text-secondary">1%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT SETTLEMENT TRANSACTIONS -->
+    <div class="pedal-card bg-white p-4">
+      <h5 class="fw-bold mb-3">Recent Settlement History</h5>
+      <div class="table-responsive">
+        <table class="table align-middle table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Payout ID</th>
+              <th>Date & Time</th>
+              <th>Transfer Method</th>
+              <th>Net Payout</th>
+              <th>Status</th>
+              <th>Bank Ref (UTR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold text-primary">PO-2026-091</td>
+              <td>17 Nov 2026, 10:14 AM</td>
+              <td>NEFT / IMPS to HDFC Bank</td>
+              <td class="fw-bold text-success">₹14,200</td>
+              <td><span class="badge bg-success">Success</span></td>
+              <td class="text-muted small">UTR7129038102</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-primary">PO-2026-088</td>
+              <td>10 Nov 2026, 10:05 AM</td>
+              <td>NEFT / IMPS to HDFC Bank</td>
+              <td class="fw-bold text-success">₹16,400</td>
+              <td><span class="badge bg-success">Success</span></td>
+              <td class="text-muted small">UTR7092182743</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-primary">PO-2026-084</td>
+              <td>03 Nov 2026, 10:08 AM</td>
+              <td>NEFT / IMPS to HDFC Bank</td>
+              <td class="fw-bold text-success">₹11,900</td>
+              <td><span class="badge bg-success">Success</span></td>
+              <td class="text-muted small">UTR7018239011</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-top py-3 text-center text-muted small mt-5">
+    <div class="container-fluid px-lg-4">
+      &copy; 2026 PedalPal Owner Partner Hub Pune. All payouts are disbursed compliant with RBI digital payment directives.
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/owner.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    $(document).ready(function () {
+      PedalPalOwner.initEarnings();
+    });
+  </script>
+</body>
+</html>

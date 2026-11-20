@@ -1,0 +1,57 @@
+/* =====================================================================
+   PedalPal Customer Portal Stylesheet (css/customer.css)
+   ===================================================================== */
+
+.customer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.stat-metric-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.stat-val {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--dark-navy);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--slate-medium);
+  margin-top: 4px;
+}
+
+/* Compare Matrix */
+.compare-matrix-table th {
+  background: var(--bg-alt);
+  color: var(--dark-navy);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.compare-matrix-table td {
+  vertical-align: middle;
+  font-size: 0.95rem;
+}

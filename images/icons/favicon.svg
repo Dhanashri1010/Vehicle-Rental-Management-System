@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#0f8b8d"/>
+  <!-- Bicycle Wheel / Gear Icon -->
+  <circle cx="32" cy="32" r="18" fill="none" stroke="#ffb703" stroke-width="5"/>
+  <circle cx="32" cy="32" r="6" fill="#ffb703"/>
+  <line x1="32" y1="14" x2="32" y2="50" stroke="#ffb703" stroke-width="3"/>
+  <line x1="14" y1="32" x2="50" y2="32" stroke="#ffb703" stroke-width="3"/>
+  <line x1="19" y1="19" x2="45" y2="45" stroke="#ffb703" stroke-width="3"/>
+  <line x1="19" y1="45" x2="45" y2="19" stroke="#ffb703" stroke-width="3"/>
+</svg>

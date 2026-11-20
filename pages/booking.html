@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Ride - PedalPal Pune</title>
+  <link rel="icon" type="image/svg+xml" href="../images/icons/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-2 flex-wrap gap-2">
+      <a href="../index.html" class="brand-wrapper">
+        <div class="brand-icon"><i class="bi bi-bicycle"></i></div>
+        <div>
+          <span class="brand-name">PedalPal</span>
+          <div class="brand-tagline d-none d-sm-block">Your Ride. Your Way.</div>
+        </div>
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <div class="lang-toggle-bar">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+          <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
+        <a href="bikes.html" class="btn btn-sm btn-pedal-outline"><i class="bi bi-x-lg"></i> Cancel Booking</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-5" id="bookingMainContainer">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          
+          <!-- Stepper -->
+          <div class="checkout-stepper mb-4">
+            <div class="checkout-step active" data-step="1">
+              <div class="step-circle">1</div>
+              <span class="step-label">Rental Dates</span>
+            </div>
+            <div class="checkout-step" data-step="2">
+              <div class="step-circle">2</div>
+              <span class="step-label">Your Details</span>
+            </div>
+            <div class="checkout-step" data-step="3">
+              <div class="step-circle">3</div>
+              <span class="step-label">Pickup &amp; Delivery</span>
+            </div>
+            <div class="checkout-step" data-step="4">
+              <div class="step-circle">4</div>
+              <span class="step-label">Pay &amp; Confirm</span>
+            </div>
+          </div>
+
+          <!-- Collision Warning Alert -->
+          <div class="alert alert-danger d-none rounded-4 mb-4" id="collisionWarningAlert">
+            <div class="d-flex align-items-center gap-3">
+              <i class="bi bi-exclamation-octagon-fill fs-3 text-danger"></i>
+              <div>
+                <h6 class="fw-bold mb-1">Time Slot Unavailable!</h6>
+                <div class="small collision-msg">This bike is already reserved for the selected interval. Please pick alternative dates.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selected Bike Summary Card -->
+          <div class="pedal-card p-3 mb-4 bg-white border d-flex align-items-center gap-3 flex-wrap">
+            <img src="../images/bikes/honda-activa-6g.svg" id="bookingBikeImg" alt="Selected Bike" width="80" height="55" class="rounded-3" style="object-fit: cover;">
+            <div class="flex-grow-1">
+              <h5 class="fw-bold mb-0" id="bookingBikeName">Honda Activa 6G</h5>
+              <small class="text-muted"><span id="bookingBikeCategory">Scooter</span> • <i class="bi bi-geo-alt-fill text-danger"></i> <span id="bookingBikeLocation">Kothrud, Pune</span></small>
+            </div>
+            <div class="text-end">
+              <span class="fw-bold text-teal fs-5" id="bookingBikeRate">₹299/day</span>
+            </div>
+          </div>
+
+          <!-- STEP 1: RENTAL DURATION -->
+          <div class="pedal-card p-4 bg-white checkout-step-panel" id="bookingStep1">
+            <h4 class="fw-bold mb-2">Step 1: When Do You Need The Bike?</h4>
+            <p class="text-muted small mb-4">Select your pickup and return dates and times in Pune.</p>
+
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-6">
+                <label for="bookPickupDate" class="form-label fw-bold small text-muted">Pickup Date</label>
+                <input type="date" id="bookPickupDate" class="form-control rounded-3 py-2 fw-bold">
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="bookPickupTime" class="form-label fw-bold small text-muted">Pickup Time</label>
+                <select id="bookPickupTime" class="form-select rounded-3 py-2 fw-bold">
+                  <option value="08:00">08:00 AM</option>
+                  <option value="09:00" selected>09:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="14:00">02:00 PM</option>
+                  <option value="18:00">06:00 PM</option>
+                  <option value="20:00">08:00 PM</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="bookReturnDate" class="form-label fw-bold small text-muted">Return Date</label>
+                <input type="date" id="bookReturnDate" class="form-control rounded-3 py-2 fw-bold">
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="bookReturnTime" class="form-label fw-bold small text-muted">Return Time</label>
+                <select id="bookReturnTime" class="form-select rounded-3 py-2 fw-bold">
+                  <option value="09:00" selected>09:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="14:00">02:00 PM</option>
+                  <option value="18:00">06:00 PM</option>
+                  <option value="20:00">08:00 PM</option>
+                  <option value="22:00">10:00 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="text-end">
+              <button type="button" class="btn btn-pedal-accent btn-lg px-4" id="btnNextStep1">
+                Continue to Personal Details <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: PERSONAL DETAILS -->
+          <div class="pedal-card p-4 bg-white checkout-step-panel d-none" id="bookingStep2">
+            <h4 class="fw-bold mb-2">Step 2: Rider Personal Information</h4>
+            <p class="text-muted small mb-4">Required for insurance coverage and rental agreement.</p>
+
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-6">
+                <label for="custFullName" class="form-label fw-bold small text-muted">Full Legal Name</label>
+                <input type="text" id="custFullName" class="form-control rounded-3 py-2" placeholder="e.g. Rahul Patil">
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="custPhone" class="form-label fw-bold small text-muted">Mobile Number (10 digits)</label>
+                <input type="tel" id="custPhone" class="form-control rounded-3 py-2" placeholder="e.g. 9876543210">
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="custEmail" class="form-label fw-bold small text-muted">Email Address</label>
+                <input type="email" id="custEmail" class="form-control rounded-3 py-2" placeholder="e.g. rahul.patil@gmail.com">
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="custLicence" class="form-label fw-bold small text-muted">Driving Licence Number</label>
+                <input type="text" id="custLicence" class="form-control rounded-3 py-2" placeholder="e.g. MH12-2021004921">
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-pedal-secondary" id="btnBackStep2"><i class="bi bi-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-pedal-accent btn-lg px-4" id="btnNextStep2">Continue to Delivery Options <i class="bi bi-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- STEP 3: PICKUP & DELIVERY -->
+          <div class="pedal-card p-4 bg-white checkout-step-panel d-none" id="bookingStep3">
+            <h4 class="fw-bold mb-2">Step 3: Delivery or Self Pickup</h4>
+            <p class="text-muted small mb-4">Select how you want to receive the vehicle in Pune.</p>
+
+            <div class="mb-4">
+              <div class="p-3 border rounded-4 mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pickupOption" id="optDoorstep" value="DOORSTEP_DELIVERY" checked>
+                  <label class="form-check-label fw-bold text-dark fs-6" for="optDoorstep">
+                    <i class="bi bi-truck text-teal me-2"></i> Free Doorstep Delivery
+                    <span class="badge bg-success-subtle text-success small ms-2">Popular in Pune</span>
+                  </label>
+                  <p class="text-muted small mb-0 mt-1">The owner will bring the sanitized bike right to your home or office address in Pune.</p>
+                </div>
+              </div>
+
+              <div class="p-3 border rounded-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pickupOption" id="optSelf" value="SELF_PICKUP">
+                  <label class="form-check-label fw-bold text-dark fs-6" for="optSelf">
+                    <i class="bi bi-geo-alt-fill text-danger me-2"></i> Self Pickup at Owner Hub
+                  </label>
+                  <p class="text-muted small mb-0 mt-1">Pick up the vehicle directly from the owner's hub in Pune.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4" id="deliveryAddressGroup">
+              <label for="deliveryAddressInput" class="form-label fw-bold small text-muted">Delivery Address in Pune</label>
+              <textarea id="deliveryAddressInput" class="form-control rounded-3" rows="2" placeholder="e.g. Flat 302, Sai Shraddha Apts, Ideal Colony, Kothrud, Pune"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-pedal-secondary" id="btnBackStep3"><i class="bi bi-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-pedal-accent btn-lg px-4" id="btnNextStep3">Review Order &amp; Pay <i class="bi bi-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- STEP 4: SUMMARY & PAYMENT -->
+          <div class="pedal-card p-4 bg-white checkout-step-panel d-none" id="bookingStep4">
+            <h4 class="fw-bold mb-2">Step 4: Booking Summary &amp; Payment</h4>
+            <p class="text-muted small mb-4">Transparent price breakdown with zero hidden fees.</p>
+
+            <div class="p-3 bg-light rounded-4 mb-4 border">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Rental Duration:</span>
+                <span class="fw-bold" id="calcDuration">1 Day (24 hrs)</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Base Rent Amount:</span>
+                <span class="fw-bold" id="calcRent">₹299</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Doorstep Delivery:</span>
+                <span class="fw-bold text-success" id="calcDelivery">FREE</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">GST &amp; Platform Fee (12%):</span>
+                <span class="fw-bold" id="calcTaxes">₹35</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Safety Deposit (100% Refundable):</span>
+                <span class="fw-bold text-teal" id="calcDeposit">₹500</span>
+              </div>
+              <hr class="my-2">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <span class="fs-5 fw-bold text-dark">Total Payable Now:</span>
+                <span class="fs-3 fw-bold text-teal" id="calcTotal">₹834</span>
+              </div>
+            </div>
+
+            <!-- Simulated Payment Selection -->
+            <div class="mb-4">
+              <h5 class="fw-bold mb-3">Choose Simulated Payment Method</h5>
+              <div class="form-check p-3 border rounded-3 mb-2 bg-light">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="payUpi" value="UPI (Google Pay)" checked>
+                <label class="form-check-label fw-bold text-dark" for="payUpi">
+                  <i class="bi bi-qr-code text-primary me-2"></i> UPI (Google Pay / PhonePe / Paytm)
+                </label>
+              </div>
+              <div class="form-check p-3 border rounded-3 mb-2 bg-light">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="payCard" value="Credit / Debit Card">
+                <label class="form-check-label fw-bold text-dark" for="payCard">
+                  <i class="bi bi-credit-card text-success me-2"></i> Debit / Credit Card (Simulated)
+                </label>
+              </div>
+              <div class="form-check p-3 border rounded-3 bg-light">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="payPod" value="Simulated Pay on Handover">
+                <label class="form-check-label fw-bold text-dark" for="payPod">
+                  <i class="bi bi-cash-stack text-warning me-2"></i> Pay on Delivery to Owner
+                </label>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-pedal-secondary" id="btnBackStep4"><i class="bi bi-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-pedal-accent btn-lg px-5 py-3 fs-5" id="btnConfirmBooking">
+                <i class="bi bi-lock-fill"></i> Confirm &amp; Reserve Ride
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CONFIRMATION MODAL -->
+  <div class="modal fade" id="bookingConfirmationModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow-lg text-center p-4">
+        <div class="empty-state-icon mx-auto text-success bg-success-subtle mb-3" style="width: 75px; height: 75px; font-size: 2.5rem;">
+          <i class="bi bi-check-circle-fill"></i>
+        </div>
+        <h3 class="fw-bold mb-1 text-dark">Booking Confirmed!</h3>
+        <p class="text-muted small mb-3">Your rental request has been sent to the verified owner.</p>
+
+        <div class="p-3 bg-light rounded-4 mb-4 border text-start">
+          <div class="d-flex justify-content-between mb-1">
+            <span class="text-muted small">Booking Ref:</span>
+            <span class="fw-bold text-dark" id="confirmModalRef">BK-90124</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1">
+            <span class="text-muted small">Vehicle:</span>
+            <span class="fw-bold text-dark" id="confirmModalBike">Honda Activa 6G</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="text-muted small">Amount Paid:</span>
+            <span class="fw-bold text-teal" id="confirmModalAmount">₹834</span>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2">
+          <a href="customer-dashboard.html" class="btn btn-pedal-primary btn-lg">
+            <i class="bi bi-speedometer2"></i> Go to Customer Dashboard
+          </a>
+          <a href="my-bookings.html" class="btn btn-pedal-outline">
+            <i class="bi bi-card-checklist"></i> View in My Bookings
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      © 2026 PedalPal. Academic College Project. All demonstration data fictional.
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/booking.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const bikeId = urlParams.get('id') || 'bk-01';
+      PedalPalBooking.initBooking(bikeId);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - PedalPal Pune</title>
+  <link rel="icon" type="image/svg+xml" href="../images/icons/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/customer.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-2 flex-wrap gap-2">
+      <a href="../index.html" class="brand-wrapper">
+        <div class="brand-icon"><i class="bi bi-bicycle"></i></div>
+        <div>
+          <span class="brand-name">PedalPal</span>
+          <div class="brand-tagline d-none d-sm-block">Customer Portal</div>
+        </div>
+      </a>
+      <nav class="d-none d-lg-flex align-items-center gap-1 desktop-nav-links">
+        <a href="../index.html" class="nav-menu-link">Home</a>
+        <a href="bikes.html" class="nav-menu-link">Explore Bikes</a>
+        <a href="customer-dashboard.html" class="nav-menu-link active">Dashboard</a>
+        <a href="my-bookings.html" class="nav-menu-link">My Bookings</a>
+        <a href="wishlist.html" class="nav-menu-link">Wishlist</a>
+      </nav>
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <div class="dropdown">
+          <button class="nav-user-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle fs-5 text-teal"></i>
+            <span id="navUserNameText">Rahul</span>
+            <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2">
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="profile.html">Edit Profile</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="my-bookings.html">My Bookings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="owner">🛵 Switch to Owner</a></li>
+            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="admin">🛡️ Switch to Admin</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item rounded-3 py-2 text-secondary fw-bold" href="#" id="navLogoutBtn">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-5">
+    <div class="container">
+      <!-- Greeting Banner -->
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+          <h2 class="fw-bold mb-1">Welcome, <span id="custWelcomeName">Rider</span>!</h2>
+          <p class="text-muted mb-0">Manage your active trips, reservations, and security deposit refunds.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="bikes.html" class="btn btn-pedal-accent"><i class="bi bi-search"></i> Book a Bike</a>
+          <a href="my-bookings.html" class="btn btn-pedal-outline"><i class="bi bi-card-checklist"></i> View All Bookings</a>
+        </div>
+      </div>
+
+      <!-- Metric Stats -->
+      <div class="customer-stats-grid">
+        <div class="stat-metric-card">
+          <div class="stat-icon-wrapper bg-success-subtle text-success">
+            <i class="bi bi-lightning-charge-fill"></i>
+          </div>
+          <div>
+            <div class="stat-val" id="custStatOngoing">1</div>
+            <div class="stat-label">Active Rides</div>
+          </div>
+        </div>
+        <div class="stat-metric-card">
+          <div class="stat-icon-wrapper bg-primary-subtle text-primary">
+            <i class="bi bi-calendar-check-fill"></i>
+          </div>
+          <div>
+            <div class="stat-val" id="custStatUpcoming">2</div>
+            <div class="stat-label">Upcoming / Requested</div>
+          </div>
+        </div>
+        <div class="stat-metric-card">
+          <div class="stat-icon-wrapper bg-light text-secondary">
+            <i class="bi bi-check2-all"></i>
+          </div>
+          <div>
+            <div class="stat-val" id="custStatCompleted">8</div>
+            <div class="stat-label">Completed Rides</div>
+          </div>
+        </div>
+        <div class="stat-metric-card">
+          <div class="stat-icon-wrapper bg-warning-subtle text-warning">
+            <i class="bi bi-bicycle"></i>
+          </div>
+          <div>
+            <div class="stat-val" id="custStatTotal">11</div>
+            <div class="stat-label">Total Bookings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active / Next Trip Hero Card -->
+      <div class="mb-5">
+        <h4 class="fw-bold mb-3">Current Ride Status</h4>
+        <div id="activeTripCardContainer"></div>
+      </div>
+
+      <!-- Recent Trips Table -->
+      <div class="pedal-card p-4 bg-white">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="fw-bold mb-0">Recent Booking Activity</h4>
+          <a href="my-bookings.html" class="text-teal fw-bold small text-decoration-none">View All History &rarr;</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>Booking Ref</th>
+                <th>Bike Name</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="custRecentBookingsTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      © 2026 PedalPal. Academic College Project. All demonstration data fictional.
+    </div>
+  </footer>
+
+  <nav class="mobile-app-bar">
+    <a href="../index.html" class="mobile-bar-item"><i class="bi bi-house-door-fill"></i><span>Home</span></a>
+    <a href="bikes.html" class="mobile-bar-item"><i class="bi bi-search"></i><span>Explore</span></a>
+    <a href="my-bookings.html" class="mobile-bar-item"><i class="bi bi-card-checklist"></i><span>My Trips</span></a>
+    <a href="customer-dashboard.html" class="mobile-bar-item active"><i class="bi bi-person-circle"></i><span>Dashboard</span></a>
+  </nav>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/customer.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      PedalPalAuth.requireAuth(['customer', 'admin']);
+      PedalPalCustomer.initDashboard();
+    });
+  </script>
+</body>
+</html>

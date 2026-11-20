@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+  <circle cx="50" cy="40" r="20" fill="#fed7aa"/>
+  <path d="M 32 30 Q 50 16 68 30" fill="#475569"/>
+  <!-- Moustache -->
+  <path d="M 40 47 Q 50 49 60 47 Q 50 55 40 47" fill="#1e293b"/>
+  <circle cx="44" cy="37" r="2.5" fill="#1e293b"/>
+  <circle cx="56" cy="37" r="2.5" fill="#1e293b"/>
+  <path d="M 22 88 Q 50 68 78 88 Z" fill="#ffb703"/>
+  <!-- Verified Badge -->
+  <circle cx="75" cy="75" r="14" fill="#10b981"/>
+  <text x="75" y="80" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+</svg>

@@ -1,0 +1,265 @@
+/* =====================================================================
+   PedalPal Component Stylesheet (css/components.css)
+   Cards, Badges, Search bar, Modals, Empty states, Alerts, Tooltips
+   ===================================================================== */
+
+/* 1. CARDS */
+.pedal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.pedal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+/* 2. BIKE LISTING CARD */
+.bike-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bike-card-img-wrap {
+  position: relative;
+  height: 210px;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bike-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.bike-card:hover .bike-card-img-wrap img {
+  transform: scale(1.03);
+}
+
+.bike-card-badge-top-left {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+
+.bike-card-wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-color);
+  color: var(--slate-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.bike-card-wishlist-btn:hover,
+.bike-card-wishlist-btn.active {
+  background: #ffffff;
+  color: var(--danger);
+  transform: scale(1.1);
+}
+
+.bike-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.bike-spec-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-alt);
+  color: var(--slate-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.price-box-compact {
+  padding: 10px 14px;
+  background-color: var(--bg-alt);
+  border-radius: var(--radius-md);
+  margin: 14px 0;
+}
+
+.price-box-compact .price-val {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--primary-teal);
+}
+
+/* 3. STATUS BADGES */
+.badge-status {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: capitalize;
+}
+
+.status-requested { background-color: #fef3c7; color: #92400e; }
+.status-accepted { background-color: #e0f2fe; color: #075985; }
+.status-confirmed { background-color: #d1fae5; color: #065f46; }
+.status-ongoing { background-color: #dcfce7; color: #15803d; }
+.status-completed { background-color: #f1f5f9; color: #334155; }
+.status-cancelled { background-color: #fee2e2; color: #991b1b; }
+.status-rejected { background-color: #fee2e2; color: #991b1b; }
+
+/* 4. SEARCH HERO BOX */
+.hero-search-container {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  padding: 28px;
+}
+
+.search-field-unit {
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  transition: var(--transition);
+}
+
+.search-field-unit:focus-within {
+  border-color: var(--primary-teal);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 139, 141, 0.12);
+}
+
+.search-field-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--slate-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.search-field-input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark-navy);
+  padding: 0;
+}
+.search-field-input:focus {
+  outline: none;
+}
+
+/* 5. EMPTY STATES */
+.empty-state-card {
+  padding: 50px 30px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px dashed #cbd5e1;
+}
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--primary-teal-light);
+  color: var(--primary-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 18px;
+}
+
+/* 6. TOAST CONTAINER */
+.toast-pedalpal {
+  background: var(--dark-navy);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid #334155;
+  box-shadow: var(--shadow-lg);
+}
+
+/* 7. STEP PROGRESS BAR */
+.checkout-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.checkout-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+  cursor: default;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: var(--slate-medium);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.checkout-step.active .step-circle {
+  background: var(--primary-teal);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px var(--primary-teal-light);
+}
+
+.checkout-step.completed .step-circle {
+  background: var(--success);
+  color: #ffffff;
+}
+
+.step-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--slate-medium);
+}
+
+.checkout-step.active .step-label {
+  color: var(--primary-teal);
+}
