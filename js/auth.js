@@ -111,6 +111,172 @@ const Auth = (function () {
       return { success: true, user: newUser };
     },
 
+    sendOtp(phone) {
+      if (!phone) {
+        return { success: false, message: "Please enter your 10-digit mobile number." };
+      }
+      const cleanPhone = phone.toString().replace(/\D/g, '').slice(-10);
+      if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+        return { success: false, message: "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210)." };
+      }
+
+      const users = PedalPalStorage.getUsers();
+      const user = users.find(u => u.phone && u.phone.replace(/\D/g, '').slice(-10) === cleanPhone);
+
+      if (!user) {
+        return { 
+          success: false, 
+          notFound: true, 
+          phone: cleanPhone,
+          message: `Mobile number ${cleanPhone} is not registered yet. Please sign up free first.` 
+        };
+      }
+
+      if (user.status === 'suspended') {
+        return { success: false, message: "This account has been deactivated. Please contact support." };
+      }
+
+      // Generate 6-digit OTP
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      try {
+        sessionStorage.setItem('pedalpal_otp_' + cleanPhone, JSON.stringify({
+          otp: otp,
+          timestamp: Date.now()
+        }));
+      } catch (e) {}
+
+      return {
+        success: true,
+        otp: otp,
+        phone: cleanPhone,
+        userName: user.name,
+        role: user.role,
+        message: `OTP sent successfully to +91 ${cleanPhone}.`
+      };
+    },
+
+    verifyOtp(phone, otp) {
+      const cleanPhone = phone ? phone.toString().replace(/\D/g, '').slice(-10) : '';
+      const cleanOtp = (otp || '').toString().trim();
+
+      if (!cleanPhone) {
+        return { success: false, message: "Please provide a mobile number." };
+      }
+      if (!cleanOtp || cleanOtp.length !== 6) {
+        return { success: false, message: "Please enter the 6-digit OTP code." };
+      }
+
+      let sessionData = null;
+      try {
+        const raw = sessionStorage.getItem('pedalpal_otp_' + cleanPhone);
+        if (raw) sessionData = JSON.parse(raw);
+      } catch (e) {}
+
+      // Allow master testing OTP 123456 or generated OTP
+      const isValid = (sessionData && sessionData.otp === cleanOtp) || cleanOtp === '123456';
+
+      if (!isValid) {
+        return { success: false, message: "Invalid or expired OTP. Please check the code or use test code 123456." };
+      }
+
+      const users = PedalPalStorage.getUsers();
+      const user = users.find(u => u.phone && u.phone.replace(/\D/g, '').slice(-10) === cleanPhone);
+
+      if (!user) {
+        return { success: false, message: "Account not found for this mobile number." };
+      }
+
+      try {
+        sessionStorage.removeItem('pedalpal_otp_' + cleanPhone);
+      } catch (e) {}
+
+      PedalPalStorage.setCurrentUser(user);
+      return { success: true, user, message: `OTP verified successfully! Welcome back, ${user.name}.` };
+    },
+
+    requestPasswordReset(identifier) {
+      if (!identifier || !identifier.trim()) {
+        return { success: false, message: "Please enter your registered email address or 10-digit mobile number." };
+      }
+
+      const cleanIdent = identifier.trim().toLowerCase();
+      const cleanPhone = identifier.replace(/\D/g, '').slice(-10);
+
+      const users = PedalPalStorage.getUsers();
+      const user = users.find(u => 
+        (u.email && u.email.toLowerCase() === cleanIdent) || 
+        (u.phone && (u.phone === cleanIdent || u.phone.replace(/\D/g, '').slice(-10) === cleanPhone))
+      );
+
+      if (!user) {
+        return { success: false, message: "No registered account found with this email or mobile number." };
+      }
+
+      const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+      try {
+        sessionStorage.setItem('pedalpal_reset_' + user.id, JSON.stringify({
+          code: resetCode,
+          timestamp: Date.now()
+        }));
+      } catch (e) {}
+
+      return {
+        success: true,
+        resetCode: resetCode,
+        user: user,
+        message: `Password reset code sent for ${user.name}.`
+      };
+    },
+
+    resetPassword(identifier, resetCode, newPassword) {
+      if (!identifier || !identifier.trim()) {
+        return { success: false, message: "Please enter your email or mobile number." };
+      }
+      if (!resetCode || resetCode.toString().trim().length !== 6) {
+        return { success: false, message: "Please enter the 6-digit verification code." };
+      }
+      if (!newPassword || newPassword.length < 8) {
+        return { success: false, message: "New password must be at least 8 characters long." };
+      }
+
+      const cleanIdent = identifier.trim().toLowerCase();
+      const cleanPhone = identifier.replace(/\D/g, '').slice(-10);
+
+      const users = PedalPalStorage.getUsers();
+      const user = users.find(u => 
+        (u.email && u.email.toLowerCase() === cleanIdent) || 
+        (u.phone && (u.phone === cleanIdent || u.phone.replace(/\D/g, '').slice(-10) === cleanPhone))
+      );
+
+      if (!user) {
+        return { success: false, message: "Account not found." };
+      }
+
+      let resetData = null;
+      try {
+        const raw = sessionStorage.getItem('pedalpal_reset_' + user.id);
+        if (raw) resetData = JSON.parse(raw);
+      } catch (e) {}
+
+      const isValidCode = (resetData && resetData.code === resetCode.toString().trim()) || resetCode.toString().trim() === '123456';
+      if (!isValidCode) {
+        return { success: false, message: "Incorrect reset code. Please check the code or use test code 123456." };
+      }
+
+      // Update password
+      user.password = newPassword;
+      PedalPalStorage.saveUser(user);
+      try {
+        sessionStorage.removeItem('pedalpal_reset_' + user.id);
+      } catch (e) {}
+
+      return {
+        success: true,
+        user: user,
+        message: "Password reset successfully! You can now sign in with your new password."
+      };
+    },
+
     quickLogin(role) {
       const user = PedalPalStorage.switchDemoUser(role);
       if (user) {
@@ -156,4 +322,9 @@ const Auth = (function () {
   };
 })();
 
-window.PedalPalAuth = Auth;
+if (typeof window !== 'undefined') {
+  window.PedalPalAuth = Auth;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Auth;
+}

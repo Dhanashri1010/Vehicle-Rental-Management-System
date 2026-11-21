@@ -1,89 +1,119 @@
 # PedalPal – Two-Wheeler Rental Platform (Pune)
 > **"Your Ride. Your Way."**  
-> A Modern, Responsive Two-Wheeler Rental Web Application Designed for Academic First Review.
+> A Modern, Responsive Two-Wheeler Rental Web Application Designed for Academic Project Review.
 
 ---
 
 ## 📌 Executive Summary
 
-**PedalPal** is a hyper-local, peer-to-peer and managed two-wheeler rental platform operating across major IT, university, and residential corridors of **Pune, Maharashtra** (including Hinjewadi, Kothrud, Baner, Viman Nagar, Wakad, Deccan, and Aundh).
+**PedalPal** is a hyper-local two-wheeler rental web application designed and developed for the city of **Pune, Maharashtra** (serving key hubs including Kothrud, Baner, Hinjewadi, Viman Nagar, Wakad, Deccan, and Aundh).
 
-The platform bridges the gap between bike owners seeking asset monetization and daily commuters, tourists, and IT professionals requiring flexible hourly, daily, weekly, or monthly two-wheeler rentals without vehicle ownership friction.
+The platform bridges the gap between bike owners seeking asset monetization and daily commuters, tourists, and college students requiring flexible hourly, daily, weekly, or monthly two-wheeler rentals without vehicle ownership friction.
 
 > [!IMPORTANT]
-> **Strict Two-Wheeler Scope for Review 1**:
-> In accordance with our academic specifications, the vehicle inventory consists **exclusively of two-wheelers**:
+> **Strict Two-Wheeler Scope**:
+> In accordance with project specifications, the vehicle inventory consists **exclusively of two-wheelers**:
 > 1. **Petrol Scooters** (e.g., Honda Activa 6G, TVS Jupiter 125, Suzuki Access 125)
 > 2. **Petrol Motorcycles** (e.g., Royal Enfield Classic 350, Bajaj Pulsar NS200, Yamaha MT-15)
 > 3. **Electric Scooters** (e.g., Ather 450X, Ola S1 Pro, TVS iQube)
 > 4. **Electric Motorcycles** (e.g., Revolt RV400, Tork Kratos R)
 > 
-> *All car-related data, forms, and categories have been completely removed.*
+> *All car-related categories, forms, and data have been completely removed.*
 
 ---
 
-## 🚀 Key Features by Portal
+## 🛠️ Technology Stack & Pure Frontend Architecture
 
-### 1. 🚴 Customer Portal (Rider Experience)
-* **Explore & Filter Catalog (`pages/bikes.html`)**: Real-time multi-facet filtering by category, fuel type, transmission, price slider, and Pune locality.
-* **Bike Details & Specs (`pages/bike-details.html`)**: Comprehensive vehicle specifications, owner trust badge, verified customer reviews, transparent pricing breakdown, and similar bike recommendations.
-* **Side-by-Side Comparison Matrix (`pages/compare.html`)**: Interactive feature comparison of up to 3 two-wheelers (engine, mileage, deposit, pricing).
-* **4-Step Booking Wizard (`pages/booking.html`)**:
-  - *Step 1: Date & Time Selection*: Temporal collision prevention algorithm prevents double-booking of reserved vehicles.
-  - *Step 2: Pickup Mode*: Option between self-pickup at owner hub or doorstep delivery across Pune.
-  - *Step 3: Rider ID Proof*: Upload and preview of Indian Driving Licence and Aadhaar.
-  - *Step 4: Payment Simulation*: Realistic simulated checkout supporting UPI (GPay, PhonePe, Paytm), Credit/Debit Card, and Net Banking.
-* **Rider Dashboard (`pages/customer-dashboard.html`)**: Quick metrics, active trip status, and direct call shortcuts.
-* **My Rides & Invoice Modal (`pages/my-bookings.html`)**: Filterable ride history, cancel ride with 100% deposit refund calculation, and printable GST invoice view.
-* **Saved Wishlist (`pages/wishlist.html`)**: Persistent bike bookmarking across sessions.
-* **Multilingual Support**: Real-time language switching between **English**, **हिंदी (Hindi)**, and **मराठी (Marathi)** with persistent language preferences.
-* **Browser Speech Synthesis**: Built-in "Listen" button on major pages for accessibility.
+The application is built strictly with modern frontend web standards:
 
-### 2. 🛡️ Bike Owner Portal (Host Management)
-* **Owner Dashboard (`pages/owner-dashboard.html`)**: Metrics for registered fleet, active listings, pending rental requests, and gross earnings.
-* **Fleet Management (`pages/owner-bikes.html`)**: Live availability toggle switches (`isAvailable`) that instantly update the public search catalog; listing edit and delete controls.
-* **Add / Edit Bike Listing (`pages/add-bike.html`)**: Comprehensive listing wizard supporting vehicle title, brand, RTO registration number, hourly/daily/weekly rates, safety deposit, and real-time image preview.
-* **Booking Request Moderation (`pages/owner-bookings.html`)**: Review pending customer bookings with 1-click **Accept** or **Reject** decisions.
-* **Earnings & Bank Payouts (`pages/owner-earnings.html`)**: Financial transparency with 90% owner split, 10% platform roadside assistance fee, linked bank accounts, and payout history.
-
-### 3. ⚙️ Administrator Operations Portal
-* **Operations Command Center (`pages/admin-dashboard.html`)**: Executive overview of platform metrics (total customers, verified owners, total two-wheelers, pending approvals, gross merchandise value).
-* **Customer Directory (`pages/admin-customers.html`)**: Customer search and account status moderation (Activate / Suspend).
-* **Owner & RC Verification (`pages/admin-owners.html`)**: Owner KYC verification and trust badge allocation (`Verified Owner`).
-* **Fleet Moderation (`pages/admin-bikes.html`)**: Listing compliance audit, instant approval toggle, and listing removal.
-* **Global Booking Audit (`pages/admin-bookings.html`)**: Audit trail of all platform bookings, status filters, and financial breakdown inspection.
-* **Pune Market Analytics (`pages/admin-reports.html`)**: Locality demand visualization (Hinjewadi, Kothrud, Viman Nagar, Baner, Deccan), top 5 vehicles by utilization, and platform commission reports.
-
----
-
-## 🛠️ Technology Stack & Constraints
-
-| Layer | Technologies Used | Compliance Note |
+| Technology | Purpose | Implementation Details |
 |---|---|---|
-| **Structure & Layout** | HTML5, Bootstrap 5.3.2 | Semantic, mobile-first responsive grid |
-| **Typography & Icons** | Google Fonts (Inter, Poppins), Bootstrap Icons 1.11 | Modern, high-contrast, accessible UI |
-| **Styling & Theme** | Vanilla CSS3 (`css/style.css`, `css/components.css`, etc.) | Custom design tokens: Teal (`#0f8b8d`), Amber (`#ffb703`), Navy (`#1d2d44`) |
-| **Client Scripting** | JavaScript (ES6+), jQuery 3.7.1 | Clean separation of controllers, zero inline spaghetti code |
-| **Data Storage / Mock DB** | `localStorage` + JSON Data Layer (`js/storage.js`) | Replaces backend during Phase 1; simulated relational queries |
-| **Backend Preparation** | Java 17+ POJOs (`java-preparation/src/com/pedalpal/`) | Ready for Spring Boot 3 REST API in Phase 2 |
-| **Database Schema** | MySQL 8.0 DDL (`database/pedalpal.sql`) | Normalized 3NF schema, foreign keys, temporal constraints |
+| **HTML5** | Semantic Document Markup | Accessible semantic tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`), ARIA attributes |
+| **CSS3** | Visual Design & Styling | Custom design tokens, responsive CSS variables, teal (`#0f8b8d`) and yellow (`#ffb703`) palette |
+| **Bootstrap 5.3.2** | UI Framework & Grid | Responsive flexbox grid system, navbar, cards, modals, tabs, and form controls |
+| **Bootstrap Icons 1.11** | Iconography | High-clarity vector icons for intuitive "WhatsApp-simple" UX |
+| **JavaScript (ES6+)** | Business Logic & Controllers | Modular controllers (`auth.js`, `storage.js`, `i18n.js`, `bikes.js`, `booking.js`) |
+| **jQuery 3.7.1** | DOM Manipulation & Events | Clean event delegation, interactive wizards, real-time filtering, and dynamic UI updates |
+| **Client Storage** | Local Persistence | `localStorage` abstraction layer simulating relational database operations |
 
 > [!NOTE]
-> **Academic Constraint Adherence**: No React, Angular, Vue, Tailwind CSS, TypeScript, Node.js backend, or Firebase were utilized in this project, ensuring 100% compliance with pure frontend fundamentals.
+> **Academic Constraint Adherence**:
+> This is a **100% pure frontend web application**. It contains:
+> - **NO** React, Angular, Vue, or modern frontend frameworks.
+> - **NO** Tailwind CSS, Sass, or preprocessors.
+> - **NO** Node.js runtime, Express backend, Python, or PHP.
+> - **NO** external database servers (Firebase, Supabase, MongoDB, or MySQL server connections).
+> - **NO** external network API dependencies — works seamlessly offline or via simple `file:///` and Live Server!
 
 ---
 
-## 🔑 Quick Demo Credentials (1-Click Evaluation)
+## 🌟 Key Application Features
 
-The login screen (`pages/login.html`) features **1-Click Quick Demo Login** buttons for examiners:
+### 1. 🔐 Comprehensive Authentication & Account Management (`pages/login.html`)
+- **Guest-First Navigation**: Visitors start as unauthenticated guests. Zero automatic login of demo users.
+- **Dual Login Methods**:
+  - **Password Login**: Sign in with registered email or 10-digit mobile number and secure password.
+  - **Login via OTP**: Enter registered 10-digit mobile number $\rightarrow$ simulated instant SMS OTP delivery $\rightarrow$ 6-digit code verification $\rightarrow$ instant sign-in.
+- **Forgot & Reset Password**:
+  - Step 1: Look up account by email or mobile number.
+  - Step 2: Receive simulated 6-digit verification code.
+  - Step 3: Enter verification code and choose new password (min 8 characters).
+  - Updates password in `localStorage` and enables immediate login with new credentials.
+- **Strict Role-Based Access Control (RBAC)**:
+  - Guarded routes protect Customer, Owner, and Admin dashboards. Unauthorized visitors are redirected to login.
+  - Safe registration on `pages/register.html` allows choosing between Customer and Bike Owner roles (Admin role creation restricted).
+- **Faculty / Examiner 1-Click Access**: Dedicated testing buttons on `pages/login.html` to instantly inspect Customer, Owner, or Admin portals.
 
-| Role | Demo User Name | Demo Email | Demo Password | Default Landed Portal |
-|---|---|---|---|---|
-| **Customer** | Rahul Patil | `rahul.patil@gmail.com` | `Password@123` | `pages/customer-dashboard.html` |
-| **Bike Owner** | Suresh Deshmukh | `suresh.bikes@gmail.com` | `Password@123` | `pages/owner-dashboard.html` |
-| **Admin** | Priya Deshmukh | `admin@pedalpal.in` | `Admin@123` | `pages/admin-dashboard.html` |
+### 2. 🌐 Trilingual Localization Engine (`js/i18n.js`)
+- Full native support for **English (EN)**, **हिंदी (Hindi)**, and **मराठी (Marathi)**.
+- **Embedded Client-Side Dictionaries**: All language strings are embedded directly in `js/i18n.js`, guaranteeing 0ms switching speed without network requests or CORS errors.
+- **Instant DOM Updates**: Translates navigation, search forms, buttons, cards, steps, and feature descriptions on the fly.
+- **Persistent Selection**: Remembers the selected language across page reloads in `localStorage`.
+- **Text-to-Speech Accessibility**: Built-in "Listen" button reads out page details using the Web Speech API.
 
-*Isolated 1-Click quick-access demonstration buttons are available on `pages/login.html` exclusively for faculty project defense.*
+### 3. 🚴 Customer Portal (Rider Experience)
+- **Explore Bikes (`pages/bikes.html`)**: Real-time multi-filter catalog by category (Scooters, Motorcycles, Electric), fuel type (Petrol, Electric), price range, and Pune localities (Kothrud, Baner, Hinjewadi, etc.).
+- **Bike Details (`pages/bike-details.html`)**: Detailed technical specifications, pricing breakdown, owner trust verification, ratings, customer reviews, and similar bike recommendations.
+- **Side-by-Side Comparison (`pages/compare.html`)**: Compare up to 3 two-wheelers simultaneously with highlighted differences in mileage, top speed, engine/battery specs, and security deposit.
+- **4-Step Booking Wizard (`pages/booking.html`)**:
+  - *Step 1: Dates & Duration*: Interactive pickup/drop dates with automatic price calculation and collision conflict detection.
+  - *Step 2: Pickup Mode*: Option between self-pickup at owner hub or doorstep delivery across Pune.
+  - *Step 3: Rider ID Proof*: Upload and preview of Indian Driving Licence and Aadhaar.
+  - *Step 4: Payment Simulation*: Realistic checkout supporting UPI (GPay, PhonePe, Paytm), Credit/Debit Card, and Net Banking.
+- **Rider Dashboard (`pages/customer-dashboard.html`)**: Active trips, booking status, quick links, and emergency SOS roadside assistance shortcuts.
+- **My Rides & Invoices (`pages/my-bookings.html`)**: Filterable ride history, trip cancellation with 100% deposit refund, and printable GST tax invoice modal.
+- **Saved Wishlist (`pages/wishlist.html`)**: Save favorite two-wheelers with one-click booking.
+
+### 4. 🛡️ Bike Owner Portal (Host Fleet Management)
+- **Owner Dashboard (`pages/owner-dashboard.html`)**: Fleet metrics, total bikes listed, pending rental requests, and earnings summary.
+- **Fleet Management (`pages/owner-bikes.html`)**: Live availability toggle switches (`isAvailable`) that instantly update the public search catalog; edit and delete listings.
+- **Add Bike (`pages/add-bike.html`)**: Comprehensive listing wizard supporting vehicle title, brand, RTO registration number, rates (hourly, daily, weekly), deposit, and live image preview.
+- **Booking Requests (`pages/owner-bookings.html`)**: Review pending customer bookings with 1-click **Accept** or **Reject** actions.
+- **Earnings & Payouts (`pages/owner-earnings.html`)**: Transparent 90% owner split, 10% platform service fee, linked bank accounts, and payout history.
+
+### 5. ⚙️ Administrator Command Center
+- **Admin Dashboard (`pages/admin-dashboard.html`)**: Platform-wide metrics (total customers, verified owners, active fleet, gross revenue).
+- **Customer Management (`pages/admin-customers.html`)**: Customer search, verification audit, and account status moderation (Active / Suspended).
+- **Owner Verification (`pages/admin-owners.html`)**: Owner KYC verification, document checking, and trust badge allocation (`Verified Owner`).
+- **Bike Moderation (`pages/admin-bikes.html`)**: Fleet compliance audit, approval toggle, and listing deactivation.
+- **Booking Audits (`pages/admin-bookings.html`)**: Global booking ledger, status filters, and financial breakdown inspection.
+- **Pune Market Analytics (`pages/admin-reports.html`)**: Locality demand visualization, top 5 vehicles by utilization, and platform commission breakdown.
+
+---
+
+## 🔑 Demo User Credentials
+
+Use these credentials to sign in manually, test OTP login, test Password Reset, or use the 1-Click quick buttons on `pages/login.html`:
+
+| Role | Name | Registered Email | Mobile (for OTP) | Password | Default Portal |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Customer** | Rahul Patil | `rahul.patil@gmail.com` | `9876543210` | `Password@123` | `pages/customer-dashboard.html` |
+| **Bike Owner** | Suresh Deshmukh | `suresh.bikes@gmail.com` | `9822012345` | `Password@123` | `pages/owner-dashboard.html` |
+| **Administrator** | Priya Deshmukh | `admin@pedalpal.in` | `9999900000` | `Admin@123` | `pages/admin-dashboard.html` |
+
+> [!TIP]
+> **OTP Testing Tip**:
+> When testing **Login via OTP**, click any of the "Quick fill" buttons on the OTP tab (`9876543210`, `9822012345`, or `9999900000`), click **Send OTP**, and then click the **Auto-Fill OTP** button to fill the generated code with one click!
 
 ---
 
@@ -91,140 +121,114 @@ The login screen (`pages/login.html`) features **1-Click Quick Demo Login** butt
 
 ```text
 Super30 Bike Rental Project/
-├── index.html                       # Public Landing Page & Search Entry
-├── README.md                        # Master Project Documentation (This File)
+├── index.html                       # Public Landing Page & Search Hub
+├── README.md                        # Master Project Documentation
 │
-├── css/
-│   ├── style.css                    # Design system variables, typography, reset
+├── css/                             # Modular Stylesheets (CSS3 & Bootstrap 5)
+│   ├── admin.css                    # Administrator dashboard styles
 │   ├── components.css               # Cards, buttons, badges, modals, step-wizard
-│   ├── responsive.css               # Breakpoints for mobile, tablet, and desktop
-│   ├── customer.css                 # Customer portal custom layouts
-│   ├── owner.css                    # Host dashboard & fleet management styling
-│   └── admin.css                    # Admin operations dark navbar & audit tables
+│   ├── customer.css                 # Rider dashboard styles
+│   ├── owner.css                    # Bike owner portal styles
+│   ├── responsive.css               # Mobile, tablet, and desktop breakpoints
+│   ├── scroll-story.css             # Interactive brand storytelling animations
+│   └── style.css                    # Global typography, color tokens, and layout
 │
-├── js/
-│   ├── storage.js                   # Mock DB abstraction layer (CRUD, collision check)
-│   ├── auth.js                      # Authentication, sessions, quick login, roles
-│   ├── i18n.js                      # Language translations (English, Hindi, Marathi)
-│   ├── validation.js                # Form validators (Indian phone, email, DL format)
-│   ├── notifications.js             # Floating toasts and notification bell modal
-│   ├── bikes.js                     # Catalog filtering, sorting, and detail loader
-│   ├── comparison.js                # 3-bike comparison matrix logic
-│   ├── wishlist.js                  # Bookmark management and wishlist grid
-│   ├── booking.js                   # 4-step booking wizard & price calculation
-│   ├── customer.js                  # Customer dashboard, rides list, bill viewer
-│   ├── owner.js                     # Owner fleet, listing form, booking decisions
-│   ├── admin.js                     # Admin metrics, user suspension, moderation
-│   └── app.js                       # Global coordinator, speech synthesis, nav sync
+├── js/                              # Pure JavaScript & jQuery Controllers
+│   ├── admin.js                     # Admin portal logic & metrics
+│   ├── app.js                       # Global navigation, search bar, language listener
+│   ├── auth.js                      # RBAC, login, OTP login, registration, password reset
+│   ├── bikes.js                     # Catalog filtering, search, and details rendering
+│   ├── booking.js                   # 4-step booking wizard & collision algorithm
+│   ├── comparison.js                # Up to 3-bike side-by-side comparison matrix
+│   ├── customer.js                  # Customer dashboard & ride management
+│   ├── i18n.js                      # Trilingual engine (EN, HI, MR embedded dictionaries)
+│   ├── notifications.js             # Toast notifications & alert banner system
+│   ├── owner.js                     # Owner portal, fleet management, booking requests
+│   ├── scroll-story.js              # Homepage scroll animations
+│   ├── storage.js                   # LocalStorage abstraction with embedded seed data
+│   ├── validation.js                # Indian phone, licence, Aadhaar validation helpers
+│   └── wishlist.js                  # Wishlist bookmarking logic
 │
-├── data/
-│   ├── bikes.json                   # 22 realistic Pune two-wheelers (No Cars)
-│   ├── users.json                   # 41 realistic accounts (Customers, Owners, Admin)
-│   ├── bookings.json                # 20 interconnected booking records
-│   ├── reviews.json                 # 20 verified customer reviews
-│   ├── notifications.json          # 15 realistic platform alerts
-│   └── languages/
-│       ├── en.json                  # English string dictionary
-│       ├── hi.json                  # Hindi string dictionary (हिंदी)
-│       └── mr.json                  # Marathi string dictionary (मराठी)
+├── pages/                           # Application Views (20 HTML Pages)
+│   ├── add-bike.html                # Owner: List new two-wheeler wizard
+│   ├── admin-bikes.html             # Admin: Fleet approval & compliance
+│   ├── admin-bookings.html          # Admin: Global booking audit ledger
+│   ├── admin-customers.html         # Admin: Customer directory & moderation
+│   ├── admin-dashboard.html         # Admin: Executive metrics command center
+│   ├── admin-owners.html            # Admin: Owner KYC & trust badges
+│   ├── admin-reports.html           # Admin: Pune market analytics & revenue
+│   ├── bike-details.html            # Public: Vehicle specs, reviews, similar bikes
+│   ├── bikes.html                   # Public: Searchable two-wheeler catalog
+│   ├── booking.html                 # Customer: 4-step booking & checkout wizard
+│   ├── compare.html                 # Public: Multi-bike comparison matrix
+│   ├── customer-dashboard.html      # Customer: Rider dashboard & active trips
+│   ├── login.html                   # Auth: Password & OTP login, Forgot Password
+│   ├── my-bookings.html             # Customer: Ride history & printable invoice
+│   ├── owner-bikes.html             # Owner: Fleet management & availability toggle
+│   ├── owner-bookings.html          # Owner: Booking requests moderation
+│   ├── owner-dashboard.html         # Owner: Host metrics & earnings summary
+│   ├── owner-earnings.html          # Owner: Payout history & bank accounts
+│   ├── profile.html                 # Shared: User profile, licence, password update
+│   ├── register.html                # Auth: Customer or Owner registration
+│   └── wishlist.html                # Customer: Saved favorite bikes
 │
-├── pages/
-│   ├── bikes.html                   # Catalog with multi-attribute sidebar filters
-│   ├── bike-details.html            # Bike details, specs, reviews & booking CTA
-│   ├── compare.html                 # Side-by-side comparison matrix (up to 3 bikes)
-│   ├── booking.html                 # 4-step wizard with temporal collision check
-│   ├── wishlist.html                # Saved bikes grid
-│   ├── customer-dashboard.html      # Rider dashboard & active trip hero card
-│   ├── my-bookings.html             # Rider trips list & bill invoice modal
-│   ├── profile.html                 # Customer personal details & verified DL
-│   ├── login.html                   # Login screen with 1-click quick demo buttons
-│   ├── register.html                # Registration form for Riders and Owners
-│   ├── owner-dashboard.html         # Owner metrics, alerts, and pending requests
-│   ├── owner-bikes.html             # Owner fleet table with live availability toggle
-│   ├── add-bike.html                # Add/Edit two-wheeler listing form with preview
-│   ├── owner-bookings.html          # Owner rental requests table with Accept/Reject
-│   ├── owner-earnings.html          # Earnings summary, split table, bank payouts
-│   ├── admin-dashboard.html         # Executive operations overview & metrics
-│   ├── admin-customers.html         # Customer accounts directory & suspension
-│   ├── admin-owners.html            # Owner host directory & trust badge toggle
-│   ├── admin-bikes.html             # Fleet moderation and listing approval
-│   ├── admin-bookings.html          # Global bookings audit log and modal inspector
-│   └── admin-reports.html           # Pune locality analytics & revenue reports
-│
-├── database/
-│   ├── pedalpal.sql                 # MySQL 8.0 DDL schema script with constraints
-│   ├── ER-diagram.md                # Mermaid ER Diagram & cardinalities
-│   └── database-documentation.md    # Data dictionary & temporal overlap algorithm
-│
-├── java-preparation/src/com/pedalpal/
-│   ├── enums/                       # UserRole, BikeCategory, FuelType, BookingStatus
-│   └── model/                       # User, Bike, Booking, Payment, Review, Address
-│
-├── documentation/
-│   ├── project-overview.md          # Problem statement, objectives & Pune context
-│   ├── architecture.md              # 3-tier architecture (Presentation, Spring, MySQL)
-│   ├── application-workflow.md      # Sequence diagrams & booking state machines
-│   └── first-review-checklist.md    # 5-minute presentation script & examiner Q&A
-│
-└── images/
-    ├── bikes/                       # 22 vector SVGs for all motorcycle/scooter models
-    ├── avatars/                     # 41 user profile SVGs
-    └── banners/                     # Brand graphics (hero-motorcycle.svg)
+└── images/                          # Visual Assets (Real photos, SVGs, Avatars)
+    ├── avatars/                     # User profile photos & avatars
+    ├── banners/                     # Promotional banners & graphics
+    ├── bikes/                       # Real two-wheeler photos (Activa, Classic 350, Ather, etc.)
+    ├── icons/                       # Feature badges, safety seals, vehicle icons
+    ├── story/                       # How it works visual story illustrations
+    └── vehicles/                    # High-resolution vehicle display cards
 ```
 
 ---
 
-## 💻 How to Run the Project Locally
+## 🚀 How to Run the Project Locally
 
-1. **Clone or Download** the project repository to your local computer:
-   ```bash
-   git clone https://github.com/your-username/pedalpal.git
-   cd "Super30 Bike Rental Project"
-   ```
+Because the application is built using **pure frontend technologies** with embedded datasets:
 
-2. **Launch with any local web server**:
-   * **Option A (VS Code Live Server - Recommended)**:
-     - Open the project folder in **Visual Studio Code**.
-     - Right-click `index.html` and click **"Open with Live Server"**.
-     - The website will launch automatically at `http://127.0.0.1:5500/index.html`.
-   * **Option B (Python Built-in Server)**:
-     ```bash
-     python -m http.server 8000
-     ```
-     Open `http://localhost:8000/index.html` in your browser.
-   * **Option C (Node `http-server` / `npx serve`)**:
-     ```bash
-     npx serve .
-     ```
+### Option 1: Direct Browser Launch (Simplest)
+1. Navigate to the project root folder: `Super30 Bike Rental Project`.
+2. Double-click `index.html`.
+3. The website opens directly in Chrome, Firefox, Edge, or Safari with 100% functionality.
 
-3. **Data Persistence**:
-   - The platform automatically seeds default data from `/data` into the browser's `localStorage` on initial launch.
-   - Any added bikes, status toggles, or new bookings persist across page reloads.
-   - To reset all data back to original state, click **"Reset Demo Data"** on the Admin Dashboard or execute `PedalPalStorage.resetDemoData()` in the browser developer console.
+### Option 2: VS Code Live Server (Recommended for Development)
+1. Open the project folder in **Visual Studio Code**.
+2. Install the **Live Server** extension (by Ritwick Dey).
+3. Right-click `index.html` and choose **"Open with Live Server"**.
+4. The site will run at `http://127.0.0.1:5500/index.html`.
 
 ---
 
-## 🎓 Academic Review 1 Preparation (Faculty Defense)
+## 📋 Faculty & Examiner Live Demonstration Script (5-Minute Tour)
 
-### 1. Key Highlights for Faculty:
-* **Real-world Business Domain**: Two-wheeler rental logistics in high-demand Pune clusters (students, IT professionals, daily commuters).
-* **Strict Two-Wheeler Scope**: 100% focused on scooters and motorcycles; zero car contamination.
-* **Temporal Overlap Collision Detection**: Prevents double-booking during checkout using date-range overlapping logic:
-  $$\max(\text{pickup}_A, \text{pickup}_B) < \min(\text{return}_A, \text{return}_B)$$
-* **Seamless Cross-Portal Synchronization**: 
-  - A Customer books an *Ather 450X* on `pages/booking.html`.
-  - The Owner sees the request immediately on `pages/owner-dashboard.html` and clicks **Accept**.
-  - The Customer's trip status automatically switches to **Accepted** on `pages/my-bookings.html`.
-  - The Administrator sees the updated record in `pages/admin-bookings.html`.
+1. **Homepage & Brand Experience (`index.html`)**:
+   - Inspect the clean "WhatsApp-simple" UI, high contrast, and Pune search bar.
+   - Switch language to **मराठी** or **हिंदी** using the language switcher in the top navbar.
+   - Click the **Listen** button to hear the accessibility speech synthesis.
 
-### 2. Phase 2 Roadmap:
-* Development of Spring Boot 3 RESTful microservices using the prepared Java POJOs in `java-preparation/`.
-* Deployment of MySQL 8.0 database using `database/pedalpal.sql`.
-* JWT (JSON Web Token) authentication with Spring Security.
-* Real payment gateway integration (Razorpay / Stripe sandbox).
+2. **Explore Catalog & Compare (`pages/bikes.html`, `pages/compare.html`)**:
+   - Filter by *Electric Scooters* or *Motorcycles* in *Kothrud*.
+   - Add two bikes to compare and click **Compare** to inspect the side-by-side spec matrix.
+
+3. **Login Options (`pages/login.html`)**:
+   - Switch between **Password Login** and **Login via OTP**.
+   - Test OTP login with Rahul Patil (`9876543210`) $\rightarrow$ Click "Send OTP" $\rightarrow$ Click "Auto-Fill OTP" $\rightarrow$ Click "Verify & Sign In".
+   - Test **Forgot Password**: Enter email $\rightarrow$ receive simulated code $\rightarrow$ set new password.
+
+4. **Booking Flow (`pages/booking.html`)**:
+   - Select dates, choose *Doorstep Delivery*, upload driving licence proof, and complete simulated payment.
+   - Show booking confirmation appearing immediately on **Customer Dashboard** (`pages/customer-dashboard.html`).
+
+5. **Owner & Admin Portals (`pages/owner-dashboard.html`, `pages/admin-dashboard.html`)**:
+   - Log in as Suresh Deshmukh (Owner) $\rightarrow$ inspect incoming booking requests $\rightarrow$ click **Accept**.
+   - Log in as Priya Deshmukh (Admin) $\rightarrow$ inspect Pune market analytics, customer moderation, and fleet approvals.
 
 ---
 
-## 📄 License & Credits
-Developed for **Super30 Academic Major Project – Review 1**.  
-Built with passion using pure **HTML5, CSS3, JavaScript, jQuery, and Bootstrap 5**.
+## 👥 Authors & Academic Credits
+
+- **Project Title:** PedalPal – Two-Wheeler Rental Platform (Pune)
+- **Course / Program:** Super30 Project Review 1
+- **Academic Year:** 2026
+- **Status:** Complete Frontend Implementation Prepared for Review 1 Defense

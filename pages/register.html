@@ -23,6 +23,11 @@
         <span class="brand-text">PEDAL<span class="text-teal">PAL</span></span>
       </a>
       <div class="d-flex align-items-center gap-2">
+        <div class="btn-group btn-group-sm lang-switcher shadow-none" role="group" aria-label="Language selection">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+          <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
         <a href="login.html" class="btn btn-sm btn-outline-teal fw-bold">
           <i class="bi bi-box-arrow-in-right me-1"></i> Already have an account? Sign In
         </a>
@@ -216,6 +221,12 @@
   <script src="../js/notifications.js"></script>
   <script>
     $(document).ready(function () {
+      // Language switcher hookup
+      $(document).on('click', '.lang-btn', function () {
+        const lang = $(this).data('lang');
+        PedalPalI18n.setLanguage(lang);
+      });
+
       // Toggle conditional fields based on role selection
       $('input[name="userRole"]').on('change', function () {
         const role = $(this).val();
