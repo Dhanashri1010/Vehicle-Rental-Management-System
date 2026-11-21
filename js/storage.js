@@ -67,19 +67,22 @@ const Storage = (function () {
         users = await fetchJson('data/users.json');
         if (!users || users.length === 0) {
           users = [
-            { id: "usr-c01", name: "Rahul Patil", phone: "9876543210", email: "rahul.patil@gmail.com", role: "customer", city: "Pune", area: "Kothrud", licenceNumber: "MH12-2021004921", status: "active", avatar: "images/avatars/user-rahul.svg" },
-            { id: "usr-o01", name: "Suresh Deshmukh", phone: "9822012345", email: "suresh.bikes@gmail.com", role: "owner", city: "Pune", area: "Kothrud", isVerified: true, badge: "Verified Owner", rating: 4.9, totalEarnings: 42500, avatar: "images/avatars/user-suresh.svg" },
-            { id: "usr-admin-01", name: "PedalPal Admin", phone: "9999900000", email: "admin@pedalpal.in", role: "admin", city: "Pune", area: "Shivajinagar", avatar: "images/avatars/admin.svg" }
+            { id: "usr-c01", name: "Rahul Patil", phone: "9876543210", email: "rahul.patil@gmail.com", role: "customer", city: "Pune", area: "Kothrud", licenceNumber: "MH12-2021004921", status: "active", avatar: "images/avatars/user-rahul.svg", password: "Password@123" },
+            { id: "usr-o01", name: "Suresh Deshmukh", phone: "9822012345", email: "suresh.bikes@gmail.com", role: "owner", city: "Pune", area: "Kothrud", isVerified: true, badge: "Verified Owner", rating: 4.9, totalEarnings: 42500, avatar: "images/avatars/user-suresh.svg", password: "Password@123" },
+            { id: "usr-admin-01", name: "Priya Deshmukh", phone: "9999900000", email: "admin@pedalpal.in", role: "admin", city: "Pune", area: "Shivajinagar", avatar: "images/avatars/admin.svg", password: "Admin@123" }
           ];
         }
         setLocal(KEYS.USERS, users);
       }
 
-      // 3. Current User
-      let currentUser = getLocal(KEYS.CURRENT_USER);
-      if (!currentUser && users && users.length > 0) {
-        currentUser = users[0]; // Default to Customer (Rahul Patil)
-        setLocal(KEYS.CURRENT_USER, currentUser);
+      // 3. Current User (Guests must NOT be auto-logged in)
+      let currentUser = getLocal(KEYS.CURRENT_USER, null);
+      if (currentUser && users && users.length > 0) {
+        const userExists = users.find(u => u.id === currentUser.id);
+        if (!userExists || userExists.status === 'suspended') {
+          currentUser = null;
+          localStorage.removeItem(KEYS.CURRENT_USER);
+        }
       }
 
       // 4. BOOKINGS
@@ -238,7 +241,11 @@ const Storage = (function () {
     },
 
     setCurrentUser(user) {
-      setLocal(KEYS.CURRENT_USER, user);
+      if (!user) {
+        localStorage.removeItem(KEYS.CURRENT_USER);
+      } else {
+        setLocal(KEYS.CURRENT_USER, user);
+      }
       window.dispatchEvent(new CustomEvent('pedalpal_user_changed', { detail: user }));
       return user;
     },

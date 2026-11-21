@@ -126,6 +126,7 @@
   <script src="../js/app.js"></script>
   <script>
     $(document).ready(function () {
+      if (!PedalPalAuth.requireAuth(['admin'])) return;
       PedalPalAdmin.initBookings();
 
       $(document).on('click', '.btn-admin-view-booking', function () {

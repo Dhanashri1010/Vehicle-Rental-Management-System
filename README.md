@@ -79,11 +79,11 @@ The login screen (`pages/login.html`) features **1-Click Quick Demo Login** butt
 
 | Role | Demo User Name | Demo Email | Demo Password | Default Landed Portal |
 |---|---|---|---|---|
-| **Customer** | Rahul Sharma | `rahul@example.com` | `Password@123` | `pages/customer-dashboard.html` |
-| **Bike Owner** | Suresh Patil | `suresh@example.com` | `Password@123` | `pages/owner-dashboard.html` |
+| **Customer** | Rahul Patil | `rahul.patil@gmail.com` | `Password@123` | `pages/customer-dashboard.html` |
+| **Bike Owner** | Suresh Deshmukh | `suresh.bikes@gmail.com` | `Password@123` | `pages/owner-dashboard.html` |
 | **Admin** | Priya Deshmukh | `admin@pedalpal.in` | `Admin@123` | `pages/admin-dashboard.html` |
 
-*A global demo role switcher is also present in the navbar of all portals for seamless testing.*
+*Isolated 1-Click quick-access demonstration buttons are available on `pages/login.html` exclusively for faculty project defense.*
 
 ---
 

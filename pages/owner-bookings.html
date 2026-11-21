@@ -98,6 +98,7 @@
   <script src="../js/app.js"></script>
   <script>
     $(document).ready(function () {
+      if (!PedalPalAuth.requireAuth(['owner', 'admin'])) return;
       PedalPalOwner.initBookings();
     });
   </script>

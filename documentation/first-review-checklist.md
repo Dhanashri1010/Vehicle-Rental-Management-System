@@ -10,11 +10,11 @@
 
 ## 2. Demo User Credentials (One-Click or Manual Login)
 
-| Role | Name | Email | Password | Quick Switcher |
+| Role | Name | Email | Password | Evaluation Access |
 | :--- | :--- | :--- | :--- | :--- |
-| **Customer** | Rahul Patil | `rahul.patil@gmail.com` | `Password@123` | Top Nav Dropdown -> "Customer" |
-| **Owner** | Suresh Deshmukh | `suresh.bikes@gmail.com` | `Password@123` | Top Nav Dropdown -> "Verified Owner" |
-| **Admin** | PedalPal Admin | `admin@pedalpal.in` | `Admin@123` | Top Nav Dropdown -> "Admin Manager" |
+| **Customer** | Rahul Patil | `rahul.patil@gmail.com` | `Password@123` | Login Page -> 1-Click "Customer" |
+| **Owner** | Suresh Deshmukh | `suresh.bikes@gmail.com` | `Password@123` | Login Page -> 1-Click "Bike Owner" |
+| **Admin** | Priya Deshmukh | `admin@pedalpal.in` | `Admin@123` | Login Page -> 1-Click "Administrator" |
 
 ---
 

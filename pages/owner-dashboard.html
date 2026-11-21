@@ -32,18 +32,6 @@
           <li class="nav-item"><a class="nav-link" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i> Earnings & Payouts</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <!-- QUICK DEMO SWITCHER -->
-          <div class="dropdown">
-            <button class="btn btn-sm btn-outline-primary dropdown-toggle d-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-badge"></i> <span class="d-none d-md-inline">Role Switcher</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-              <li><h6 class="dropdown-header">Demonstration Roles</h6></li>
-              <li><button class="dropdown-item demo-role-switch" data-role="customer"><i class="bi bi-person me-2 text-teal"></i>Customer (Rahul S.)</button></li>
-              <li><button class="dropdown-item demo-role-switch active" data-role="owner"><i class="bi bi-shield-check me-2 text-primary"></i>Owner (Suresh P.)</button></li>
-              <li><button class="dropdown-item demo-role-switch" data-role="admin"><i class="bi bi-gear me-2 text-dark"></i>Admin (Priya D.)</button></li>
-            </ul>
-          </div>
           <div class="dropdown">
             <button class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
               <i class="bi bi-translate"></i> <span id="currentLangLabel">English</span>
@@ -57,7 +45,7 @@
           <div class="dropdown">
             <button class="btn btn-sm btn-light border dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
               <img src="../images/avatars/user-suresh.svg" alt="User" class="nav-user-avatar" id="navUserAvatar">
-              <span class="d-none d-md-inline fw-semibold small" id="navUserName">Suresh P.</span>
+              <span class="d-none d-md-inline fw-semibold small" id="navUserName">Suresh D.</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow-sm">
               <li><a class="dropdown-item" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-2"></i>Owner Hub</a></li>
@@ -209,6 +197,7 @@
   <script src="../js/app.js"></script>
   <script>
     $(document).ready(function () {
+      if (!PedalPalAuth.requireAuth(['owner', 'admin'])) return;
       PedalPalOwner.initDashboard();
     });
   </script>

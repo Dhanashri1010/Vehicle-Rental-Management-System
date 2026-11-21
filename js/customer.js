@@ -228,6 +228,7 @@ const Customer = (function () {
       if (!user) return;
 
       $('#profFullName').val(user.name);
+      $('#profNameDisplay').text(user.name);
       $('#profEmail').val(user.email);
       $('#profPhone').val(user.phone);
       $('#profCity').val(user.city || 'Pune');

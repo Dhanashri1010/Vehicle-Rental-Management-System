@@ -321,6 +321,7 @@
 
   <script>
     $(document).ready(function () {
+      if (!PedalPalAuth.requireAuth(['customer', 'admin'])) return;
       const urlParams = new URLSearchParams(window.location.search);
       const bikeId = urlParams.get('id') || 'bk-01';
       PedalPalBooking.initBooking(bikeId);

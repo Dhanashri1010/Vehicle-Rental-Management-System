@@ -33,18 +33,7 @@
           <li class="nav-item"><a class="nav-link text-white-50" href="admin-reports.html"><i class="bi bi-graph-up me-1"></i> Analytics & Revenue</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <!-- QUICK DEMO SWITCHER -->
-          <div class="dropdown">
-            <button class="btn btn-sm btn-outline-light dropdown-toggle d-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-gear"></i> <span class="d-none d-md-inline">Role Switcher</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-              <li><h6 class="dropdown-header">Demonstration Roles</h6></li>
-              <li><button class="dropdown-item demo-role-switch" data-role="customer"><i class="bi bi-person me-2 text-teal"></i>Customer (Rahul S.)</button></li>
-              <li><button class="dropdown-item demo-role-switch" data-role="owner"><i class="bi bi-shield-check me-2 text-primary"></i>Owner (Suresh P.)</button></li>
-              <li><button class="dropdown-item demo-role-switch active" data-role="admin"><i class="bi bi-gear me-2 text-dark"></i>Admin (Priya D.)</button></li>
-            </ul>
-          </div>
+          <span class="text-white-50 small me-2"><i class="bi bi-person-circle me-1"></i>Priya Deshmukh (Admin)</span>
           <button class="btn btn-sm btn-outline-danger" id="navLogoutBtn"><i class="bi bi-box-arrow-right"></i> Sign Out</button>
         </div>
       </div>
@@ -196,6 +185,7 @@
   <script src="../js/app.js"></script>
   <script>
     $(document).ready(function () {
+      if (!PedalPalAuth.requireAuth(['admin'])) return;
       PedalPalAdmin.initDashboard();
     });
   </script>

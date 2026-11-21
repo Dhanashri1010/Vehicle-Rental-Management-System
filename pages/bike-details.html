@@ -36,21 +36,13 @@
           <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
           <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
         </div>
-        <div class="dropdown">
-          <button class="nav-user-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            <i class="bi bi-person-circle fs-5 text-teal"></i>
-            <span id="navUserNameText">Rahul</span>
-            <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2">
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="customer-dashboard.html">Customer Dashboard</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="my-bookings.html">My Bookings</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="profile.html">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="customer">👤 Customer Mode</a></li>
-            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="owner">🛵 Owner Mode</a></li>
-            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="admin">🛡️ Admin Mode</a></li>
-          </ul>
+        <div id="navAuthArea" class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-sm btn-outline-teal fw-bold px-3 py-1 rounded-pill">
+            <i class="bi bi-box-arrow-in-right me-1"></i> Login
+          </a>
+          <a href="register.html" class="btn btn-sm btn-pedal-primary fw-bold px-3 py-1 rounded-pill text-white">
+            <i class="bi bi-person-plus me-1"></i> Sign Up
+          </a>
         </div>
       </div>
     </div>

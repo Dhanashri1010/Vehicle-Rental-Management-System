@@ -20,13 +20,20 @@ const Auth = (function () {
     },
 
     login(identifier, password) {
+      if (!identifier || !identifier.trim()) {
+        return { success: false, message: "Please enter your registered email address or mobile number." };
+      }
+      if (!password) {
+        return { success: false, message: "Please enter your account password." };
+      }
+
       const users = PedalPalStorage.getUsers();
       const cleanIdent = identifier.trim().toLowerCase();
 
-      // Find user by email or phone
+      // Find user by email or 10-digit mobile number
       const user = users.find(u => 
-        u.email.toLowerCase() === cleanIdent || 
-        u.phone === cleanIdent
+        (u.email && u.email.toLowerCase() === cleanIdent) || 
+        (u.phone && u.phone === cleanIdent)
       );
 
       if (!user) {
@@ -34,12 +41,12 @@ const Auth = (function () {
       }
 
       if (user.status === 'suspended') {
-        return { success: false, message: "Your demo account has been deactivated by the administrator." };
+        return { success: false, message: "This account has been deactivated by the administrator. Please contact support." };
       }
 
-      // Check password (in real system BCrypt, here demo password matching)
-      if (user.password && user.password !== password && password !== 'Password@123' && password !== 'Admin@123') {
-        return { success: false, message: "Incorrect password. (Demo password: Password@123)" };
+      // Check password strictly against the user's registered password
+      if (!user.password || user.password !== password) {
+        return { success: false, message: "Incorrect password. Please verify your credentials." };
       }
 
       PedalPalStorage.setCurrentUser(user);
@@ -48,35 +55,59 @@ const Auth = (function () {
 
     register(userData) {
       const users = PedalPalStorage.getUsers();
+      const email = (userData.email || '').trim().toLowerCase();
+      const phone = (userData.phone || '').trim();
+
+      // Validate required fields
+      if (!userData.fullName || !userData.fullName.trim()) {
+        return { success: false, message: "Please enter your full legal name." };
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return { success: false, message: "Please enter a valid email address." };
+      }
+      if (!phone || !/^[6-9]\d{9}$/.test(phone)) {
+        return { success: false, message: "Please enter a valid 10-digit Indian mobile number." };
+      }
+      if (!userData.password || userData.password.length < 8) {
+        return { success: false, message: "Password must be at least 8 characters long." };
+      }
+
       // Check existing email
-      const existingEmail = users.find(u => u.email.toLowerCase() === userData.email.trim().toLowerCase());
+      const existingEmail = users.find(u => u.email && u.email.toLowerCase() === email);
       if (existingEmail) {
-        return { success: false, message: "An account already exists with this email address." };
+        return { success: false, message: "An account already exists with this email address. Please sign in instead." };
       }
 
       // Check existing phone
-      const existingPhone = users.find(u => u.phone === userData.phone.trim());
+      const existingPhone = users.find(u => u.phone && u.phone === phone);
       if (existingPhone) {
-        return { success: false, message: "An account already exists with this mobile number." };
+        return { success: false, message: "An account already exists with this mobile number. Please sign in instead." };
       }
 
+      // Security rule: public registration only allows 'customer' or 'owner'. NEVER 'admin'.
+      const assignedRole = userData.role === 'owner' ? 'owner' : 'customer';
+
       const newUser = {
-        id: (userData.role === 'owner' ? 'usr-o' : 'usr-c') + Date.now().toString().slice(-4),
+        id: (assignedRole === 'owner' ? 'usr-o' : 'usr-c') + Date.now().toString().slice(-4),
         name: userData.fullName.trim(),
-        phone: userData.phone.trim(),
-        email: userData.email.trim().toLowerCase(),
-        role: userData.role || 'customer',
-        city: userData.city || 'Pune',
-        area: userData.area || 'Kothrud',
-        licenceNumber: userData.licenceNumber || '',
+        phone: phone,
+        email: email,
+        role: assignedRole,
+        address: (userData.address || '').trim(),
+        area: (userData.area || 'Kothrud').trim(),
+        city: (userData.city || 'Pune').trim(),
+        pincode: (userData.pincode || '411038').trim(),
+        licenceNumber: (userData.licenceNumber || '').trim(),
         status: 'active',
-        isVerified: userData.role === 'owner' ? false : true,
-        avatar: userData.role === 'owner' ? 'images/avatars/user-suresh.svg' : 'images/avatars/user-rahul.svg',
-        password: userData.password
+        isVerified: assignedRole === 'owner' ? false : true,
+        badge: assignedRole === 'owner' ? 'Pending Verification' : undefined,
+        avatar: assignedRole === 'owner' ? 'images/avatars/user-suresh.svg' : 'images/avatars/user-rahul.svg',
+        password: userData.password,
+        createdAt: new Date().toISOString()
       };
 
       PedalPalStorage.saveUser(newUser);
-      PedalPalStorage.setCurrentUser(newUser);
+      // NOTE: Do NOT automatically log user in. They must explicitly sign in with their credentials.
       return { success: true, user: newUser };
     },
 
@@ -89,26 +120,27 @@ const Auth = (function () {
     },
 
     logout() {
-      // Switch back to customer default or guest
-      const customers = PedalPalStorage.getUsers().filter(u => u.role === 'customer');
-      if (customers.length > 0) {
-        PedalPalStorage.setCurrentUser(customers[0]);
-      }
-      const prefix = window.location.pathname.includes('/pages/') ? '' : 'pages/';
-      window.location.href = prefix + 'login.html';
+      // Clear user session completely - do NOT switch to another user!
+      PedalPalStorage.setCurrentUser(null);
+      const isPages = window.location.pathname.includes('/pages/');
+      const homeUrl = isPages ? '../index.html' : 'index.html';
+      window.location.href = homeUrl;
     },
 
     requireAuth(allowedRoles = []) {
       const user = this.getCurrentUser();
-      const prefix = window.location.pathname.includes('/pages/') ? '' : 'pages/';
+      const isPages = window.location.pathname.includes('/pages/');
+      const prefix = isPages ? '' : 'pages/';
 
       if (!user) {
-        window.location.href = prefix + 'login.html';
+        const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        const redirectParam = encodeURIComponent(currentFile + window.location.search);
+        window.location.href = `${prefix}login.html?redirect=${redirectParam}`;
         return false;
       }
 
       if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
-        alert(`Access restricted. You need ${allowedRoles.join(' or ')} permission.`);
+        alert(`Access Restricted: This section requires ${allowedRoles.join(' or ')} permission.`);
         if (user.role === 'owner') {
           window.location.href = prefix + 'owner-dashboard.html';
         } else if (user.role === 'admin') {

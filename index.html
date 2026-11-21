@@ -61,42 +61,22 @@
           <span data-i18n="listen">Listen</span>
         </button>
 
-        <!-- Notification Bell -->
-        <button type="button" class="btn btn-light rounded-circle position-relative border" id="navNotifBellBtn" title="Notifications" aria-label="Notifications" style="width: 42px; height: 42px;">
+        <!-- Notification Bell (shown only when logged in) -->
+        <button type="button" class="btn btn-light rounded-circle position-relative border d-none" id="navNotifBellBtn" title="Notifications" aria-label="Notifications" style="width: 42px; height: 42px;">
           <i class="bi bi-bell-fill text-teal"></i>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger nav-notif-badge d-none">
-            2
+            0
           </span>
         </button>
 
-        <!-- User Profile / Portal Dropdown -->
-        <div class="dropdown">
-          <button class="nav-user-pill dropdown-toggle" type="button" id="userMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle fs-5 text-teal"></i>
-            <span id="navUserNameText">Rahul</span>
-            <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2" aria-labelledby="userMenuDropdown" style="min-width: 260px;">
-            <li class="px-3 py-2 border-bottom mb-1">
-              <small class="text-muted text-uppercase fw-bold d-block">Quick Portal Navigation</small>
-            </li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="pages/customer-dashboard.html" id="navDashboardLink"><i class="bi bi-speedometer2 text-teal me-2"></i> Customer Dashboard</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="pages/my-bookings.html"><i class="bi bi-card-checklist text-primary me-2"></i> My Bookings</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="pages/profile.html"><i class="bi bi-person-gear text-secondary me-2"></i> Profile &amp; Licence</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold text-success" href="pages/owner-dashboard.html"><i class="bi bi-shop text-success me-2"></i> Switch to Owner Portal</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold text-danger" href="pages/admin-dashboard.html"><i class="bi bi-shield-lock text-danger me-2"></i> Switch to Admin Portal</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li class="px-3 py-1">
-              <small class="text-muted text-uppercase fw-bold d-block">Demo Role Switcher</small>
-            </li>
-            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="customer">👤 Login as Customer (Rahul Patil)</a></li>
-            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="owner">🛵 Login as Owner (Suresh Deshmukh)</a></li>
-            <li><a class="dropdown-item rounded-3 py-1 small switch-demo-account-btn" href="#" data-role="admin">🛡️ Login as Admin Manager</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item rounded-3 py-2 text-danger fw-bold" href="#" id="btnResetAllDemoData"><i class="bi bi-arrow-counterclockwise me-2"></i> Reset Demo Database</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 text-secondary fw-bold" href="#" id="navLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
-          </ul>
+        <!-- Dynamic User Auth Area (Hydrated by js/app.js) -->
+        <div id="navAuthArea" class="d-flex align-items-center gap-2">
+          <a href="pages/login.html" class="btn btn-sm btn-outline-teal fw-bold px-3 py-1 rounded-pill">
+            <i class="bi bi-box-arrow-in-right me-1"></i> Login
+          </a>
+          <a href="pages/register.html" class="btn btn-sm btn-pedal-primary fw-bold px-3 py-1 rounded-pill text-white">
+            <i class="bi bi-person-plus me-1"></i> Sign Up
+          </a>
         </div>
       </div>
     </div>

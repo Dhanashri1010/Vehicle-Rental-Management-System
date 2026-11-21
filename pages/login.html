@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | PedalPal - Two-Wheeler Rentals Pune</title>
+  <title>Sign In | PedalPal Pune Two-Wheeler Rentals</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -23,16 +23,6 @@
         <span class="brand-text">PEDAL<span class="text-teal">PAL</span></span>
       </a>
       <div class="d-flex align-items-center gap-2">
-        <div class="dropdown">
-          <button class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
-            <i class="bi bi-translate"></i> <span id="currentLangLabel">English</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-            <li><button class="dropdown-item lang-btn" data-lang="en">English (English)</button></li>
-            <li><button class="dropdown-item lang-btn" data-lang="hi">हिंदी (Hindi)</button></li>
-            <li><button class="dropdown-item lang-btn" data-lang="mr">मराठी (Marathi)</button></li>
-          </ul>
-        </div>
         <a href="../index.html" class="btn btn-sm btn-outline-secondary"><i class="bi bi-house-door"></i> Home</a>
       </div>
     </div>
@@ -43,34 +33,44 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-5">
-          <div class="pedal-card p-4 p-md-5">
+          <div class="pedal-card p-4 p-md-5 bg-white">
             <div class="text-center mb-4">
               <span class="badge bg-teal-subtle text-teal fw-bold mb-2 px-3 py-1">PUNE TWO-WHEELER PORTAL</span>
               <h3 class="fw-bold mb-1">Welcome Back</h3>
-              <p class="text-muted small">Log in to book bikes, manage listings, or audit platform operations.</p>
+              <p class="text-muted small">Sign in to book two-wheelers, manage your fleet, or view rental trips.</p>
             </div>
 
-            <!-- ALERT MESSAGE CONTAINER -->
+            <!-- REGISTRATION SUCCESS NOTICE -->
+            <div id="loginSuccessBanner" class="alert alert-success d-none mb-3" role="alert">
+              <i class="bi bi-check-circle-fill me-2"></i><strong>Account created!</strong> Please enter your password to sign in.
+            </div>
+
+            <!-- REDIRECT NOTICE -->
+            <div id="loginRedirectNotice" class="alert alert-info d-none mb-3" role="alert">
+              <i class="bi bi-info-circle-fill me-2"></i>Please sign in or register to complete your vehicle booking.
+            </div>
+
+            <!-- ERROR ALERT BOX -->
             <div id="loginAlertBox" class="alert alert-danger d-none" role="alert"></div>
 
-            <form id="loginForm">
+            <form id="loginForm" novalidate>
               <div class="mb-3">
-                <label class="form-label fw-semibold">Email or Mobile Number</label>
+                <label class="form-label fw-semibold" for="loginIdentifier">Email Address or Mobile Number</label>
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-person"></i></span>
-                  <input type="text" class="form-control" id="loginIdentifier" placeholder="rahul@example.com or 9823011221" required autofocus>
+                  <input type="text" class="form-control" id="loginIdentifier" placeholder="rahul.patil@gmail.com or 9876543210" required autofocus>
                 </div>
               </div>
 
               <div class="mb-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label fw-semibold mb-0">Password</label>
-                  <a href="#" class="small text-decoration-none text-teal" onclick="alert('Demo Mode: Default password is Password@123'); return false;">Forgot?</a>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label fw-semibold mb-0" for="loginPassword">Password</label>
+                  <a href="#" class="small text-decoration-none text-teal" onclick="alert('Demo Platform Password Notice:\nDefault password for pre-configured accounts is Password@123.\nIf you recently registered a new account, enter the password you chose during registration.'); return false;">Forgot?</a>
                 </div>
-                <div class="input-group mt-1">
+                <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-lock"></i></span>
                   <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required>
-                  <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn">
+                  <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn" title="Show or hide password">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -78,39 +78,52 @@
 
               <div class="mb-4 form-check">
                 <input type="checkbox" class="form-check-input" id="rememberMe" checked>
-                <label class="form-check-label small text-muted" for="rememberMe">Keep me signed in on this computer</label>
+                <label class="form-check-label small text-muted" for="rememberMe">Remember me on this browser</label>
               </div>
 
-              <button type="submit" class="btn btn-pedal-primary w-100 py-2 fs-6 mb-3">
+              <button type="submit" class="btn btn-pedal-primary w-100 py-2 fs-6 mb-3 fw-bold text-dark">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Sign In to PedalPal
               </button>
             </form>
 
-            <div class="text-center my-3 position-relative">
-              <hr>
-              <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted small fw-semibold">DEMO QUICK ACCESS</span>
-            </div>
-
-            <!-- QUICK 1-CLICK DEMO BUTTONS FOR EVALUATION -->
-            <div class="d-grid gap-2">
-              <button class="btn btn-sm btn-outline-teal text-start d-flex justify-content-between align-items-center quick-login-btn" data-role="customer">
-                <span><i class="bi bi-person-fill text-teal me-2"></i><strong>Customer:</strong> Rahul Sharma</span>
-                <span class="badge bg-teal text-white">1-Click</span>
-              </button>
-              <button class="btn btn-sm btn-outline-primary text-start d-flex justify-content-between align-items-center quick-login-btn" data-role="owner">
-                <span><i class="bi bi-shield-check text-primary me-2"></i><strong>Bike Owner:</strong> Suresh Patil</span>
-                <span class="badge bg-primary text-white">1-Click</span>
-              </button>
-              <button class="btn btn-sm btn-outline-dark text-start d-flex justify-content-between align-items-center quick-login-btn" data-role="admin">
-                <span><i class="bi bi-gear-fill text-dark me-2"></i><strong>Administrator:</strong> Priya Deshmukh</span>
-                <span class="badge bg-dark text-white">1-Click</span>
-              </button>
-            </div>
-
-            <p class="text-center text-muted small mt-4 mb-0">
+            <p class="text-center text-muted small mb-0">
               Don't have an account yet? 
               <a href="register.html" class="fw-bold text-teal text-decoration-none">Sign Up Free</a>
             </p>
+
+            <!-- ==============================================================
+                 ISOLATED FACULTY & EXAMINER DEMO QUICK-ACCESS AREA
+                 (Strictly confined to login.html for project review defense)
+                 ============================================================== -->
+            <div class="mt-4 pt-4 border-top">
+              <div class="text-center mb-3">
+                <span class="badge bg-secondary-subtle text-dark border px-3 py-1">FACULTY & EXAMINER DEMO ACCESS</span>
+                <p class="text-muted small mt-1 mb-0">1-Click pre-configured demo credentials for testing all 3 portals:</p>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-sm btn-outline-teal text-start d-flex justify-content-between align-items-center demo-quick-login-btn" data-role="customer">
+                  <span><i class="bi bi-person-fill text-teal me-2"></i><strong>Customer:</strong> Rahul Patil (Kothrud)</span>
+                  <span class="badge bg-teal text-white">1-Click</span>
+                </button>
+                <button class="btn btn-sm btn-outline-primary text-start d-flex justify-content-between align-items-center demo-quick-login-btn" data-role="owner">
+                  <span><i class="bi bi-shield-check text-primary me-2"></i><strong>Bike Owner:</strong> Suresh Deshmukh (Host)</span>
+                  <span class="badge bg-primary text-white">1-Click</span>
+                </button>
+                <button class="btn btn-sm btn-outline-dark text-start d-flex justify-content-between align-items-center demo-quick-login-btn" data-role="admin">
+                  <span><i class="bi bi-gear-fill text-dark me-2"></i><strong>Administrator:</strong> Priya Deshmukh (Admin)</span>
+                  <span class="badge bg-dark text-white">1-Click</span>
+                </button>
+              </div>
+
+              <div class="mt-3 p-2 bg-light rounded text-center">
+                <small class="text-muted" style="font-size: 11px;">
+                  <i class="bi bi-info-circle me-1"></i>
+                  <strong>Architecture Note:</strong> Authentication is simulated via localStorage state for Review 1. Spring Boot 3 + MySQL REST API with BCrypt password hashing is designed for Phase 2.
+                </small>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -120,7 +133,7 @@
   <!-- FOOTER -->
   <footer class="bg-white border-top py-3 text-center text-muted small">
     <div class="container">
-      &copy; 2026 PedalPal Technologies India Pvt. Ltd. Pune, Maharashtra.
+      &copy; 2026 PedalPal Technologies India Pvt. Ltd. Pune, Maharashtra. Built for Academic Review 1.
     </div>
   </footer>
 
@@ -132,7 +145,23 @@
   <script src="../js/notifications.js"></script>
   <script>
     $(document).ready(function () {
-      // Toggle password visibility
+      const urlParams = new URLSearchParams(window.location.search);
+      const isRegistered = urlParams.get('registered') === '1';
+      const regEmail = urlParams.get('email');
+      const redirectTarget = urlParams.get('redirect');
+
+      // 1. Display banner if just registered
+      if (isRegistered) {
+        $('#loginSuccessBanner').removeClass('d-none');
+        if (regEmail) {
+          $('#loginIdentifier').val(decodeURIComponent(regEmail));
+          $('#loginPassword').focus();
+        }
+      } else if (redirectTarget) {
+        $('#loginRedirectNotice').removeClass('d-none');
+      }
+
+      // 2. Toggle password visibility
       $('#togglePasswordBtn').on('click', function () {
         const input = $('#loginPassword');
         const icon = $(this).find('i');
@@ -145,45 +174,61 @@
         }
       });
 
-      // Quick 1-click login buttons
-      $('.quick-login-btn').on('click', function () {
+      // 3. Isolated Faculty Demo Quick-Login Buttons
+      $('.demo-quick-login-btn').on('click', function () {
         const role = $(this).data('role');
-        const result = Auth.quickLogin(role);
+        const result = PedalPalAuth.quickLogin(role);
         if (result.success) {
-          if (role === 'owner') {
-            window.location.href = 'owner-dashboard.html';
-          } else if (role === 'admin') {
-            window.location.href = 'admin-dashboard.html';
-          } else {
-            window.location.href = 'customer-dashboard.html';
-          }
+          PedalPalNotifications.showToast(`Signed in as ${result.user.name} (${result.user.role.toUpperCase()})`, 'success');
+          handleRedirect(result.user);
+        } else {
+          $('#loginAlertBox').text(result.message).removeClass('d-none');
         }
       });
 
-      // Normal login form submission
+      // 4. Normal login form submission
       $('#loginForm').on('submit', function (e) {
         e.preventDefault();
-        const ident = $('#loginIdentifier').val();
+        const ident = $('#loginIdentifier').val().trim();
         const pwd = $('#loginPassword').val();
         const alertBox = $('#loginAlertBox');
 
-        const result = Auth.login(ident, pwd);
+        alertBox.addClass('d-none').text('');
+
+        if (!ident) {
+          alertBox.text('Please enter your email or mobile number.').removeClass('d-none');
+          return;
+        }
+        if (!pwd) {
+          alertBox.text('Please enter your password.').removeClass('d-none');
+          return;
+        }
+
+        const result = PedalPalAuth.login(ident, pwd);
         if (result.success) {
           alertBox.addClass('d-none');
-          PedalPalNotifications.showToast('Login successful! Redirecting to your dashboard...', 'success');
-          setTimeout(() => {
-            if (result.user.role === 'owner') {
-              window.location.href = 'owner-dashboard.html';
-            } else if (result.user.role === 'admin') {
-              window.location.href = 'admin-dashboard.html';
-            } else {
-              window.location.href = 'customer-dashboard.html';
-            }
-          }, 800);
+          PedalPalNotifications.showToast(`Welcome back, ${result.user.name}!`, 'success');
+          handleRedirect(result.user);
         } else {
           alertBox.text(result.message).removeClass('d-none');
         }
       });
+
+      function handleRedirect(user) {
+        setTimeout(() => {
+          if (redirectTarget && !redirectTarget.includes('login.html')) {
+            window.location.href = decodeURIComponent(redirectTarget);
+            return;
+          }
+          if (user.role === 'owner') {
+            window.location.href = 'owner-dashboard.html';
+          } else if (user.role === 'admin') {
+            window.location.href = 'admin-dashboard.html';
+          } else {
+            window.location.href = 'customer-dashboard.html';
+          }
+        }, 600);
+      }
     });
   </script>
 </body>
