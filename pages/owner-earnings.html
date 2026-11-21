@@ -25,14 +25,21 @@
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0 gap-1">
-          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="owner-bikes.html"><i class="bi bi-bicycle me-1"></i> My Bikes</a></li>
-          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> Add New Bike</a></li>
-          <li class="nav-item"><a class="nav-link" href="owner-bookings.html"><i class="bi bi-inbox me-1"></i> Rental Requests</a></li>
-          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i> Earnings & Payouts</a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i> <span data-i18n="nav_dashboard">Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-bikes.html"><i class="bi bi-bicycle me-1"></i> <span data-i18n="nav_my_bikes">My Bikes</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> <span data-i18n="nav_add_bike">Add New Bike</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-bookings.html"><i class="bi bi-inbox me-1"></i> <span data-i18n="nav_requests">Rental Requests</span></a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i> <span data-i18n="nav_earnings">Earnings & Payouts</span></a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <a href="owner-dashboard.html" class="btn btn-sm btn-outline-secondary">&larr; Back to Dashboard</a>
+          <!-- Language Selector -->
+          <div class="btn-group btn-group-sm lang-switcher shadow-none" role="group" aria-label="Language selection">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+            <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
+          </div>
+          <a href="owner-dashboard.html" class="btn btn-sm btn-outline-secondary">&larr; <span data-i18n="nav_dashboard">Dashboard</span></a>
+          <button class="btn btn-sm btn-outline-danger" id="navLogoutBtn"><span data-i18n="nav_logout">Sign Out</span></button>
         </div>
       </div>
     </div>

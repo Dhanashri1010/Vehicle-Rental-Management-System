@@ -25,22 +25,18 @@
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0 gap-1">
-          <li class="nav-item"><a class="nav-link" href="../index.html"><i class="bi bi-house-door me-1"></i> Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="bikes.html"><i class="bi bi-bicycle me-1"></i> Explore Bikes</a></li>
-          <li class="nav-item"><a class="nav-link" href="compare.html"><i class="bi bi-arrow-left-right me-1"></i> Compare</a></li>
-          <li class="nav-item"><a class="nav-link active fw-bold text-teal" href="wishlist.html"><i class="bi bi-heart me-1"></i> Wishlist</a></li>
-          <li class="nav-item"><a class="nav-link" href="my-bookings.html"><i class="bi bi-calendar-check me-1"></i> My Rides</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html"><i class="bi bi-house-door me-1"></i> <span data-i18n="nav_home">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="bikes.html"><i class="bi bi-bicycle me-1"></i> <span data-i18n="nav_bikes">Explore Bikes</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="compare.html"><i class="bi bi-arrow-left-right me-1"></i> <span data-i18n="nav_compare">Compare</span></a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-teal" href="wishlist.html"><i class="bi bi-heart me-1"></i> <span data-i18n="nav_wishlist">Wishlist</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="my-bookings.html"><i class="bi bi-calendar-check me-1"></i> <span data-i18n="nav_my_bookings">My Rides</span></a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <div class="dropdown">
-            <button class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
-              <i class="bi bi-translate"></i> <span id="currentLangLabel">English</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-              <li><button class="dropdown-item lang-btn" data-lang="en">English (English)</button></li>
-              <li><button class="dropdown-item lang-btn" data-lang="hi">हिंदी (Hindi)</button></li>
-              <li><button class="dropdown-item lang-btn" data-lang="mr">मराठी (Marathi)</button></li>
-            </ul>
+          <!-- Language Selector -->
+          <div class="btn-group btn-group-sm lang-switcher shadow-none" role="group" aria-label="Language selection">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+            <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
           </div>
           <button class="btn btn-sm btn-outline-teal d-flex align-items-center gap-1" id="listenPageBtn" title="Listen to this page">
             <i class="bi bi-volume-up-fill"></i> <span class="d-none d-md-inline">Listen</span>

@@ -24,13 +24,19 @@
         </div>
       </a>
       <nav class="d-none d-lg-flex align-items-center gap-1 desktop-nav-links">
-        <a href="../index.html" class="nav-menu-link">Home</a>
-        <a href="bikes.html" class="nav-menu-link">Explore Bikes</a>
-        <a href="customer-dashboard.html" class="nav-menu-link">Dashboard</a>
-        <a href="my-bookings.html" class="nav-menu-link active">My Bookings</a>
-        <a href="wishlist.html" class="nav-menu-link">Wishlist</a>
+        <a href="../index.html" class="nav-menu-link" data-i18n="nav_home">Home</a>
+        <a href="bikes.html" class="nav-menu-link" data-i18n="nav_bikes">Explore Bikes</a>
+        <a href="customer-dashboard.html" class="nav-menu-link" data-i18n="nav_dashboard">Dashboard</a>
+        <a href="my-bookings.html" class="nav-menu-link active" data-i18n="nav_my_bookings">My Bookings</a>
+        <a href="wishlist.html" class="nav-menu-link" data-i18n="nav_wishlist">Wishlist</a>
       </nav>
       <div class="d-flex align-items-center gap-2 gap-md-3">
+        <!-- Language Switcher -->
+        <div class="btn-group btn-group-sm lang-switcher shadow-none" role="group" aria-label="Language selection">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+          <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
         <div class="dropdown">
           <button class="nav-user-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
             <i class="bi bi-person-circle fs-5 text-teal"></i>
@@ -38,10 +44,10 @@
             <span class="nav-role-badge role-customer" id="navUserRoleBadge">CUSTOMER</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-4 p-2">
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="customer-dashboard.html">Dashboard</a></li>
-            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="profile.html">Profile</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="customer-dashboard.html"><span data-i18n="nav_dashboard">Dashboard</span></a></li>
+            <li><a class="dropdown-item rounded-3 py-2 fw-bold" href="profile.html"><span data-i18n="nav_profile">Profile</span></a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item rounded-3 py-2 text-secondary fw-bold" href="#" id="navLogoutBtn">Logout</a></li>
+            <li><a class="dropdown-item rounded-3 py-2 text-danger fw-bold" href="#" id="navLogoutBtn"><span data-i18n="nav_logout">Logout</span></a></li>
           </ul>
         </div>
       </div>
@@ -52,22 +58,21 @@
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
         <div>
-          <h2 class="fw-bold mb-1">My Rental Bookings</h2>
-          <p class="text-muted mb-0">Track your ongoing, upcoming, and past rides across Pune.</p>
+          <h2 class="fw-bold mb-1" data-i18n="my_bookings_title">My Rental Bookings</h2>
+          <p class="text-muted mb-0" data-i18n="my_bookings_subtitle">Track your past and upcoming trips across Pune.</p>
         </div>
         <a href="bikes.html" class="btn btn-pedal-accent">
-          <i class="bi bi-plus-circle"></i> Rent Another Bike
+          <i class="bi bi-plus-circle"></i> <span data-i18n="book_a_bike">Rent Another Bike</span>
         </a>
       </div>
 
       <!-- Filter Tabs -->
       <div class="d-flex flex-wrap gap-2 mb-4">
-        <button type="button" class="btn btn-sm btn-pedal-primary booking-filter-btn active" data-status="all">All Bookings</button>
-        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Ongoing">Ongoing Rides</button>
-        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Confirmed">Confirmed</button>
-        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Requested">Pending Requests</button>
-        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Completed">Completed</button>
-        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Cancelled">Cancelled</button>
+        <button type="button" class="btn btn-sm btn-pedal-primary booking-filter-btn active" data-status="all" data-i18n="filter_all">All Bookings</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Ongoing" data-i18n="filter_ongoing">Ongoing Rides</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Confirmed" data-i18n="filter_upcoming">Confirmed</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Completed" data-i18n="filter_completed">Completed</button>
+        <button type="button" class="btn btn-sm btn-pedal-secondary booking-filter-btn" data-status="Cancelled" data-i18n="filter_cancelled">Cancelled</button>
       </div>
 
       <!-- Bookings Container -->

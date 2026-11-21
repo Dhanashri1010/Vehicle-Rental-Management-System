@@ -46,11 +46,11 @@ function setupNavbar() {
       const isBikes = window.location.pathname.endsWith('bikes.html');
       const isCompare = window.location.pathname.endsWith('compare.html');
       $navLinks.html(`
-        <a href="${rootPrefix}index.html" class="nav-menu-link ${isHome ? 'active' : ''}">Home</a>
-        <a href="${prefix}bikes.html" class="nav-menu-link ${isBikes ? 'active' : ''}">Explore Bikes</a>
-        <a href="${prefix}compare.html" class="nav-menu-link ${isCompare ? 'active' : ''}">Compare</a>
-        <a href="${rootPrefix}index.html#howItWorksSection" class="nav-menu-link">How It Works</a>
-        <a href="${rootPrefix}index.html#faqSection" class="nav-menu-link">FAQs</a>
+        <a href="${rootPrefix}index.html" class="nav-menu-link ${isHome ? 'active' : ''}" data-i18n="nav_home">Home</a>
+        <a href="${prefix}bikes.html" class="nav-menu-link ${isBikes ? 'active' : ''}" data-i18n="nav_bikes">Explore Bikes</a>
+        <a href="${prefix}compare.html" class="nav-menu-link ${isCompare ? 'active' : ''}" data-i18n="nav_compare">Compare</a>
+        <a href="${rootPrefix}index.html#howItWorksSection" class="nav-menu-link" data-i18n="nav_how_it_works">How It Works</a>
+        <a href="${rootPrefix}index.html#faqSection" class="nav-menu-link" data-i18n="nav_faqs">FAQs</a>
       `);
     }
 
@@ -61,10 +61,10 @@ function setupNavbar() {
     if ($userArea.length) {
       $userArea.html(`
         <a href="${prefix}login.html" class="btn btn-sm btn-outline-teal fw-bold px-3 py-1 rounded-pill">
-          <i class="bi bi-box-arrow-in-right me-1"></i> Login
+          <i class="bi bi-box-arrow-in-right me-1"></i> <span data-i18n="nav_login">Login</span>
         </a>
         <a href="${prefix}register.html" class="btn btn-sm btn-pedal-primary fw-bold px-3 py-1 rounded-pill text-white">
-          <i class="bi bi-person-plus me-1"></i> Sign Up
+          <i class="bi bi-person-plus me-1"></i> <span data-i18n="nav_register">Sign Up</span>
         </a>
       `);
     }
@@ -80,28 +80,28 @@ function setupNavbar() {
       const path = window.location.pathname;
       if (user.role === 'customer') {
         $navLinks.html(`
-          <a href="${rootPrefix}index.html" class="nav-menu-link ${path.endsWith('index.html') ? 'active' : ''}">Home</a>
-          <a href="${prefix}bikes.html" class="nav-menu-link ${path.endsWith('bikes.html') ? 'active' : ''}">Explore Bikes</a>
-          <a href="${prefix}compare.html" class="nav-menu-link ${path.endsWith('compare.html') ? 'active' : ''}">Compare</a>
-          <a href="${prefix}wishlist.html" class="nav-menu-link ${path.endsWith('wishlist.html') ? 'active' : ''}">Wishlist</a>
-          <a href="${prefix}my-bookings.html" class="nav-menu-link ${path.endsWith('my-bookings.html') ? 'active' : ''}">My Bookings</a>
+          <a href="${rootPrefix}index.html" class="nav-menu-link ${path.endsWith('index.html') ? 'active' : ''}" data-i18n="nav_home">Home</a>
+          <a href="${prefix}bikes.html" class="nav-menu-link ${path.endsWith('bikes.html') ? 'active' : ''}" data-i18n="nav_bikes">Explore Bikes</a>
+          <a href="${prefix}compare.html" class="nav-menu-link ${path.endsWith('compare.html') ? 'active' : ''}" data-i18n="nav_compare">Compare</a>
+          <a href="${prefix}wishlist.html" class="nav-menu-link ${path.endsWith('wishlist.html') ? 'active' : ''}" data-i18n="nav_wishlist">Wishlist</a>
+          <a href="${prefix}my-bookings.html" class="nav-menu-link ${path.endsWith('my-bookings.html') ? 'active' : ''}" data-i18n="nav_my_bookings">My Bookings</a>
         `);
       } else if (user.role === 'owner') {
         $navLinks.html(`
-          <a href="${prefix}owner-dashboard.html" class="nav-menu-link ${path.endsWith('owner-dashboard.html') ? 'active' : ''}">Dashboard</a>
-          <a href="${prefix}owner-bikes.html" class="nav-menu-link ${path.endsWith('owner-bikes.html') ? 'active' : ''}">My Bikes</a>
-          <a href="${prefix}add-bike.html" class="nav-menu-link ${path.endsWith('add-bike.html') ? 'active' : ''}">Add Bike</a>
-          <a href="${prefix}owner-bookings.html" class="nav-menu-link ${path.endsWith('owner-bookings.html') ? 'active' : ''}">Rental Requests</a>
-          <a href="${prefix}owner-earnings.html" class="nav-menu-link ${path.endsWith('owner-earnings.html') ? 'active' : ''}">Earnings</a>
+          <a href="${prefix}owner-dashboard.html" class="nav-menu-link ${path.endsWith('owner-dashboard.html') ? 'active' : ''}" data-i18n="nav_dashboard">Dashboard</a>
+          <a href="${prefix}owner-bikes.html" class="nav-menu-link ${path.endsWith('owner-bikes.html') ? 'active' : ''}" data-i18n="nav_my_bikes">My Bikes</a>
+          <a href="${prefix}add-bike.html" class="nav-menu-link ${path.endsWith('add-bike.html') ? 'active' : ''}" data-i18n="nav_add_bike">Add Bike</a>
+          <a href="${prefix}owner-bookings.html" class="nav-menu-link ${path.endsWith('owner-bookings.html') ? 'active' : ''}" data-i18n="nav_requests">Rental Requests</a>
+          <a href="${prefix}owner-earnings.html" class="nav-menu-link ${path.endsWith('owner-earnings.html') ? 'active' : ''}" data-i18n="nav_earnings">Earnings</a>
         `);
       } else if (user.role === 'admin') {
         $navLinks.html(`
-          <a href="${prefix}admin-dashboard.html" class="nav-menu-link ${path.endsWith('admin-dashboard.html') ? 'active' : ''}">Overview</a>
-          <a href="${prefix}admin-customers.html" class="nav-menu-link ${path.endsWith('admin-customers.html') ? 'active' : ''}">Customers</a>
-          <a href="${prefix}admin-owners.html" class="nav-menu-link ${path.endsWith('admin-owners.html') ? 'active' : ''}">Owners</a>
-          <a href="${prefix}admin-bikes.html" class="nav-menu-link ${path.endsWith('admin-bikes.html') ? 'active' : ''}">Fleet</a>
-          <a href="${prefix}admin-bookings.html" class="nav-menu-link ${path.endsWith('admin-bookings.html') ? 'active' : ''}">Bookings</a>
-          <a href="${prefix}admin-reports.html" class="nav-menu-link ${path.endsWith('admin-reports.html') ? 'active' : ''}">Reports</a>
+          <a href="${prefix}admin-dashboard.html" class="nav-menu-link ${path.endsWith('admin-dashboard.html') ? 'active' : ''}" data-i18n="nav_overview">Overview</a>
+          <a href="${prefix}admin-customers.html" class="nav-menu-link ${path.endsWith('admin-customers.html') ? 'active' : ''}" data-i18n="nav_customers">Customers</a>
+          <a href="${prefix}admin-owners.html" class="nav-menu-link ${path.endsWith('admin-owners.html') ? 'active' : ''}" data-i18n="nav_owners">Owners</a>
+          <a href="${prefix}admin-bikes.html" class="nav-menu-link ${path.endsWith('admin-bikes.html') ? 'active' : ''}" data-i18n="nav_fleet">Fleet</a>
+          <a href="${prefix}admin-bookings.html" class="nav-menu-link ${path.endsWith('admin-bookings.html') ? 'active' : ''}" data-i18n="nav_admin_portal">Bookings</a>
+          <a href="${prefix}admin-reports.html" class="nav-menu-link ${path.endsWith('admin-reports.html') ? 'active' : ''}" data-i18n="nav_reports">Reports</a>
         `);
       }
     }
@@ -114,27 +114,27 @@ function setupNavbar() {
       let menuItems = '';
       if (user.role === 'customer') {
         menuItems = `
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}customer-dashboard.html"><i class="bi bi-speedometer2 text-teal me-2"></i>Customer Dashboard</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}my-bookings.html"><i class="bi bi-card-checklist text-primary me-2"></i>My Bookings</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}wishlist.html"><i class="bi bi-heart text-danger me-2"></i>Wishlist</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}profile.html"><i class="bi bi-person-gear text-secondary me-2"></i>My Profile</a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}customer-dashboard.html"><i class="bi bi-speedometer2 text-teal me-2"></i><span data-i18n="nav_dashboard">Customer Dashboard</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}my-bookings.html"><i class="bi bi-card-checklist text-primary me-2"></i><span data-i18n="nav_my_bookings">My Bookings</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}wishlist.html"><i class="bi bi-heart text-danger me-2"></i><span data-i18n="nav_wishlist">Wishlist</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}profile.html"><i class="bi bi-person-gear text-secondary me-2"></i><span data-i18n="nav_profile">My Profile</span></a></li>
         `;
       } else if (user.role === 'owner') {
         menuItems = `
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-dashboard.html"><i class="bi bi-speedometer2 text-primary me-2"></i>Owner Dashboard</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-bikes.html"><i class="bi bi-bicycle text-success me-2"></i>My Bikes</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}add-bike.html"><i class="bi bi-plus-circle text-info me-2"></i>Add New Bike</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-bookings.html"><i class="bi bi-inbox text-warning me-2"></i>Rental Requests</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-earnings.html"><i class="bi bi-cash-stack text-success me-2"></i>Earnings & Payouts</a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-dashboard.html"><i class="bi bi-speedometer2 text-primary me-2"></i><span data-i18n="nav_dashboard">Owner Dashboard</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-bikes.html"><i class="bi bi-bicycle text-success me-2"></i><span data-i18n="nav_my_bikes">My Bikes</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}add-bike.html"><i class="bi bi-plus-circle text-info me-2"></i><span data-i18n="nav_add_bike">Add New Bike</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-bookings.html"><i class="bi bi-inbox text-warning me-2"></i><span data-i18n="nav_requests">Rental Requests</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}owner-earnings.html"><i class="bi bi-cash-stack text-success me-2"></i><span data-i18n="nav_earnings">Earnings & Payouts</span></a></li>
         `;
       } else if (user.role === 'admin') {
         menuItems = `
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-dashboard.html"><i class="bi bi-speedometer2 text-danger me-2"></i>Admin Dashboard</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-customers.html"><i class="bi bi-people me-2"></i>Manage Customers</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-owners.html"><i class="bi bi-person-badge me-2"></i>Manage Owners</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-bikes.html"><i class="bi bi-bicycle me-2"></i>Fleet Moderation</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-bookings.html"><i class="bi bi-receipt me-2"></i>Bookings Audit</a></li>
-          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-reports.html"><i class="bi bi-graph-up me-2"></i>Reports & Analytics</a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-dashboard.html"><i class="bi bi-speedometer2 text-danger me-2"></i><span data-i18n="nav_dashboard">Admin Dashboard</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-customers.html"><i class="bi bi-people me-2"></i><span data-i18n="nav_customers">Manage Customers</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-owners.html"><i class="bi bi-person-badge me-2"></i><span data-i18n="nav_owners">Manage Owners</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-bikes.html"><i class="bi bi-bicycle me-2"></i><span data-i18n="nav_fleet">Fleet Moderation</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-bookings.html"><i class="bi bi-receipt me-2"></i><span data-i18n="nav_admin_portal">Bookings Audit</span></a></li>
+          <li><a class="dropdown-item rounded-3 py-2 fw-semibold" href="${prefix}admin-reports.html"><i class="bi bi-graph-up me-2"></i><span data-i18n="nav_reports">Reports & Analytics</span></a></li>
         `;
       }
 
@@ -154,13 +154,19 @@ function setupNavbar() {
             <li><hr class="dropdown-divider"></li>
             <li>
               <button class="dropdown-item rounded-3 py-2 text-danger fw-bold" id="navLogoutBtn">
-                <i class="bi bi-box-arrow-right me-2"></i> Logout
+                <i class="bi bi-box-arrow-right me-2"></i> <span data-i18n="nav_logout">Logout</span>
               </button>
             </li>
           </ul>
         </div>
       `);
     }
+  }
+
+  // Translate freshly injected navigation DOM elements
+  if (window.PedalPalI18n) {
+    PedalPalI18n.updateDOM();
+    PedalPalI18n.updateActiveButton();
   }
 
   // Handle Logout button clicks
@@ -171,10 +177,21 @@ function setupNavbar() {
 }
 
 function setupLanguageSwitcher() {
-  $(document).on('click', '.lang-btn', async function () {
-    const lang = $(this).data('lang');
-    await PedalPalI18n.setLanguage(lang);
+  $(document).off('click', '.lang-btn').on('click', '.lang-btn', async function () {
+    const lang = $(this).attr('data-lang') || $(this).data('lang');
+    if (!lang) return;
+    PedalPalI18n.setLanguage(lang);
+    setupNavbar();
     PedalPalNotifications.showToast(`Language: ${lang === 'hi' ? 'हिंदी' : lang === 'mr' ? 'मराठी' : 'English'}`, 'info');
+  });
+
+  // Listen for language changes across all components
+  window.addEventListener('pedalpal_lang_changed', function () {
+    setupNavbar();
+    if (window.PedalPalI18n) {
+      PedalPalI18n.updateDOM();
+      PedalPalI18n.updateActiveButton();
+    }
   });
 }
 

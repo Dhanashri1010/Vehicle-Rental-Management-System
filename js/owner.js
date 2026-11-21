@@ -72,16 +72,21 @@ const Owner = (function () {
                 <div class="d-flex align-items-center gap-2">
                   <span class="fs-5 fw-bold text-teal me-2">₹${req.totalAmount}</span>
                   <button class="btn btn-sm btn-success btn-owner-accept" data-id="${req.id}">
-                    <i class="bi bi-check-lg"></i> Accept
+                    <i class="bi bi-check-lg"></i> <span data-i18n="accept_request">Accept</span>
                   </button>
                   <button class="btn btn-sm btn-outline-danger btn-owner-reject" data-id="${req.id}">
-                    <i class="bi bi-x-lg"></i> Reject
+                    <i class="bi bi-x-lg"></i> <span data-i18n="reject_request">Reject</span>
                   </button>
                 </div>
               </div>
             </div>
           `);
         });
+      }
+
+      if (window.PedalPalI18n) {
+        PedalPalI18n.updateDOM();
+        PedalPalI18n.updateActiveButton();
       }
 
       // Event handlers for quick accept/reject
@@ -376,3 +381,9 @@ const Owner = (function () {
 })();
 
 window.PedalPalOwner = Owner;
+
+window.addEventListener('pedalpal_lang_changed', function () {
+  if (window.location.pathname.includes('owner-dashboard.html')) {
+    Owner.initDashboard();
+  }
+});

@@ -71,15 +71,15 @@ const Bikes = (function () {
 
             <div class="d-flex gap-2 mt-2">
               <a href="${prefix}bike-details.html?id=${bike.id}" class="btn btn-pedal-outline w-50">
-                <i class="bi bi-info-circle"></i> Details
+                <i class="bi bi-info-circle"></i> <span data-i18n="view_details">Details</span>
               </a>
               <a href="${prefix}booking.html?id=${bike.id}" class="btn btn-pedal-accent w-50 ${!bike.isAvailable ? 'disabled' : ''}">
-                <i class="bi bi-calendar-check"></i> Book
+                <i class="bi bi-calendar-check"></i> <span data-i18n="book_now">Book</span>
               </a>
             </div>
 
             <button type="button" class="btn btn-sm btn-link text-muted mt-2 p-0 text-decoration-none btn-add-compare" data-id="${bike.id}">
-              <i class="bi bi-arrow-left-right"></i> Add to Compare
+              <i class="bi bi-arrow-left-right"></i> <span data-i18n="add_to_compare">Add to Compare</span>
             </button>
           </div>
         </div>
@@ -131,6 +131,11 @@ const Bikes = (function () {
       const $countEl = $('#bikeResultsCount');
       if ($countEl.length) {
         $countEl.text(`${bikes.length} bikes available in Pune`);
+      }
+
+      if (window.PedalPalI18n) {
+        PedalPalI18n.updateDOM();
+        PedalPalI18n.updateActiveButton();
       }
     },
 
@@ -226,8 +231,20 @@ const Bikes = (function () {
       similar.forEach(b => {
         $similarContainer.append(renderBikeCard(b));
       });
+
+      if (window.PedalPalI18n) {
+        PedalPalI18n.updateDOM();
+        PedalPalI18n.updateActiveButton();
+      }
     }
   };
 })();
 
 window.PedalPalBikes = Bikes;
+
+window.addEventListener('pedalpal_lang_changed', function () {
+  if (window.PedalPalI18n) {
+    PedalPalI18n.updateDOM();
+    PedalPalI18n.updateActiveButton();
+  }
+});

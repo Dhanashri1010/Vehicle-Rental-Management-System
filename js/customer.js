@@ -66,10 +66,10 @@ const Customer = (function () {
                 </div>
                 <div class="d-flex gap-2">
                   <a href="${prefix}my-bookings.html" class="btn btn-sm btn-pedal-primary">
-                    <i class="bi bi-card-checklist"></i> View Trip Details
+                    <i class="bi bi-card-checklist"></i> <span data-i18n="view_trip_details">View Trip Details</span>
                   </a>
                   <a href="tel:${activeTrip.ownerPhone}" class="btn btn-sm btn-pedal-outline">
-                    <i class="bi bi-telephone"></i> Call Owner
+                    <i class="bi bi-telephone"></i> <span data-i18n="call_owner">Call Owner</span>
                   </a>
                 </div>
               </div>
@@ -80,10 +80,10 @@ const Customer = (function () {
         $activeContainer.html(`
           <div class="p-4 bg-white rounded-4 border text-center">
             <i class="bi bi-bicycle text-muted fs-1 mb-2"></i>
-            <h5 class="fw-bold mb-1">No Active Trips</h5>
-            <p class="text-muted small mb-3">You don't have any vehicle booked for today. Ready for a spin?</p>
+            <h5 class="fw-bold mb-1" data-i18n="no_active_trips">No Active Trips</h5>
+            <p class="text-muted small mb-3" data-i18n="no_active_trips_desc">You don't have any vehicle booked for today. Ready for a spin?</p>
             <a href="${prefix}bikes.html" class="btn btn-pedal-accent">
-              <i class="bi bi-search"></i> Book a Bike in Pune
+              <i class="bi bi-search"></i> <span data-i18n="book_a_bike">Book a Bike in Pune</span>
             </a>
           </div>
         `);
@@ -93,7 +93,7 @@ const Customer = (function () {
       const $tbody = $('#custRecentBookingsTbody');
       $tbody.empty();
       if (bookings.length === 0) {
-        $tbody.html('<tr><td colspan="5" class="text-center py-4 text-muted">No booking history found.</td></tr>');
+        $tbody.html('<tr><td colspan="5" class="text-center py-4 text-muted" data-i18n="no_active_trips">No booking history found.</td></tr>');
       } else {
         bookings.slice(0, 5).forEach(b => {
           $tbody.append(`
@@ -106,6 +106,11 @@ const Customer = (function () {
             </tr>
           `);
         });
+      }
+
+      if (window.PedalPalI18n) {
+        PedalPalI18n.updateDOM();
+        PedalPalI18n.updateActiveButton();
       }
     },
 
@@ -176,6 +181,11 @@ const Customer = (function () {
           `;
           $container.append(html);
         });
+
+        if (window.PedalPalI18n) {
+          PedalPalI18n.updateDOM();
+          PedalPalI18n.updateActiveButton();
+        }
       }
 
       // Filter tabs
@@ -256,3 +266,9 @@ const Customer = (function () {
 })();
 
 window.PedalPalCustomer = Customer;
+
+window.addEventListener('pedalpal_lang_changed', function () {
+  if (window.location.pathname.includes('customer-dashboard.html')) {
+    Customer.initDashboard();
+  }
+});

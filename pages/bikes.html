@@ -29,11 +29,11 @@
       </a>
 
       <nav class="d-none d-lg-flex align-items-center gap-1 desktop-nav-links">
-        <a href="../index.html" class="nav-menu-link">Home</a>
-        <a href="bikes.html" class="nav-menu-link active">Explore Bikes</a>
-        <a href="compare.html" class="nav-menu-link">Compare</a>
-        <a href="wishlist.html" class="nav-menu-link">Wishlist</a>
-        <a href="my-bookings.html" class="nav-menu-link">My Bookings</a>
+        <a href="../index.html" class="nav-menu-link" data-i18n="nav_home">Home</a>
+        <a href="bikes.html" class="nav-menu-link active" data-i18n="nav_bikes">Explore Bikes</a>
+        <a href="compare.html" class="nav-menu-link" data-i18n="nav_compare">Compare</a>
+        <a href="wishlist.html" class="nav-menu-link" data-i18n="nav_wishlist">Wishlist</a>
+        <a href="my-bookings.html" class="nav-menu-link" data-i18n="nav_my_bookings">My Bookings</a>
       </nav>
 
       <div class="d-flex align-items-center gap-2 gap-md-3">
@@ -64,16 +64,16 @@
   <div class="py-4 bg-white border-bottom">
     <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
       <div>
-        <h2 class="fw-bold mb-1">Explore Bikes &amp; Scooters</h2>
-        <p class="text-muted mb-0" id="bikeResultsCount">Available two-wheelers in Pune</p>
+        <h2 class="fw-bold mb-1" data-i18n="bikes_page_title">Explore Bikes &amp; Scooters</h2>
+        <p class="text-muted mb-0" id="bikeResultsCount" data-i18n="bikes_page_subtitle">Available two-wheelers in Pune</p>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <label for="sortSelector" class="fw-bold small text-muted text-nowrap">Sort By:</label>
+        <label for="sortSelector" class="fw-bold small text-muted text-nowrap" data-i18n="filter_sort_label">Sort By:</label>
         <select id="sortSelector" class="form-select form-select-sm rounded-pill fw-bold" style="width: 180px;">
-          <option value="default">Featured</option>
-          <option value="price_asc">Price: Low to High</option>
-          <option value="price_desc">Price: High to Low</option>
-          <option value="rating">Top Rated</option>
+          <option value="default" data-i18n="sort_recommended">Featured</option>
+          <option value="price_asc" data-i18n="sort_price_low">Price: Low to High</option>
+          <option value="price_desc" data-i18n="sort_price_high">Price: High to Low</option>
+          <option value="rating" data-i18n="sort_rating">Top Rated</option>
           <option value="trips">Most Popular</option>
         </select>
       </div>
