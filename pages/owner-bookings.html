@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Rental Requests | PedalPal Owner Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -14,6 +17,7 @@
   <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/owner.css">
 </head>
+
 <body class="bg-light">
 
   <!-- TOP NAVBAR -->
@@ -21,15 +25,21 @@
     <div class="container-fluid px-lg-4">
       <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
         <span class="brand-badge bg-primary text-white"><i class="bi bi-shield-check"></i></span>
-        <span class="brand-text">PEDAL<span class="text-primary">PAL</span> <span class="badge bg-primary-subtle text-primary fs-6 fw-normal ms-1">Owner Hub</span></span>
+        <span class="brand-text">PEDAL<span class="text-primary">PAL</span> <span
+            class="badge bg-primary-subtle text-primary fs-6 fw-normal ms-1">Owner Hub</span></span>
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0 gap-1">
-          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i> <span data-i18n="nav_dashboard">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="owner-bikes.html"><i class="bi bi-bicycle me-1"></i> <span data-i18n="nav_my_bikes">My Bikes</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> <span data-i18n="nav_add_bike">Add New Bike</span></a></li>
-          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-bookings.html"><i class="bi bi-inbox me-1"></i> <span data-i18n="nav_requests">Rental Requests</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i> <span data-i18n="nav_earnings">Earnings & Payouts</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i>
+              <span data-i18n="nav_dashboard">Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-bikes.html"><i class="bi bi-bicycle me-1"></i> <span
+                data-i18n="nav_my_bikes">My Bikes</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> <span
+                data-i18n="nav_add_bike">Add New Bike</span></a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-bookings.html"><i
+                class="bi bi-inbox me-1"></i> <span data-i18n="nav_requests">Rental Requests</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i>
+              <span data-i18n="nav_earnings">Earnings & Payouts</span></a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
           <!-- Language Selector -->
@@ -38,8 +48,10 @@
             <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
             <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
           </div>
-          <a href="owner-dashboard.html" class="btn btn-sm btn-outline-secondary">&larr; <span data-i18n="nav_dashboard">Dashboard</span></a>
-          <button class="btn btn-sm btn-outline-danger" id="navLogoutBtn"><span data-i18n="nav_logout">Sign Out</span></button>
+          <a href="owner-dashboard.html" class="btn btn-sm btn-outline-secondary">&larr; <span
+              data-i18n="nav_dashboard">Dashboard</span></a>
+          <button class="btn btn-sm btn-outline-danger" id="navLogoutBtn"><span data-i18n="nav_logout">Sign
+              Out</span></button>
         </div>
       </div>
     </div>
@@ -48,8 +60,8 @@
   <!-- HEADER -->
   <header class="bg-white border-bottom py-4">
     <div class="container-fluid px-lg-4">
-      <h2 class="fw-bold mb-1">Rental Requests & Bookings</h2>
-      <p class="text-muted mb-0">Accept customer ride requests, view customer contact numbers, and monitor ongoing trips.</p>
+      <h2 class="fw-bold mb-1" data-i18n="owner_bookings_title">Rental Requests & Bookings</h2>
+      <p class="text-muted mb-0" data-i18n="owner_bookings_subtitle">Accept customer ride requests, view customer contact numbers, and monitor ongoing trips.</p>
     </div>
   </header>
 
@@ -57,12 +69,12 @@
   <main class="container-fluid px-lg-4 py-4">
     <!-- STATUS TABS -->
     <div class="d-flex gap-2 mb-3 flex-wrap">
-      <button class="btn btn-sm btn-outline-primary active owner-booking-tab" data-status="all">All Records</button>
-      <button class="btn btn-sm btn-outline-warning owner-booking-tab" data-status="Requested">Pending Requests</button>
-      <button class="btn btn-sm btn-outline-success owner-booking-tab" data-status="Accepted">Accepted / Confirmed</button>
-      <button class="btn btn-sm btn-outline-info owner-booking-tab" data-status="Ongoing">Ongoing Rides</button>
-      <button class="btn btn-sm btn-outline-secondary owner-booking-tab" data-status="Completed">Completed</button>
-      <button class="btn btn-sm btn-outline-danger owner-booking-tab" data-status="Rejected">Rejected</button>
+      <button class="btn btn-sm btn-outline-primary active owner-booking-tab" data-status="all" data-i18n="tab_all_records">All Records</button>
+      <button class="btn btn-sm btn-outline-warning owner-booking-tab" data-status="Requested" data-i18n="tab_pending_reqs">Pending Requests</button>
+      <button class="btn btn-sm btn-outline-success owner-booking-tab" data-status="Accepted" data-i18n="tab_accepted_conf">Accepted / Confirmed</button>
+      <button class="btn btn-sm btn-outline-info owner-booking-tab" data-status="Ongoing" data-i18n="tab_ongoing_rides">Ongoing Rides</button>
+      <button class="btn btn-sm btn-outline-secondary owner-booking-tab" data-status="Completed" data-i18n="tab_completed">Completed</button>
+      <button class="btn btn-sm btn-outline-danger owner-booking-tab" data-status="Rejected" data-i18n="tab_rejected">Rejected</button>
     </div>
 
     <!-- TABLE -->
@@ -71,13 +83,13 @@
         <table class="table align-middle table-hover mb-0">
           <thead class="table-light">
             <tr>
-              <th>Ref #</th>
-              <th>Two-Wheeler</th>
-              <th>Customer</th>
-              <th>Rental Window</th>
-              <th>Total Amount</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th data-i18n="th_ref">Ref #</th>
+              <th data-i18n="th_two_wheeler">Two-Wheeler</th>
+              <th data-i18n="th_customer">Customer</th>
+              <th data-i18n="th_rental_window">Rental Window</th>
+              <th data-i18n="th_amount">Total Amount</th>
+              <th data-i18n="th_status">Status</th>
+              <th data-i18n="th_action">Action</th>
             </tr>
           </thead>
           <tbody id="ownerBookingsTableBody">
@@ -90,7 +102,7 @@
 
   <!-- FOOTER -->
   <footer class="bg-white border-top py-3 text-center text-muted small mt-5">
-    <div class="container-fluid px-lg-4">
+    <div class="container-fluid px-lg-4" data-i18n="owner_footer_text">
       &copy; 2026 PedalPal Owner Partner Hub Pune. All customer bookings are backed by platform security deposits.
     </div>
   </footer>
@@ -110,4 +122,5 @@
     });
   </script>
 </body>
+
 </html>

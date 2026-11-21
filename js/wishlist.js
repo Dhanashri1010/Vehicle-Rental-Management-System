@@ -59,17 +59,17 @@ const Wishlist = (function () {
                   <div class="price-box-compact">
                     <div class="d-flex justify-content-between align-items-baseline">
                       <span class="price-val">₹${bike.pricePerDay}</span>
-                      <span class="text-muted small fw-bold">/ day</span>
+                      <span class="text-muted small fw-bold">/ <span data-i18n="per_day">day</span></span>
                     </div>
                   </div>
                 </div>
 
                 <div class="d-flex gap-2 mt-2">
                   <a href="${prefix}bike-details.html?id=${bike.id}" class="btn btn-pedal-outline w-50">
-                    <i class="bi bi-info-circle"></i> Details
+                    <i class="bi bi-info-circle"></i> <span data-i18n="view_details">Details</span>
                   </a>
                   <a href="${prefix}booking.html?id=${bike.id}" class="btn btn-pedal-accent w-50 ${!bike.isAvailable ? 'disabled' : ''}">
-                    <i class="bi bi-calendar-check"></i> Book Now
+                    <i class="bi bi-calendar-check"></i> <span data-i18n="book_now">Book Now</span>
                   </a>
                 </div>
               </div>
@@ -78,6 +78,10 @@ const Wishlist = (function () {
         `;
         $container.append(cardHtml);
       });
+
+      if (window.PedalPalI18n) {
+        PedalPalI18n.updateDOM();
+      }
     }
   };
 })();

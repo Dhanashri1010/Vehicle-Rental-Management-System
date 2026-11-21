@@ -54,7 +54,7 @@
           <p class="text-muted mb-0">Track your gross revenue, platform commission (10%), and direct bank settlements.</p>
         </div>
         <button class="btn btn-success" onclick="PedalPalNotifications.showToast('Instant payout request submitted! Transferred via IMPS in 15 mins.', 'success')">
-          <i class="bi bi-lightning-charge me-1"></i> Request Instant Payout
+          <i class="bi bi-lightning-charge me-1"></i> <span data-i18n="request_instant_payout">Request Instant Payout</span>
         </button>
       </div>
     </div>
@@ -67,7 +67,7 @@
       <div class="col-12 col-md-4">
         <div class="pedal-card p-4 bg-white border">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="text-muted small fw-semibold">Earned This Month</span>
+            <span class="text-muted small fw-semibold" data-i18n="earned_this_month">Earned This Month</span>
             <i class="bi bi-calendar2-check text-primary fs-4"></i>
           </div>
           <h2 class="fw-bold text-primary mb-1" id="earnMonthVal">₹42,500</h2>
@@ -77,17 +77,17 @@
       <div class="col-12 col-md-4">
         <div class="pedal-card p-4 bg-white border border-warning">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="text-muted small fw-semibold">Available for Payout</span>
+            <span class="text-muted small fw-semibold" data-i18n="available_payout">Available for Payout</span>
             <i class="bi bi-clock-history text-warning fs-4"></i>
           </div>
           <h2 class="fw-bold text-dark mb-1" id="earnPayoutVal">₹3,450</h2>
-          <small class="text-muted">Settles automatically every Monday</small>
+          <small class="text-muted" data-i18n="auto_settle_monday">Settles automatically every Monday</small>
         </div>
       </div>
       <div class="col-12 col-md-4">
         <div class="pedal-card p-4 bg-white border">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="text-muted small fw-semibold">Total Completed Rides</span>
+            <span class="text-muted small fw-semibold" data-i18n="total_completed_rides">Total Completed Rides</span>
             <i class="bi bi-check2-all text-teal fs-4"></i>
           </div>
           <h2 class="fw-bold text-teal mb-1" id="earnTotalRides">18</h2>
@@ -101,7 +101,7 @@
       <div class="col-12 col-lg-6 mb-3 mb-lg-0">
         <div class="pedal-card p-4 bg-white border h-100">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold mb-0"><i class="bi bi-bank me-2 text-primary"></i>Settlement Bank Account</h5>
+            <h5 class="fw-bold mb-0"><i class="bi bi-bank me-2 text-primary"></i><span data-i18n="settlement_bank_account">Settlement Bank Account</span></h5>
             <span class="badge bg-success-subtle text-success border"><i class="bi bi-check-circle me-1"></i>Active</span>
           </div>
           <div class="p-3 bg-light rounded-3 mb-3">
@@ -118,23 +118,23 @@
 
       <div class="col-12 col-lg-6">
         <div class="pedal-card p-4 bg-white border h-100">
-          <h5 class="fw-bold mb-3"><i class="bi bi-receipt me-2 text-teal"></i>Payout Fee Structure</h5>
+          <h5 class="fw-bold mb-3"><i class="bi bi-receipt me-2 text-teal"></i><span data-i18n="payout_fee_structure">Payout Fee Structure</span></h5>
           <table class="table table-sm small mb-0">
             <tbody>
               <tr>
-                <td class="text-muted">Customer Total Rent</td>
+                <td class="text-muted" data-i18n="cust_total_rent">Customer Total Rent</td>
                 <td class="text-end fw-bold">100%</td>
               </tr>
               <tr>
-                <td class="text-muted">Owner Share</td>
+                <td class="text-muted" data-i18n="owner_share">Owner Share</td>
                 <td class="text-end fw-bold text-success">90%</td>
               </tr>
               <tr>
-                <td class="text-muted">PedalPal Platform Fee & 24x7 Roadside Cover</td>
+                <td class="text-muted" data-i18n="platform_fee">PedalPal Platform Fee & 24x7 Roadside Cover</td>
                 <td class="text-end fw-bold text-secondary">10%</td>
               </tr>
               <tr>
-                <td class="text-muted">TDS Deduction (Sec 194-O)</td>
+                <td class="text-muted" data-i18n="tds_deduction">TDS Deduction (Sec 194-O)</td>
                 <td class="text-end fw-bold text-secondary">1%</td>
               </tr>
             </tbody>
@@ -145,17 +145,17 @@
 
     <!-- RECENT SETTLEMENT TRANSACTIONS -->
     <div class="pedal-card bg-white p-4">
-      <h5 class="fw-bold mb-3">Recent Settlement History</h5>
+      <h5 class="fw-bold mb-3" data-i18n="payout_history">Recent Bank Payout History</h5>
       <div class="table-responsive">
         <table class="table align-middle table-hover mb-0">
           <thead class="table-light">
             <tr>
-              <th>Payout ID</th>
-              <th>Date & Time</th>
-              <th>Transfer Method</th>
-              <th>Net Payout</th>
-              <th>Status</th>
-              <th>Bank Ref (UTR)</th>
+              <th data-i18n="th_ref">Payout ID</th>
+              <th data-i18n="th_date">Date & Time</th>
+              <th data-i18n="th_pickup_mode">Transfer Method</th>
+              <th data-i18n="th_amount">Net Payout</th>
+              <th data-i18n="th_status">Status</th>
+              <th data-i18n="th_ref">Bank Ref (UTR)</th>
             </tr>
           </thead>
           <tbody>

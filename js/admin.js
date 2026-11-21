@@ -7,7 +7,9 @@
 const Admin = (function () {
   function getStatusBadge(status) {
     const s = status.toLowerCase();
-    return `<span class="badge-status status-${s}">${status}</span>`;
+    const key = 'status_' + s;
+    const text = window.PedalPalI18n ? PedalPalI18n.t(key) : status;
+    return `<span class="badge-status status-${s}" data-i18n="${key}">${text}</span>`;
   }
 
   function getImgPrefix() {

@@ -14,7 +14,9 @@ const Customer = (function () {
 
   function getStatusBadge(status) {
     const s = status.toLowerCase();
-    return `<span class="badge-status status-${s}">${status}</span>`;
+    const key = 'status_' + s;
+    const text = window.PedalPalI18n ? PedalPalI18n.t(key) : status;
+    return `<span class="badge-status status-${s}" data-i18n="${key}">${text}</span>`;
   }
 
   return {
@@ -141,7 +143,7 @@ const Customer = (function () {
           const canCancel = ['Requested', 'Accepted', 'Confirmed'].includes(b.bookingStatus);
           const cancelBtn = canCancel ? `
             <button class="btn btn-sm btn-outline-danger btn-cancel-booking" data-id="${b.id}">
-              <i class="bi bi-x-circle"></i> Cancel Booking
+              <i class="bi bi-x-circle"></i> <span data-i18n="cancel_booking">Cancel Booking</span>
             </button>
           ` : '';
 
@@ -161,17 +163,17 @@ const Customer = (function () {
                     <i class="bi bi-clock-history me-1"></i>${b.pickupDate.replace('T', ' ')} &rarr; ${b.returnDate.replace('T', ' ')}
                   </p>
                   <p class="text-secondary small mb-0">
-                    <i class="bi bi-geo-alt me-1"></i>${b.pickupType === 'doorstep' ? 'Doorstep: ' + (b.deliveryAddress || 'Pune') : 'Self Pickup at Hub'}
+                    <i class="bi bi-geo-alt me-1"></i>${b.pickupType === 'doorstep' ? '<span data-i18n="doorstep_to">Doorstep:</span> ' + (b.deliveryAddress || 'Pune') : '<span data-i18n="self_pickup_hub">Self Pickup at Hub</span>'}
                   </p>
                 </div>
                 <div class="col-12 col-md-3 text-md-end">
                   <div class="mb-2">
                     <span class="fs-4 fw-bold text-teal">₹${b.totalAmount}</span>
-                    <small class="text-muted d-block">(Deposit: ₹${b.securityDeposit})</small>
+                    <small class="text-muted d-block">(<span data-i18n="deposit_label">Deposit</span>: ₹${b.securityDeposit})</small>
                   </div>
                   <div class="d-flex flex-column gap-2">
                     <button class="btn btn-sm btn-pedal-outline btn-view-booking-detail" data-id="${b.id}">
-                      <i class="bi bi-receipt"></i> View Bill
+                      <i class="bi bi-receipt"></i> <span data-i18n="view_bill">View Bill</span>
                     </button>
                     ${cancelBtn}
                   </div>

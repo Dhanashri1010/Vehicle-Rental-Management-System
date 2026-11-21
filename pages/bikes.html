@@ -87,13 +87,13 @@
         <aside class="col-12 col-lg-3">
           <div class="pedal-card p-4 sticky-top" style="top: 85px; z-index: 10;">
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="fw-bold mb-0"><i class="bi bi-funnel-fill text-teal me-1"></i> Filters</h5>
-              <button type="button" class="btn btn-sm btn-link text-decoration-none text-muted p-0" id="btnFilterReset">Reset All</button>
+              <h5 class="fw-bold mb-0"><i class="bi bi-funnel-fill text-teal me-1"></i> <span data-i18n="filters_heading">Filters</span></h5>
+              <button type="button" class="btn btn-sm btn-link text-decoration-none text-muted p-0" id="btnFilterReset" data-i18n="btn_reset_all">Reset All</button>
             </div>
 
             <!-- Search by name/brand -->
             <div class="mb-3">
-              <label for="filterSearchInput" class="form-label small fw-bold text-muted">Search Vehicle</label>
+              <label for="filterSearchInput" class="form-label small fw-bold text-muted" data-i18n="lbl_search_vehicle">Search Vehicle</label>
               <div class="input-group">
                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
                 <input type="text" id="filterSearchInput" class="form-control border-start-0" placeholder="e.g. Activa, Classic 350...">
@@ -102,9 +102,9 @@
 
             <!-- Pune Location Area -->
             <div class="mb-3">
-              <label for="filterLocation" class="form-label small fw-bold text-muted">Pune Location</label>
+              <label for="filterLocation" class="form-label small fw-bold text-muted" data-i18n="lbl_pune_location">Pune Location</label>
               <select id="filterLocation" class="form-select form-select-sm rounded-3">
-                <option value="all">All Pune Areas</option>
+                <option value="all" data-i18n="all_pune_areas">All Pune Areas</option>
                 <option value="Kothrud">Kothrud</option>
                 <option value="Baner">Baner</option>
                 <option value="Hinjewadi">Hinjewadi</option>
@@ -122,36 +122,36 @@
 
             <!-- Vehicle Category -->
             <div class="mb-3">
-              <label class="form-label small fw-bold text-muted d-block">Category</label>
+              <label class="form-label small fw-bold text-muted d-block" data-i18n="lbl_category_filter">Category</label>
               <div class="form-check mb-1">
                 <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catAll" value="all" checked>
-                <label class="form-check-label small fw-bold" for="catAll">All Categories</label>
+                <label class="form-check-label small fw-bold" for="catAll" data-i18n="filter_all">All Categories</label>
               </div>
               <div class="form-check mb-1">
                 <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catScooters" value="Scooters">
-                <label class="form-check-label small" for="catScooters">Scooters</label>
+                <label class="form-check-label small" for="catScooters" data-i18n="filter_scooters">Scooters</label>
               </div>
               <div class="form-check mb-1">
                 <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catMotorcycles" value="Motorcycles">
-                <label class="form-check-label small" for="catMotorcycles">Motorcycles</label>
+                <label class="form-check-label small" for="catMotorcycles" data-i18n="filter_motorcycles">Motorcycles</label>
               </div>
               <div class="form-check mb-1">
                 <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catElectricScooters" value="Electric Scooters">
-                <label class="form-check-label small" for="catElectricScooters">Electric Scooters</label>
+                <label class="form-check-label small" for="catElectricScooters" data-i18n="filter_electric_scooters">Electric Scooters</label>
               </div>
               <div class="form-check">
                 <input class="form-check-input filter-category-radio" type="radio" name="filterCategory" id="catElectricBikes" value="Electric Bikes">
-                <label class="form-check-label small" for="catElectricBikes">Electric Bikes</label>
+                <label class="form-check-label small" for="catElectricBikes" data-i18n="filter_electric_bikes">Electric Bikes</label>
               </div>
             </div>
 
             <!-- Fuel Type -->
             <div class="mb-3">
-              <label class="form-label small fw-bold text-muted d-block">Fuel Type</label>
+              <label class="form-label small fw-bold text-muted d-block" data-i18n="lbl_fuel_filter">Fuel Type</label>
               <div class="d-flex gap-2">
-                <button type="button" class="btn btn-sm btn-pedal-primary flex-fill filter-fuel-btn active" data-fuel="all">All</button>
-                <button type="button" class="btn btn-sm btn-pedal-secondary flex-fill filter-fuel-btn" data-fuel="Petrol">Petrol</button>
-                <button type="button" class="btn btn-sm btn-pedal-secondary flex-fill filter-fuel-btn" data-fuel="Electric">⚡ EV</button>
+                <button type="button" class="btn btn-sm btn-pedal-primary flex-fill filter-fuel-btn active" data-fuel="all" data-i18n="filter_all">All</button>
+                <button type="button" class="btn btn-sm btn-pedal-secondary flex-fill filter-fuel-btn" data-fuel="Petrol" data-i18n="fuel_petrol">Petrol</button>
+                <button type="button" class="btn btn-sm btn-pedal-secondary flex-fill filter-fuel-btn" data-fuel="Electric" data-i18n="fuel_electric">⚡ EV</button>
               </div>
             </div>
 

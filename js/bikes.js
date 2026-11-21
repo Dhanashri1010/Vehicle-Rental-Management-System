@@ -23,8 +23,8 @@ const Bikes = (function () {
       : `<span class="badge-status status-requested"><i class="bi bi-fuel-pump-fill text-warning"></i> ${bike.mileageOrRange}</span>`;
 
     const availBadge = bike.isAvailable
-      ? `<span class="badge bg-success-subtle text-success fw-bold px-2 py-1 rounded-pill">Available</span>`
-      : `<span class="badge bg-danger-subtle text-danger fw-bold px-2 py-1 rounded-pill">Booked</span>`;
+      ? `<span class="badge bg-success-subtle text-success fw-bold px-2 py-1 rounded-pill" data-i18n="status_available">Available</span>`
+      : `<span class="badge bg-danger-subtle text-danger fw-bold px-2 py-1 rounded-pill" data-i18n="status_booked">Booked</span>`;
 
     return `
       <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -52,19 +52,19 @@ const Bikes = (function () {
               <div class="d-flex flex-wrap gap-1 mb-2">
                 ${evBadge}
                 <span class="bike-spec-pill"><i class="bi bi-gear-fill"></i> ${bike.transmission}</span>
-                <span class="bike-spec-pill"><i class="bi bi-shield-check text-success"></i> Helmet</span>
+                <span class="bike-spec-pill"><i class="bi bi-shield-check text-success"></i> <span data-i18n="chk_helmet">Helmet</span></span>
               </div>
 
               <div class="price-box-compact">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <div>
                     <span class="price-val">₹${bike.pricePerDay}</span>
-                    <span class="text-muted small fw-bold">/ day</span>
+                    <span class="text-muted small fw-bold">/ <span data-i18n="per_day">day</span></span>
                   </div>
-                  <span class="text-secondary small fw-bold">₹${bike.pricePerHour}/hr</span>
+                  <span class="text-secondary small fw-bold">₹${bike.pricePerHour}/<span data-i18n="per_hour">hr</span></span>
                 </div>
                 <div class="text-muted small mt-1">
-                  Safety deposit: <strong>₹${bike.securityDeposit}</strong> (100% returned)
+                  <span data-i18n="deposit_label">Safety deposit</span>: <strong>₹${bike.securityDeposit}</strong> (<span data-i18n="zero_downtime_insurance">100% returned</span>)
                 </div>
               </div>
             </div>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manage My Bikes | PedalPal Owner Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -14,6 +17,7 @@
   <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/owner.css">
 </head>
+
 <body class="bg-light">
 
   <!-- TOP NAVBAR -->
@@ -21,15 +25,21 @@
     <div class="container-fluid px-lg-4">
       <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
         <span class="brand-badge bg-primary text-white"><i class="bi bi-shield-check"></i></span>
-        <span class="brand-text">PEDAL<span class="text-primary">PAL</span> <span class="badge bg-primary-subtle text-primary fs-6 fw-normal ms-1">Owner Hub</span></span>
+        <span class="brand-text">PEDAL<span class="text-primary">PAL</span> <span
+            class="badge bg-primary-subtle text-primary fs-6 fw-normal ms-1">Owner Hub</span></span>
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto ms-4 mb-2 mb-lg-0 gap-1">
-          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i> <span data-i18n="nav_dashboard">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-bikes.html"><i class="bi bi-bicycle me-1"></i> <span data-i18n="nav_my_bikes">My Bikes</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> <span data-i18n="nav_add_bike">Add New Bike</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="owner-bookings.html"><i class="bi bi-inbox me-1"></i> <span data-i18n="nav_requests">Rental Requests</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i> <span data-i18n="nav_earnings">Earnings & Payouts</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-dashboard.html"><i class="bi bi-speedometer2 me-1"></i>
+              <span data-i18n="nav_dashboard">Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="owner-bikes.html"><i
+                class="bi bi-bicycle me-1"></i> <span data-i18n="nav_my_bikes">My Bikes</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="add-bike.html"><i class="bi bi-plus-circle me-1"></i> <span
+                data-i18n="nav_add_bike">Add New Bike</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-bookings.html"><i class="bi bi-inbox me-1"></i> <span
+                data-i18n="nav_requests">Rental Requests</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="owner-earnings.html"><i class="bi bi-cash-stack me-1"></i>
+              <span data-i18n="nav_earnings">Earnings & Payouts</span></a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
           <!-- Language Selector -->
@@ -38,8 +48,10 @@
             <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
             <button type="button" class="lang-btn" data-lang="mr">मराठी</button>
           </div>
-          <a href="add-bike.html" class="btn btn-sm btn-primary"><i class="bi bi-plus-lg"></i> <span data-i18n="nav_add_bike">Add Bike</span></a>
-          <button class="btn btn-sm btn-outline-secondary" id="navLogoutBtn"><span data-i18n="nav_logout">Sign Out</span></button>
+          <a href="add-bike.html" class="btn btn-sm btn-primary"><i class="bi bi-plus-lg"></i> <span
+              data-i18n="nav_add_bike">Add Bike</span></a>
+          <button class="btn btn-sm btn-outline-secondary" id="navLogoutBtn"><span data-i18n="nav_logout">Sign
+              Out</span></button>
         </div>
       </div>
     </div>
@@ -52,14 +64,14 @@
         <div>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb small mb-1">
-              <li class="breadcrumb-item"><a href="owner-dashboard.html">Owner Hub</a></li>
-              <li class="breadcrumb-item active">My Bikes</li>
+              <li class="breadcrumb-item"><a href="owner-dashboard.html" data-i18n="nav_owner_portal">Owner Hub</a></li>
+              <li class="breadcrumb-item active" data-i18n="nav_my_bikes">My Bikes</li>
             </ol>
           </nav>
-          <h2 class="fw-bold mb-1">My Two-Wheeler Fleet</h2>
-          <p class="text-muted mb-0">Turn availability on/off instantly. Changes reflect in real-time across the search catalog.</p>
+          <h2 class="fw-bold mb-1" data-i18n="my_fleet_title">My Two-Wheeler Fleet</h2>
+          <p class="text-muted mb-0" data-i18n="my_fleet_subtitle">Turn availability on/off instantly. Changes reflect in real-time across the search catalog.</p>
         </div>
-        <a href="add-bike.html" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i> Add Another Bike</a>
+        <a href="add-bike.html" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i> <span data-i18n="add_another_bike">Add Another Bike</span></a>
       </div>
     </div>
   </header>
@@ -71,13 +83,13 @@
         <table class="table align-middle table-hover mb-0">
           <thead class="table-light">
             <tr>
-              <th>Two-Wheeler</th>
-              <th>Category</th>
-              <th>Fuel</th>
-              <th>Daily Rate</th>
-              <th>Rating</th>
-              <th>Live Availability</th>
-              <th>Actions</th>
+              <th data-i18n="th_two_wheeler">Two-Wheeler</th>
+              <th data-i18n="th_category">Category</th>
+              <th data-i18n="th_fuel">Fuel</th>
+              <th data-i18n="th_daily_rate">Daily Rate</th>
+              <th data-i18n="th_rating">Rating</th>
+              <th data-i18n="th_availability">Live Availability</th>
+              <th data-i18n="th_actions">Actions</th>
             </tr>
           </thead>
           <tbody id="ownerBikesTbody">
@@ -90,7 +102,7 @@
 
   <!-- FOOTER -->
   <footer class="bg-white border-top py-3 text-center text-muted small mt-5">
-    <div class="container-fluid px-lg-4">
+    <div class="container-fluid px-lg-4" data-i18n="owner_footer_text">
       &copy; 2026 PedalPal Owner Partner Hub Pune. All listed vehicles are covered under comprehensive commercial rental policies.
     </div>
   </footer>
@@ -110,4 +122,5 @@
     });
   </script>
 </body>
+
 </html>

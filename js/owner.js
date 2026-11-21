@@ -15,7 +15,9 @@ const Owner = (function () {
 
   function getStatusBadge(status) {
     const s = status.toLowerCase();
-    return `<span class="badge-status status-${s}">${status}</span>`;
+    const key = 'status_' + s;
+    const text = window.PedalPalI18n ? PedalPalI18n.t(key) : status;
+    return `<span class="badge-status status-${s}" data-i18n="${key}">${text}</span>`;
   }
 
   return {
@@ -52,8 +54,8 @@ const Owner = (function () {
         $reqsContainer.html(`
           <div class="p-4 bg-white rounded-4 border text-center">
             <i class="bi bi-check2-circle text-success fs-1 mb-2"></i>
-            <h5 class="fw-bold mb-1">No Pending Requests</h5>
-            <p class="text-muted small mb-0">All booking requests have been answered. You're completely up to date!</p>
+            <h5 class="fw-bold mb-1" data-i18n="no_pending_requests">No Pending Requests</h5>
+            <p class="text-muted small mb-0" data-i18n="no_pending_requests_desc">All booking requests have been answered. You're completely up to date!</p>
           </div>
         `);
       } else {

@@ -72,7 +72,7 @@ const Comparison = (function () {
         actionCols += `
           <td class="text-center">
             <a href="${prefix}booking.html?id=${bike.id}" class="btn btn-pedal-accent w-100 ${!bike.isAvailable ? 'disabled' : ''}">
-              <i class="bi bi-calendar-check"></i> Book Now
+              <i class="bi bi-calendar-check"></i> <span data-i18n="book_now">Book Now</span>
             </a>
           </td>
         `;
@@ -83,32 +83,36 @@ const Comparison = (function () {
           <table class="table table-bordered align-middle compare-matrix-table mb-0">
             <thead>
               <tr>
-                <th style="width: 200px;" class="bg-light fw-bold">Vehicle</th>
+                <th style="width: 200px;" class="bg-light fw-bold" data-i18n="cmp_th_vehicle">Vehicle</th>
                 ${headerCols}
               </tr>
             </thead>
             <tbody>
-              <tr><td class="fw-bold bg-light">Daily Rental Price</td>${priceCols}</tr>
-              <tr><td class="fw-bold bg-light">Security Deposit</td>${depositCols}</tr>
-              <tr><td class="fw-bold bg-light">Category</td>${catCols}</tr>
-              <tr><td class="fw-bold bg-light">Fuel Type</td>${fuelCols}</tr>
-              <tr><td class="fw-bold bg-light">Transmission</td>${transCols}</tr>
-              <tr><td class="fw-bold bg-light">Mileage / Range</td>${rangeCols}</tr>
-              <tr><td class="fw-bold bg-light">Seating Capacity</td>${seatCols}</tr>
-              <tr><td class="fw-bold bg-light">Rider Rating</td>${ratingCols}</tr>
-              <tr><td class="fw-bold bg-light">Pickup Area</td>${locCols}</tr>
-              <tr><td class="fw-bold bg-light">Ready to Ride?</td>${actionCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_price">Daily Rental Price</td>${priceCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_deposit">Security Deposit</td>${depositCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_category">Category</td>${catCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_fuel">Fuel Type</td>${fuelCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_trans">Transmission</td>${transCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_range">Mileage / Range</td>${rangeCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_seating">Seating Capacity</td>${seatCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_rating">Rider Rating</td>${ratingCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_location">Pickup Area</td>${locCols}</tr>
+              <tr><td class="fw-bold bg-light" data-i18n="cmp_th_action">Ready to Ride?</td>${actionCols}</tr>
             </tbody>
           </table>
         </div>
         <div class="text-end">
           <a href="${prefix}bikes.html" class="btn btn-pedal-outline">
-            <i class="bi bi-plus-circle"></i> Add Another Bike to Compare (Max 3)
+            <i class="bi bi-plus-circle"></i> <span data-i18n="nav_bikes">Add Another Bike to Compare (Max 3)</span>
           </a>
         </div>
       `;
 
       $container.html(tableHtml);
+
+      if (window.PedalPalI18n) {
+        PedalPalI18n.updateDOM();
+      }
     }
   };
 })();
