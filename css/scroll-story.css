@@ -347,9 +347,13 @@
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
+  .story-track {
+    height: 400vh;
+  }
   .story-content-box {
     padding: 20px;
     border-radius: 20px;
+    width: 92%;
   }
   .story-content-box h2 {
     font-size: 1.45rem;
@@ -373,6 +377,76 @@
   }
   .story-scroll-hint {
     display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .story-track {
+    height: 380vh;
+  }
+  .story-header {
+    padding: 0 10px;
+    top: 10px;
+  }
+  .story-progress-card {
+    padding: 5px 12px;
+    gap: 8px;
+  }
+  .story-step-badge {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+  .story-progress-bar-wrap {
+    width: 80px;
+    height: 8px;
+  }
+  .story-skip-btn {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+  .story-panel {
+    padding: 60px 12px 95px 12px;
+  }
+  .story-content-box {
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-radius: 18px;
+  }
+  .story-content-box h2 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+  }
+  .story-content-box p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .story-scene-graphic {
+    height: 160px;
+  }
+  .story-cta-pulse {
+    font-size: 1.1rem !important;
+    padding: 12px 26px !important;
+    gap: 8px;
+  }
+  .story-character-actor {
+    width: 48px;
+    height: 72px;
+    bottom: 20px;
+  }
+  .story-road {
+    height: 65px;
+  }
+  .story-nav-dots {
+    bottom: 75px;
+    padding: 4px 12px;
+    gap: 8px;
+  }
+  .story-dot {
+    width: 10px;
+    height: 10px;
+  }
+  .story-dot.active {
+    width: 22px;
   }
 }
 

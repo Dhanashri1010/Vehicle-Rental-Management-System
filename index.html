@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/scroll-story.css">
 </head>
 <body>
 
@@ -260,6 +261,127 @@
 
         <div class="row" id="homeBikesGrid">
           <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         INTERACTIVE 5-STEP SCROLL STORY: THE PEDALPAL JOURNEY
+         ===================================================================== -->
+    <section id="storySection" class="position-relative" aria-label="Interactive Rental Journey">
+      <div class="story-track" id="storyTrack">
+        <div class="story-sticky-viewport" id="storyViewport">
+
+          <!-- STORY CONTROLS & HEADER -->
+          <div class="story-header">
+            <div class="story-progress-card">
+              <span class="story-step-badge" id="storyStepBadge">Step 1 of 5</span>
+              <div class="story-progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+                <div class="story-progress-bar-fill" id="storyProgressBar" style="width: 20%;"></div>
+              </div>
+            </div>
+            <a href="#howItWorksSection" class="story-skip-btn">
+              <span data-i18n="skip_story">Skip Story</span> <i class="bi bi-chevron-down"></i>
+            </a>
+          </div>
+
+          <!-- HORIZONTAL PANORAMA WORLD (500vw wide) -->
+          <div class="story-world-container" id="storyWorld">
+            
+            <!-- City Skyline Backdrop -->
+            <div class="story-skyline-bg"></div>
+
+            <!-- STEP 1: PHONE BOOKING -->
+            <div class="story-panel" id="storyStep1">
+              <div class="story-content-box">
+                <span class="badge bg-teal text-white mb-2 px-3 py-1 fw-bold">Step 1</span>
+                <h2 class="fw-bold" data-i18n="story_step1_title">1. Easy Booking from Home</h2>
+                <p data-i18n="story_step1_desc">Choose your favourite scooter or motorcycle on your phone in just 2 minutes. Transparent prices with zero hidden charges.</p>
+              </div>
+              <div class="story-scene-graphic">
+                <img src="images/story/story-step-1.svg" alt="Customer booking a bike on smartphone" class="img-fluid">
+              </div>
+            </div>
+
+            <!-- STEP 2: OWNER ARRIVES AT DOORSTEP -->
+            <div class="story-panel" id="storyStep2">
+              <div class="story-content-box">
+                <span class="badge bg-teal text-white mb-2 px-3 py-1 fw-bold">Step 2</span>
+                <h2 class="fw-bold" data-i18n="story_step2_title">2. Doorstep Delivery in Pune</h2>
+                <p data-i18n="story_step2_desc">A verified local bike owner brings the sanitized vehicle right to your home, office, or hotel in Pune on time.</p>
+              </div>
+              <div class="story-scene-graphic">
+                <img src="images/story/story-step-2.svg" alt="Bike owner delivering vehicle to doorstep" class="img-fluid">
+              </div>
+            </div>
+
+            <!-- STEP 3: KEY & HELMET HANDOVER -->
+            <div class="story-panel" id="storyStep3">
+              <div class="story-content-box">
+                <span class="badge bg-teal text-white mb-2 px-3 py-1 fw-bold">Step 3</span>
+                <h2 class="fw-bold" data-i18n="story_step3_title">3. Sanitized Helmet & Keys</h2>
+                <p data-i18n="story_step3_desc">Inspect the bike together, receive a clean sanitized safety helmet, and collect the keys with complete peace of mind.</p>
+              </div>
+              <div class="story-scene-graphic">
+                <img src="images/story/story-step-3.svg" alt="Owner handing over key and helmet" class="img-fluid">
+              </div>
+            </div>
+
+            <!-- STEP 4: RIDING THROUGH PUNE -->
+            <div class="story-panel" id="storyStep4">
+              <div class="story-content-box">
+                <span class="badge bg-teal text-white mb-2 px-3 py-1 fw-bold">Step 4</span>
+                <h2 class="fw-bold" data-i18n="story_step4_title">4. Ride Freely Across Pune</h2>
+                <p data-i18n="story_step4_desc">Commute to Hinjewadi, explore FC Road, or take a scenic drive to the Western Ghats with 24/7 roadside assistance.</p>
+              </div>
+              <div class="story-scene-graphic">
+                <img src="images/story/story-step-4.svg" alt="Rider riding through Pune city" class="img-fluid">
+              </div>
+            </div>
+
+            <!-- STEP 5: CELEBRATION & CTA -->
+            <div class="story-panel" id="storyStep5">
+              <div class="story-content-box">
+                <span class="badge bg-warning text-dark mb-2 px-3 py-1 fw-bold">Step 5</span>
+                <h2 class="fw-bold" data-i18n="story_step5_title">5. Ready for Your Ride?</h2>
+                <p class="mb-3" data-i18n="story_step5_desc">Join thousands of happy Pune riders. Instant booking, transparent pricing, and 100% refundable safety deposit.</p>
+                <div>
+                  <a href="pages/bikes.html" class="btn story-cta-pulse">
+                    <i class="bi bi-bicycle"></i> <span data-i18n="choose_my_vehicle">Choose My Vehicle</span>
+                  </a>
+                </div>
+              </div>
+              <div class="story-scene-graphic">
+                <img src="images/story/story-step-5.svg" alt="Happy rider celebrating" class="img-fluid">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ROAD AT THE BOTTOM -->
+          <div class="story-road">
+            <div class="story-road-lines"></div>
+          </div>
+
+          <!-- WALKING CHARACTER ACTOR -->
+          <div class="story-character-actor" id="storyCharacter">
+            <img src="images/story/character-walking.svg" alt="PedalPal Character walking">
+          </div>
+
+          <!-- NAVIGATION DOTS (1 to 5) -->
+          <div class="story-nav-dots" id="storyDots" role="tablist" aria-label="Story Step Indicators">
+            <button type="button" class="story-dot active" aria-label="Step 1" aria-current="step"></button>
+            <button type="button" class="story-dot" aria-label="Step 2"></button>
+            <button type="button" class="story-dot" aria-label="Step 3"></button>
+            <button type="button" class="story-dot" aria-label="Step 4"></button>
+            <button type="button" class="story-dot" aria-label="Step 5"></button>
+          </div>
+
+          <!-- SCROLL HINT HELPER -->
+          <div class="story-scroll-hint">
+            <i class="bi bi-mouse"></i> Scroll down to walk &rarr;
+          </div>
+
         </div>
       </div>
     </section>
@@ -557,6 +679,7 @@
   <script src="js/auth.js"></script>
   <script src="js/bikes.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/scroll-story.js"></script>
 
   <script>
     // Home Page Initializer
