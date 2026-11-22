@@ -21,14 +21,56 @@ const Auth = (function () {
 
     login(identifier, password) {
       if (!identifier || !identifier.trim()) {
-        return { success: false, message: "Please enter your registered email address or mobile number." };
+        return { success: false, field: 'email', message: "Please enter your registered email address." };
       }
+
+      const cleanIdent = identifier.trim().toLowerCase();
+      const isPhone = /^[6-9]\d{9}$/.test(cleanIdent);
+
+      // Validate email format if not a pure 10-digit phone
+      if (!isPhone) {
+        if (!cleanIdent.includes('@') || !cleanIdent.includes('.')) {
+          return {
+            success: false,
+            field: 'email',
+            message: "Email address must contain '@' and '.' with a valid domain (e.g. rahul.patil@gmail.com)."
+          };
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(cleanIdent)) {
+          return {
+            success: false,
+            field: 'email',
+            message: "Please enter a valid email format (e.g. name@example.com)."
+          };
+        }
+      }
+
       if (!password) {
-        return { success: false, message: "Please enter your account password." };
+        return { success: false, field: 'password', message: "Please enter your account password." };
+      }
+
+      // Strong password validation on login
+      if (password.length < 8) {
+        return {
+          success: false,
+          field: 'password',
+          message: "Password must be at least 8 characters long."
+        };
+      }
+
+      const hasAlpha = /[a-zA-Z]/.test(password);
+      const hasNumber = /[0-9]/.test(password);
+      const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`§±]/.test(password);
+
+      if (!hasAlpha || !hasNumber || !hasSpecial) {
+        return {
+          success: false,
+          field: 'password',
+          message: "Password must be strong: at least 8 characters with a mix of letters (A-Z, a-z), numbers (0-9), and special characters (!@#$%^&*)."
+        };
       }
 
       const users = PedalPalStorage.getUsers();
-      const cleanIdent = identifier.trim().toLowerCase();
 
       // Find user by email or 10-digit mobile number
       const user = users.find(u => 
@@ -37,7 +79,7 @@ const Auth = (function () {
       );
 
       if (!user) {
-        return { success: false, message: "No account found with this email or mobile number." };
+        return { success: false, field: 'email', message: "No account found with this email address. Please sign up first." };
       }
 
       if (user.status === 'suspended') {
@@ -46,7 +88,7 @@ const Auth = (function () {
 
       // Check password strictly against the user's registered password
       if (!user.password || user.password !== password) {
-        return { success: false, message: "Incorrect password. Please verify your credentials." };
+        return { success: false, field: 'password', message: "Incorrect password. Please verify your credentials." };
       }
 
       PedalPalStorage.setCurrentUser(user);
@@ -62,14 +104,20 @@ const Auth = (function () {
       if (!userData.fullName || !userData.fullName.trim()) {
         return { success: false, message: "Please enter your full legal name." };
       }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        return { success: false, message: "Please enter a valid email address." };
+      if (!email || !email.includes('@') || !email.includes('.') || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        return { success: false, message: "Please enter a valid email address containing '@' and '.' (e.g. name@example.com)." };
       }
       if (!phone || !/^[6-9]\d{9}$/.test(phone)) {
         return { success: false, message: "Please enter a valid 10-digit Indian mobile number." };
       }
       if (!userData.password || userData.password.length < 8) {
         return { success: false, message: "Password must be at least 8 characters long." };
+      }
+      const hasRegAlpha = /[a-zA-Z]/.test(userData.password);
+      const hasRegNumber = /[0-9]/.test(userData.password);
+      const hasRegSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`§±]/.test(userData.password);
+      if (!hasRegAlpha || !hasRegNumber || !hasRegSpecial) {
+        return { success: false, message: "Password must include a mix of letters, numbers (0-9), and special characters (!@#$%^&*)." };
       }
 
       // Check existing email
@@ -235,8 +283,21 @@ const Auth = (function () {
       if (!resetCode || resetCode.toString().trim().length !== 6) {
         return { success: false, message: "Please enter the 6-digit verification code." };
       }
-      if (!newPassword || newPassword.length < 8) {
-        return { success: false, message: "New password must be at least 8 characters long." };
+      if (!newPassword) {
+        return { success: false, message: "Please enter a new password." };
+      }
+      if (typeof PedalPalValidation !== 'undefined' && PedalPalValidation && PedalPalValidation.isStrongPassword) {
+        if (!PedalPalValidation.isStrongPassword(newPassword)) {
+          const strength = PedalPalValidation.getPasswordStrength(newPassword);
+          return { success: false, message: strength.message || "New password must be at least 8 characters long and contain letters, numbers, and special characters (!@#$%^&*)." };
+        }
+      } else {
+        const hasAlpha = /[a-zA-Z]/.test(newPassword);
+        const hasNumber = /[0-9]/.test(newPassword);
+        const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`§±]/.test(newPassword);
+        if (newPassword.length < 8 || !hasAlpha || !hasNumber || !hasSpecial) {
+          return { success: false, message: "New password must be at least 8 characters long and contain a mix of letters, numbers, and special characters (!@#$%^&*)." };
+        }
       }
 
       const cleanIdent = identifier.trim().toLowerCase();
